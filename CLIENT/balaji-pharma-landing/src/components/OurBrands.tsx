@@ -207,7 +207,10 @@ export const OurBrands: React.FC = () => {
     const shouldHideRate = HIDDEN_RATE_BRANDS.some(b => brand.name.toLowerCase().includes(b.toLowerCase()));
 
     try {
-        const res = await fetch(`${API_BASE_URL}/api/companies/${encodeURIComponent(brand.sheetName)}`);
+        const res = await fetch(
+  `${API_BASE_URL}/api/company/${encodeURIComponent(brand.sheetName)}`
+);
+
         if (!res.ok) throw new Error("Product fetch failed");
         const data = await res.json();
         
