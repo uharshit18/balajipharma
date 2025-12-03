@@ -176,7 +176,7 @@ export const OurBrands: React.FC = () => {
   const fetchCompanies = async () => {
     setIsIndexLoading(true);
     try {
-      const res = await fetch(`${API_BASE_URL}/companies`);
+      const res = await fetch(`${API_BASE_URL}/api/companies`);
       if (!res.ok) throw new Error("Backend not reachable");
       
       const data = await res.json();
@@ -207,7 +207,7 @@ export const OurBrands: React.FC = () => {
     const shouldHideRate = HIDDEN_RATE_BRANDS.some(b => brand.name.toLowerCase().includes(b.toLowerCase()));
 
     try {
-        const res = await fetch(`${API_BASE_URL}/company/${encodeURIComponent(brand.sheetName)}`);
+        const res = await fetch(`${API_BASE_URL}/api/companies/${encodeURIComponent(brand.sheetName)}`);
         if (!res.ok) throw new Error("Product fetch failed");
         const data = await res.json();
         
