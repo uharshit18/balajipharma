@@ -9,6 +9,7 @@ import { PHONE_VALUE } from '../constants';
 
 // --- CONFIGURATION ---
 const API_BASE_URL = import.meta.env.VITE_API_URL;
+console.log('VITE_API_URL from frontend:', import.meta.env.VITE_API_URL);
 const SHEET_ID = "1aXLlSAJxdJuDyMTQzS7rE37sQ_WLi5LtP7xH6jApiwg"; 
 const CSV_FALLBACK_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv`;
 
