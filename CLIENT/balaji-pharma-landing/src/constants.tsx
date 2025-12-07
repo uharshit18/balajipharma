@@ -1,16 +1,15 @@
 import { NavItem, FeatureItem, TestimonialItem, FooterLink } from './types';
 
-export const LOGO_URL = "https://i.ibb.co/5gwFnCLN/1000563738-d9fc1ee3d88778f9187042443160df92-9-22-2025-7-29-33-AM.png";
+export const LOGO_URL = "/assets/LOGO.png";
 export const PHONE_DISPLAY = "+91 94143-72078";
 export const PHONE_VALUE = "919414372078";
 export const EMAIL_CONTACT = "balajipharmabhl@gmail.com";
 
 export const NAV_ITEMS: NavItem[] = [
-  { label: 'Home', href: '#' },
-  { label: 'About Us', href: '#about' },
-  { label: 'Our Brands', href: '#brands' },
-  { label: 'Our Network', href: '#network' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/' },
+  { label: 'About Us', href: '/about-balaji-pharma' },
+  { label: 'Our Brands', href: '/wholesale-medicines-rajasthan' },
+  { label: 'Contact', href: '/contact-wholesale-pharma' },
 ];
 
 export const FEATURES: FeatureItem[] = [

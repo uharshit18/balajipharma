@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 // --- CONFIGURATION ---
-const SPREADSHEET_ID = '1aXLlSAJxdJuDyMTQzS7rE37sQ_WLi5LtP7xH6jApiwg';
+const SPREADSHEET_ID = '1Lo9PeVltjDkXLkYq7jkgEsrn2-mIA-uPcEm9PC5xRbM';
 
 // Use env var on Render, fallback to local file for development
 const SERVICE_ACCOUNT_FILE =

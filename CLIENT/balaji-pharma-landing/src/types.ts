@@ -3,16 +3,11 @@ export interface NavItem {
   href: string;
 }
 
-export interface StatItem {
-  value: string;
-  label: string;
-}
-
 export interface FeatureItem {
   title: string;
   description: string;
-  stats: StatItem[];
-  icon: 'box' | 'shield' | 'truck';
+  icon: string;
+  stats: { value: string; label: string; }[];
 }
 
 export interface TestimonialItem {

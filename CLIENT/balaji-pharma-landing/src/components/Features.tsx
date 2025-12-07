@@ -17,7 +17,7 @@ export const Features: React.FC = () => {
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center md:text-left mb-16">
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">Why Choose Us as Your Medical Supplier in Rajasthan?</h2>
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">Why Choose Balaji Pharma for Bulk Medicine Distribution?</h2>
           <p className="text-slate-600 max-w-2xl">
             Partner with Balaji Pharma, your dedicated <strong>pharma distributors in Bhilwara</strong>, for uncompromised quality, genuine stock, and seamless service.
           </p>
@@ -33,7 +33,7 @@ export const Features: React.FC = () => {
               <p className="text-slate-600 mb-8 text-sm leading-relaxed min-h-[80px]">
                 {feature.description}
               </p>
-              
+
               <div className="flex items-center justify-between border-t border-gray-100 pt-6">
                 {feature.stats.map((stat, sIdx) => (
                   <div key={sIdx} className={`${sIdx === 1 ? 'text-right' : 'text-left'}`}>

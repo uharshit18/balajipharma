@@ -1,22 +1,30 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface BrandCardProps {
   brand: { name: string; logo: string };
 }
 
+const createBrandSlug = (brandName: string) => {
+  return brandName.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '-price-list';
+};
+
 const BrandCard: React.FC<BrandCardProps> = ({ brand }) => {
   // Logic to enlarge specific small logos
   const shouldScaleUp = brand.name.includes("Indchemie") || brand.name.includes("Unimarck");
+  const slug = createBrandSlug(brand.name);
 
   return (
-    <div className="w-[180px] h-28 mx-6 flex-shrink-0 flex items-center justify-center p-4 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-blue-100 transition-all duration-300 group">
-        <img 
-        src={brand.logo} 
-        alt={`${brand.name} Logo`}
-        className={`h-16 w-auto object-contain transition-all duration-300 mix-blend-multiply opacity-70 grayscale group-hover:grayscale-0 group-hover:opacity-100 ${shouldScaleUp ? 'scale-[1.6]' : ''}`}
-        loading="lazy"
+    <Link to={`/wholesale-medicines/pharmaceutical-brands/${slug}`} className="block">
+      <div className="w-[180px] h-28 mx-6 flex-shrink-0 flex items-center justify-center p-4 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-blue-100 transition-all duration-300 group cursor-pointer">
+        <img
+          src={brand.logo}
+          alt={`${brand.name} Logo`}
+          className={`h-16 w-auto object-contain transition-all duration-300 mix-blend-multiply opacity-90 hover:opacity-100 hover:scale-110 ${shouldScaleUp ? 'scale-[1.6] hover:scale-[1.7]' : ''}`}
+          loading="lazy"
         />
-    </div>
+      </div>
+    </Link>
   );
 };
 
@@ -52,7 +60,7 @@ export const BrandShowcase: React.FC = () => {
     { name: "Pfizer", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL16DdYjx1f8fvx9eUFGRd7zMJ7WQOcJ4WuQ&s" },
     { name: "Intas", logo: "https://static.capitalgroup.com/content/dam/cgc/shared-content/images/private-markets/portfolio-images/Intas.cq5dam.web.1280.1280%20copy.png" },
     { name: "Aristo", logo: "https://medicaldialogues.in/h-upload/2022/09/09/185303-aristo-logo.webp" },
-    
+
     // New Brands
     { name: "Kepler Healthcare", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0KI8ZqT89f7x195tjb-Ht3MRqJP4jy0rnsA&s" },
     { name: "Svizera", logo: "https://www.doxinate.com/images/svizera.png" },
@@ -84,7 +92,7 @@ export const BrandShowcase: React.FC = () => {
           We are the authorized stockists in Rajasthan for over 75+ reputable pharmaceutical manufacturers, ensuring 100% genuine products for your pharmacy.
         </p>
       </div>
-      
+
       {/* Marquee Container */}
       <div className="relative w-full group">
         {/* Gradient Masks */}
@@ -97,9 +105,9 @@ export const BrandShowcase: React.FC = () => {
       </div>
 
       <div className="mt-8 text-center relative z-20">
-          <p className="text-sm font-semibold text-slate-500 bg-white inline-block px-6 py-2 rounded-full border border-gray-200 shadow-sm">
-              Supplying to Bhilwara, Jaipur, Udaipur, and all major cities...
-          </p>
+        <p className="text-sm font-semibold text-slate-500 bg-white inline-block px-6 py-2 rounded-full border border-gray-200 shadow-sm">
+          Supplying to Bhilwara, Jaipur, Udaipur, and all major cities...
+        </p>
       </div>
     </section>
   );
