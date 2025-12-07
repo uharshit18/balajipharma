@@ -10,6 +10,11 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+// --- ROOT ROUTE ---
+app.get('/', (req, res) => {
+  res.send('Balaji Pharma Backend is Running');
+});
+
 // --- CONFIGURATION ---
 const SPREADSHEET_ID = '1Lo9PeVltjDkXLkYq7jkgEsrn2-mIA-uPcEm9PC5xRbM';
 
