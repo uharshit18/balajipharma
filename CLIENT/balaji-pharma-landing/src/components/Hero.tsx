@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from './Button';
 import { CheckCircle2, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -79,7 +78,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
 
                     {/* Right: Visual Representation (3D Layout & Animation) */}
                     <div className="lg:w-1/2 relative w-full mt-12 lg:mt-0 perspective-1000">
-                        <div className="relative animate-float hover:scale-[1.02] transition-transform duration-500 ease-out">
+                        <div className="relative animate-float hover:scale-[1.02] transition-transform duration-500 ease-out scale-[1.2]">
 
                             {/* Main Card: Dispatch Preview */}
                             <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-blue-500/20 bg-slate-800/40 backdrop-blur-xl border border-slate-700/50 p-3 z-10 ring-1 ring-white/10">
@@ -93,8 +92,8 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                                 <div className="absolute inset-0 bg-gradient-to-tr from-slate-900/40 via-transparent to-white/5 pointer-events-none rounded-2xl"></div>
                             </div>
 
-                            {/* Floating Badge: Fast Turnaround */}
-                            <div className="absolute -top-12 -right-6 md:-right-24 bg-white/95 backdrop-blur-md p-4 pr-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/20 animate-[float_4s_ease-in-out_infinite_1s] z-20 flex items-center gap-4 max-w-[200px] md:max-w-none">
+                            {/* Floating Badge: Fast Turnaround - Moved further out */}
+                            <div className="absolute -top-24 -right-12 md:-right-48 bg-white/95 backdrop-blur-md p-4 pr-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/20 animate-[float_4s_ease-in-out_infinite_1s] z-20 flex items-center gap-4 max-w-[200px] md:max-w-none">
                                 <div className="bg-orange-50 p-3 rounded-full shrink-0">
                                     <Clock className="w-6 h-6 text-orange-500" />
                                 </div>
@@ -104,8 +103,8 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                                 </div>
                             </div>
 
-                            {/* Floating Badge: Secure */}
-                            <div className="absolute top-[70%] -left-6 md:-left-24 bg-white/95 backdrop-blur-md p-4 pr-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/20 animate-[float_5s_ease-in-out_infinite_0.5s] z-20 flex items-center gap-4 max-w-[200px] md:max-w-none">
+                            {/* Floating Badge: Secure - Moved further out */}
+                            <div className="absolute top-[60%] -left-12 md:-left-48 bg-white/95 backdrop-blur-md p-4 pr-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/20 animate-[float_5s_ease-in-out_infinite_0.5s] z-20 flex items-center gap-4 max-w-[200px] md:max-w-none">
                                 <div className="bg-green-50 p-3 rounded-full shrink-0">
                                     <CheckCircle2 className="w-6 h-6 text-green-500" />
                                 </div>

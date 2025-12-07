@@ -235,7 +235,7 @@ const OurBrands: React.FC = () => {
                                                     <Pill size={14} /> {product.packing}
                                                 </div>
                                                 <div className="flex items-center gap-1 font-semibold text-slate-900">
-                                                    ₹{product.saleRate} <span className="text-xs font-normal text-slate-400 line-through">₹{product.mrp}</span>
+                                                    ₹{product.saleRate} <span className="text-xs font-bold text-slate-900">₹{product.mrp}</span>
                                                 </div>
                                             </div>
 

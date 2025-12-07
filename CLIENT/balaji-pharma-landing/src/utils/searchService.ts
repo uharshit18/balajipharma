@@ -70,54 +70,16 @@ class SearchService {
         this.setIndexing(true);
 
         try {
-            console.log("[SearchService] Starting background indexing...");
+            console.log("[SearchService] Starting background indexing via bulk endpoint...");
 
-            // 1. Fetch Brands
-            const brandsRes = await fetch(`${API_BASE_URL}/api/companies`);
-            const brandsData = await brandsRes.json();
-            const rawBrands = Array.isArray(brandsData) ? brandsData : brandsData.data || [];
+            const res = await fetch(`${API_BASE_URL}/api/all-data`);
+            if (!res.ok) throw new Error("Failed to fetch all-data");
 
-            this.brands = rawBrands.map((b: any) => ({
-                companyName: b.companyName,
-                sheetName: b.sheetName,
-                logoUrl: b.logoUrl
-            }));
+            const data = await res.json();
 
-            // 2. Fetch Products (Batching)
-            const BATCH_SIZE = 5;
-            const products: SearchProduct[] = [];
+            this.brands = data.brands || [];
+            this.products = data.products || [];
 
-            for (let i = 0; i < this.brands.length; i += BATCH_SIZE) {
-                const batch = this.brands.slice(i, i + BATCH_SIZE);
-                await Promise.all(batch.map(async (brand) => {
-                    try {
-                        const res = await fetch(`${API_BASE_URL}/api/company/${encodeURIComponent(brand.sheetName)}`);
-                        if (!res.ok) return;
-                        const data = await res.json();
-                        const brandSlug = brand.companyName.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '-price-list';
-
-                        data.forEach((item: any) => {
-                            products.push({
-                                productName: item.productName || '',
-                                composition: item.composition || '',
-                                packing: item.packing || '',
-                                mrp: item.mrp || '',
-                                saleRate: item.saleRate || '',
-                                division: item.division || '',
-                                brandName: brand.companyName,
-                                brandSlug: brandSlug
-                            });
-                        });
-                    } catch (e) {
-                        console.warn(`[SearchService] Failed to fetch products for ${brand.companyName}`, e);
-                    }
-                }));
-
-                // Small delay to be polite to the server/browser
-                await new Promise(resolve => setTimeout(resolve, 100));
-            }
-
-            this.products = products;
             this.saveToCache();
             console.log(`[SearchService] Indexing complete. ${this.products.length} products indexed.`);
 

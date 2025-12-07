@@ -221,7 +221,7 @@ const BrandPriceList: React.FC = () => {
                                                     {product.packing}
                                                 </span>
                                             </td>
-                                            <td className="p-5 text-right text-slate-400 line-through text-sm">₹{product.mrp}</td>
+                                            <td className="p-5 text-right text-slate-600 font-bold text-sm">₹{product.mrp}</td>
                                             <td className="p-5 text-right font-bold text-emerald-600 text-lg">₹{product.saleRate}</td>
                                         </tr>
                                     ))
