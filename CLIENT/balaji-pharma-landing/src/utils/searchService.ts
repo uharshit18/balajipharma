@@ -1,7 +1,7 @@
 import { PHONE_VALUE } from "../constants";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "https://balajipharma.onrender.com";
-const CACHE_KEY = "balaji_search_index_v1";
+const CACHE_KEY = "balaji_search_index_v2";
 const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
 
 export interface SearchBrand {
