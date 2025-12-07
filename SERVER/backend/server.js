@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 });
 
 // --- CONFIGURATION ---
-const SPREADSHEET_ID = '1Lo9PeVltjDkXLkYq7jkgEsrn2-mIA-uPcEm9PC5xRbM';
+const SPREADSHEET_ID = '12N4UwzTV0f6s5T_4JtxRwbh9bIir5IU3DgOLepqblnk';
 
 // Use env var on Render, fallback to local file for development
 const SERVICE_ACCOUNT_FILE =
