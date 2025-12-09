@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { PHONE_VALUE } from '../constants';
 import { getBrandData } from '../data/mockData';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || "https://balajipharma.onrender.com";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "";
 
 interface Product {
     productName: string;
