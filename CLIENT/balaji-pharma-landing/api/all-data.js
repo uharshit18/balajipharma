@@ -123,11 +123,24 @@ export default async function handler(req, res) {
             errorMessage.includes('private key') ? 'AUTH_INVALID_KEY' :
                 errorMessage.includes('not found') ? 'SHEET_NOT_FOUND' : 'INTERNAL_ERROR';
 
+        // Safe debug info for key (do not log full key)
+        const pk = process.env.GOOGLE_PRIVATE_KEY || '';
+        const keyDebug = {
+            exists: !!pk,
+            length: pk.length,
+            startsWith: pk.substring(0, 10),
+            hasJSONstart: pk.trim().startsWith('{'),
+            hasHeader: pk.includes('BEGIN PRIVATE KEY'),
+            hasEscapedNewlines: pk.includes('\\n'),
+            hasRealNewlines: pk.includes('\n'),
+        };
+
         console.error(`[SearchService] Failed with reason: ${failReason} | Details: ${errorMessage}`);
 
         res.status(500).json({
             error: errorMessage,
             failReason: failReason,
+            keyDebug: keyDebug, // Return this so user can see what's wrong with the key format
             fullError: JSON.stringify(error, Object.getOwnPropertyNames(error))
         });
     }

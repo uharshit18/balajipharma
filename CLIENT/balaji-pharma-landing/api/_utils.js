@@ -15,7 +15,19 @@ export const getAuth = () => {
     let privateKey = process.env.GOOGLE_PRIVATE_KEY;
 
     if (privateKey) {
-        // 1. Remove wrapping double quotes if present
+        // 0. CHECK FOR JSON: If user pasted the whole google-services.json file content
+        if (privateKey.trim().startsWith('{')) {
+            try {
+                const keyFile = JSON.parse(privateKey);
+                if (keyFile.private_key) {
+                    privateKey = keyFile.private_key;
+                }
+            } catch (e) {
+                // Not valid JSON, proceed as string
+            }
+        }
+
+        // 1. Remove wrapping double quotes if present (only if not JSON)
         if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
             privateKey = privateKey.slice(1, -1);
         }
@@ -31,21 +43,20 @@ export const getAuth = () => {
         const header = '-----BEGIN PRIVATE KEY-----';
         const footer = '-----END PRIVATE KEY-----';
 
-        if (!privateKey.includes(header)) {
-            // It might be just the base64 body, let's try to wrap it?
-            // Unlikely, usually headers are there.
-            // Let's assume if headers are missing, it's definitely broken or raw base64
-            // But let's check for "one long line with spaces" issue
+        if (!privateKey.includes('-----BEGIN PRIVATE KEY-----')) {
+            // User provided just the base64 body (common mistake)
+            // We need to clean it and wrap it.
+            const body = privateKey.trim();
+            privateKey = `-----BEGIN PRIVATE KEY-----\n${body}\n-----END PRIVATE KEY-----`;
         }
 
         // 4. Final safety cleanup
-        // Sometimes copy-paste results in spaces instead of newlines for the headers
-        // We ensure headers are on their own lines
-        privateKey = privateKey.replace('-----BEGIN PRIVATE KEY-----', '-----BEGIN PRIVATE KEY-----\n');
-        privateKey = privateKey.replace('-----END PRIVATE KEY-----', '\n-----END PRIVATE KEY-----');
+        // Ensure headers are on their own lines (handling potential bad copy-pastes)
+        privateKey = privateKey.replace(/-----BEGIN PRIVATE KEY-----/g, '-----BEGIN PRIVATE KEY-----\n');
+        privateKey = privateKey.replace(/-----END PRIVATE KEY-----/g, '\n-----END PRIVATE KEY-----');
 
-        // Collapse multiple newlines just in case
-        privateKey = privateKey.replace(/\n+/g, '\n');
+        // Collapse multiple newlines just in case and trim
+        privateKey = privateKey.replace(/\n+/g, '\n').trim();
     }
 
     return new google.auth.GoogleAuth({
