@@ -61,7 +61,7 @@ const Home: React.FC = () => {
         <div className="min-h-screen bg-white">
             <SEOHead
                 title="Wholesale Pharmaceuticals in Rajasthan | Balaji Pharma"
-                description="Leading wholesale medicine supplier in Rajasthan. Authorized distributor for Cipla, Sun Pharma, and 75+ brands. Serving Jaipur, Udaipur, Bhilwara with bulk medicines."
+                description="Leading wholesale medicine supplier in Rajasthan. Authorized distributor for Cipla, Sun Pharma, and 100+ brands. Serving Jaipur, Udaipur, Bhilwara with bulk medicines."
                 keywords="wholesale pharmaceuticals rajasthan, medicine distributor bhilwara, bulk medicine supplier jaipur, pharma stockist rajasthan"
                 canonicalUrl="https://balajipharma.com/"
                 schema={organizationSchema}

@@ -7,7 +7,7 @@ const WholesaleRajasthan: React.FC = () => {
         <>
             <SEOHead
                 title="Wholesale Medicines Rajasthan | Bulk Pharma Distributor | Balaji Pharma"
-                description="Leading wholesale medicines distributor in Rajasthan. We supply Cipla, Sun Pharma, Glenmark, and 75+ brands to retailers and hospitals in Jaipur, Udaipur, and Bhilwara."
+                description="Leading wholesale medicines distributor in Rajasthan. We supply Cipla, Sun Pharma, Glenmark, and 100+ brands to retailers and hospitals in Jaipur, Udaipur, and Bhilwara."
                 keywords="wholesale medicines rajasthan, bulk pharma distributor, pharmaceutical wholesaler bhilwara, medicine supplier jaipur"
                 canonicalUrl="https://balajipharma.com/wholesale-medicines-rajasthan"
             />

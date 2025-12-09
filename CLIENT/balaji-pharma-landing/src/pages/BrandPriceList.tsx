@@ -62,6 +62,7 @@ const BrandPriceList: React.FC = () => {
 
                 const matchingCompany = companies.find((c: any) => {
                     const cName = normalize(c.companyName);
+                    // Check for partial matches in both directions to handle "Pvt Ltd" and other suffixes
                     return cName.includes(targetSlug) || targetSlug.includes(cName);
                 });
 

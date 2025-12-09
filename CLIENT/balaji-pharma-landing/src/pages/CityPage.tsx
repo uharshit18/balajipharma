@@ -50,7 +50,7 @@ const CityPage: React.FC = () => {
                         Pharmaceutical Wholesaler in <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-300">{cityName}</span>
                     </h1>
                     <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-8">
-                        Authorized stockist for Cipla, Sun Pharma, Glenmark, and 75+ top brands.
+                        Authorized stockist for Cipla, Sun Pharma, Glenmark, and 100+ top brands.
                         Fast, reliable delivery to all chemists and hospitals in {cityName}.
                     </p>
                     <div className="flex flex-wrap justify-center gap-4">
