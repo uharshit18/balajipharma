@@ -21,7 +21,9 @@ const BrandCard: React.FC<BrandCardProps> = ({ brand }) => {
           src={brand.logo}
           alt={`${brand.name} Logo`}
           className={`h-16 w-auto object-contain transition-all duration-300 mix-blend-multiply opacity-90 hover:opacity-100 hover:scale-110 ${shouldScaleUp ? 'scale-[1.6] hover:scale-[1.7]' : ''}`}
-          loading="lazy"
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = 'https://via.placeholder.com/150?text=Brand';
+          }}
         />
       </div>
     </Link>
@@ -46,6 +48,7 @@ const MarqueeRow: React.FC<{ brands: { name: string; logo: string }[], reverse?:
 };
 
 export const BrandShowcase: React.FC = () => {
+  // ... brands array ...
   const allBrands = [
     // Original Brands
     { name: "Sun Pharma", logo: "https://upload.wikimedia.org/wikipedia/en/5/50/Sun_Pharma_logo.svg" },
@@ -89,7 +92,7 @@ export const BrandShowcase: React.FC = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Authorized Distributors for Leading Brands</h2>
         <div className="h-1.5 w-24 bg-brandBlue mx-auto rounded-full mb-6"></div>
         <p className="text-slate-600 max-w-2xl mx-auto text-lg">
-          We are the authorized stockists in Rajasthan for over 75+ reputable pharmaceutical manufacturers, ensuring 100% genuine products for your pharmacy.
+          We are the authorized stockists in Rajasthan for over 100+ reputable pharmaceutical manufacturers, ensuring 100% genuine products for your pharmacy.
         </p>
       </div>
 

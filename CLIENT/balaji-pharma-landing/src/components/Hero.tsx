@@ -35,7 +35,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
                             </span>
-                            Based in Nagori Garden, Bhilwara
+                            All Top pharma brands, supplying across Rajasthan
                         </div>
 
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-6 tracking-tight opacity-0 animate-fade-in-up [animation-delay:200ms] fill-mode-forwards">
@@ -44,7 +44,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                         </h1>
 
                         <p className="text-lg text-slate-300 mb-8 max-w-lg leading-relaxed font-medium opacity-0 animate-fade-in-up [animation-delay:400ms] fill-mode-forwards">
-                            As one of the leading <strong className="text-blue-200">pharma distributors in Bhilwara</strong>, we supply genuine healthcare products to chemists & hospitals, establishing ourselves as a trusted <strong className="text-blue-200">wholesale medical supplier in Rajasthan</strong>.
+                            As one of the leading <strong className="text-blue-200">pharma distributors in Bhilwara</strong>, we supply genuine healthcare products to retailers & wholesalers, establishing ourselves as a trusted <strong className="text-blue-200">wholesale medical supplier in Rajasthan</strong>.
                         </p>
 
                         <div className="flex flex-wrap gap-4 opacity-0 animate-fade-in-up [animation-delay:600ms] fill-mode-forwards">
@@ -70,7 +70,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                                 ))}
                             </div>
                             <div className="text-sm text-slate-400">
-                                <span className="font-bold text-white block">500+ Retailers</span>
+                                <span className="font-bold text-white block">500+ Retailers and Wholesalers</span>
                                 Trusted in Rajasthan
                             </div>
                         </div>

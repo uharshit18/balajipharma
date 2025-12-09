@@ -108,6 +108,12 @@ const OurBrands: React.FC = () => {
         return brandName.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '-price-list';
     };
 
+    // Helper for price display
+    const formatPrice = (price: string | number | null | undefined) => {
+        if (!price || price === '0' || price === 0 || price === '') return '₹';
+        return `₹${price}`;
+    };
+
     const handleWhatsAppInquiry = (product: SearchProduct) => {
         const message = `Hi Balaji Pharma, I am interested in:\n\n*Product:* ${product.productName}\n*Brand:* ${product.brandName}\n*Packing:* ${product.packing}\n*Rate:* ${product.saleRate}\n\nPlease share availability.`;
         const url = `https://wa.me/${PHONE_VALUE}?text=${encodeURIComponent(message)}`;
@@ -128,7 +134,7 @@ const OurBrands: React.FC = () => {
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-300">Local Reliability.</span>
                     </h1>
                     <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-12 leading-relaxed">
-                        Browse our real-time inventory of <strong>75+ pharmaceutical giants</strong>.
+                        Browse our real-time inventory of <strong>100+ pharmaceutical giants</strong>.
                     </p>
 
                     {/* Main Search Bar */}
@@ -235,7 +241,7 @@ const OurBrands: React.FC = () => {
                                                     <Pill size={14} /> {product.packing}
                                                 </div>
                                                 <div className="flex items-center gap-1 font-semibold text-slate-900">
-                                                    ₹{product.saleRate} <span className="text-xs font-bold text-slate-900">₹{product.mrp}</span>
+                                                    {formatPrice(product.saleRate)} <span className="text-xs font-bold text-slate-900">{formatPrice(product.mrp)}</span>
                                                 </div>
                                             </div>
 

@@ -6,6 +6,7 @@ import BrandPriceList from './pages/BrandPriceList';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import CityPage from './pages/CityPage';
+import { BhilwaraCity } from './pages/BhilwaraCity';
 import CustomerSegmentPage from './pages/CustomerSegmentPage';
 
 const AppRoutes: React.FC = () => {
@@ -14,12 +15,12 @@ const AppRoutes: React.FC = () => {
             <Route path="/" element={<Home />} />
             <Route path="/wholesale-medicines-rajasthan" element={<WholesaleRajasthan />} />
 
-            {/* Brand Pages - New Silo Structure */}
+            {/* Brand Pages */}
             <Route path="/wholesale-medicines/pharmaceutical-brands/:slug" element={<BrandPriceList />} />
-            {/* Legacy Redirect for old brand URLs if needed, or just keep both for now/redirect logic in component */}
             <Route path="/:slug" element={<BrandPriceList />} />
 
             {/* City Pages */}
+            <Route path="/pharma-distributor-bhilwara" element={<BhilwaraCity />} />
             <Route path="/pharma-wholesaler-:city" element={<CityPage />} />
 
             {/* Customer Segment Pages */}

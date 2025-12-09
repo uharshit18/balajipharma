@@ -15,10 +15,10 @@ export const NAV_ITEMS: NavItem[] = [
 export const FEATURES: FeatureItem[] = [
   {
     title: 'Top Wholesale Medical Supplier',
-    description: 'Recognized as a premier wholesale medical supplier in Rajasthan, we stock 75+ reputable brands to meet every pharmacy and hospital requirement with precision.',
+    description: 'Recognized as a premier wholesale medical supplier in Rajasthan, we stock 100+ reputable brands to meet every pharmacy and hospital requirement with precision.',
     icon: 'box',
     stats: [
-      { value: '75+', label: 'Top Brands' },
+      { value: '100+', label: 'Top Brands' },
       { value: '1,000+', label: 'Products' },
     ],
   },

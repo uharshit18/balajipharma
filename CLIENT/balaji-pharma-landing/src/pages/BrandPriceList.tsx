@@ -19,6 +19,12 @@ interface Product {
     strength?: string;
 }
 
+// Helper for price display
+const formatPrice = (price: string | number | null | undefined) => {
+    if (!price || price === '0' || price === 0 || price === '') return '₹';
+    return `₹${price}`;
+};
+
 const BrandPriceList: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();
     const [products, setProducts] = useState<Product[]>([]);
@@ -50,10 +56,13 @@ const BrandPriceList: React.FC = () => {
 
                 const companies = await companiesRes.json();
 
+                // Robust matching logic: normalize both to alphanumeric only
+                const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+                const targetSlug = normalize(cleanSlug);
+
                 const matchingCompany = companies.find((c: any) => {
-                    const cName = c.companyName.toLowerCase();
-                    const sName = cleanSlug.toLowerCase().replace(/-/g, ' ');
-                    return cName.includes(sName) || sName.includes(cName);
+                    const cName = normalize(c.companyName);
+                    return cName.includes(targetSlug) || targetSlug.includes(cName);
                 });
 
                 if (!matchingCompany) {
@@ -221,8 +230,8 @@ const BrandPriceList: React.FC = () => {
                                                     {product.packing}
                                                 </span>
                                             </td>
-                                            <td className="p-5 text-right text-slate-600 font-bold text-sm">₹{product.mrp}</td>
-                                            <td className="p-5 text-right font-bold text-emerald-600 text-lg">₹{product.saleRate}</td>
+                                            <td className="p-5 text-right text-slate-600 font-bold text-sm">{formatPrice(product.mrp)}</td>
+                                            <td className="p-5 text-right font-bold text-emerald-600 text-lg">{formatPrice(product.saleRate)}</td>
                                         </tr>
                                     ))
                                 ) : (
