@@ -12,9 +12,16 @@ export const cors = (res) => {
 
 export const getAuth = () => {
     // Vercel Environment Variables need to handle newlines in private keys correctly
-    const privateKey = process.env.GOOGLE_PRIVATE_KEY
-        ? process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n')
-        : undefined;
+    let privateKey = process.env.GOOGLE_PRIVATE_KEY;
+
+    if (privateKey) {
+        // Handle wrapping quotes if they exist (sometimes users paste them)
+        if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
+            privateKey = privateKey.slice(1, -1);
+        }
+        // Handle literal '\n' characters (common in Vercel env vars Copy/Paste)
+        privateKey = privateKey.replace(/\\n/g, '\n');
+    }
 
     return new google.auth.GoogleAuth({
         credentials: {

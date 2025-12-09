@@ -117,6 +117,18 @@ export default async function handler(req, res) {
 
     } catch (error) {
         console.error('API Error:', error);
-        res.status(500).json({ error: error.message });
+        // Helper to extract meaningful error message
+        const errorMessage = error.response?.data?.error?.message || error.message || 'Unknown Error';
+        const failReason = errorMessage.includes('invalid_grant') ? 'AUTH_INVALID_GRANT' :
+            errorMessage.includes('private key') ? 'AUTH_INVALID_KEY' :
+                errorMessage.includes('not found') ? 'SHEET_NOT_FOUND' : 'INTERNAL_ERROR';
+
+        console.error(`[SearchService] Failed with reason: ${failReason} | Details: ${errorMessage}`);
+
+        res.status(500).json({
+            error: errorMessage,
+            failReason: failReason,
+            fullError: JSON.stringify(error, Object.getOwnPropertyNames(error))
+        });
     }
 }
