@@ -75,49 +75,55 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                             </div>
                         </div>
                     </div>
+                    {/* Right: Visual Representation (Organized & Professional) */}
+                    <div className="lg:w-1/2 relative w-full mt-16 lg:mt-0">
 
-                    {/* Right: Visual Representation (3D Layout & Animation) */}
-                    <div className="lg:w-1/2 relative w-full mt-12 lg:mt-0 perspective-1000">
-                        <div className="relative animate-float hover:scale-[1.02] transition-transform duration-500 ease-out scale-[1.2]">
+                        {/* Image Container with Gradient Mask */}
+                        <div className="relative z-10 rounded-2xl overflow-visible max-w-lg mx-auto lg:max-w-none px-4 lg:px-0">
 
-                            {/* Main Card: Dispatch Preview */}
-                            <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-blue-500/20 bg-slate-800/40 backdrop-blur-xl border border-slate-700/50 p-3 z-10 ring-1 ring-white/10">
+                            {/* Main Image */}
+                            <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-blue-900/40 ring-1 ring-white/10">
                                 <img
                                     src="/assets/BANNER-IAMGE.png"
                                     alt="Bhilwara Medicine Dispatch"
-                                    className="w-full h-auto rounded-2xl shadow-inner"
+                                    className="w-full h-auto object-contain"
                                 />
 
-                                {/* Overlay Gradient for Depth */}
-                                <div className="absolute inset-0 bg-gradient-to-tr from-slate-900/40 via-transparent to-white/5 pointer-events-none rounded-2xl"></div>
+                                {/* Gradient Fade Envelopes (Blending) - Subtler */}
+                                <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent opacity-60"></div>
+                                <div className="absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l from-slate-900/20 to-transparent"></div>
+                                <div className="absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-slate-900/20 to-transparent"></div>
                             </div>
 
-                            {/* Floating Badge: Fast Turnaround - Moved further out */}
-                            <div className="absolute -top-24 -right-12 md:-right-48 bg-white/95 backdrop-blur-md p-4 pr-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/20 animate-[float_4s_ease-in-out_infinite_1s] z-20 flex items-center gap-4 max-w-[200px] md:max-w-none">
-                                <div className="bg-orange-50 p-3 rounded-full shrink-0">
-                                    <Clock className="w-6 h-6 text-orange-500" />
+                            {/* Floating Badge: Fast Turnaround (Top Right - Anchored) */}
+                            <div className="absolute -top-6 -right-4 md:-right-8 bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/20 animate-fade-in-up [animation-delay:800ms] flex items-center gap-4 max-w-[240px]">
+                                <div className="bg-orange-50 p-2.5 rounded-full shrink-0">
+                                    <Clock className="w-6 h-6 text-orange-600" />
                                 </div>
                                 <div>
                                     <p className="text-sm font-bold text-slate-900 leading-tight">Swift Dispatch</p>
-                                    <p className="text-xs text-slate-500 font-medium">Same-day in Bhilwara</p>
+                                    <p className="text-xs text-slate-500 font-medium mt-0.5">Same-day in Bhilwara</p>
                                 </div>
                             </div>
 
-                            {/* Floating Badge: Secure - Moved further out */}
-                            <div className="absolute top-[60%] -left-12 md:-left-48 bg-white/95 backdrop-blur-md p-4 pr-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/20 animate-[float_5s_ease-in-out_infinite_0.5s] z-20 flex items-center gap-4 max-w-[200px] md:max-w-none">
-                                <div className="bg-green-50 p-3 rounded-full shrink-0">
-                                    <CheckCircle2 className="w-6 h-6 text-green-500" />
+                            {/* Floating Badge: Quality (Bottom Left - Anchored) */}
+                            <div className="absolute -bottom-6 -left-4 md:-left-8 bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/20 animate-fade-in-up [animation-delay:1000ms] flex items-center gap-4 max-w-[240px]">
+                                <div className="bg-emerald-50 p-2.5 rounded-full shrink-0">
+                                    <CheckCircle2 className="w-6 h-6 text-emerald-600" />
                                 </div>
                                 <div>
                                     <p className="text-sm font-bold text-slate-900 leading-tight">Quality Checked</p>
-                                    <p className="text-xs text-slate-500 font-medium">100% Genuine Stock</p>
+                                    <p className="text-xs text-slate-500 font-medium mt-0.5">100% Genuine Stock</p>
                                 </div>
                             </div>
 
                         </div>
+
+                        {/* Background Splashes for Depth */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-blue-500/20 blur-[100px] rounded-full -z-10 pointer-events-none"></div>
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
     );
 };
