@@ -1,7 +1,7 @@
 import { google } from 'googleapis';
 import { getAuth, SPREADSHEET_ID, cors } from './_utils.js';
 
-// Helper to normalize headers (duplicated for edge independence)
+// Helper to normalize headers
 const normalizeHeader = (header) => {
     if (!header) return '';
     const h = header.toString().toLowerCase().trim();
@@ -33,8 +33,7 @@ export default async function handler(req, res) {
         const auth = getAuth();
         const sheets = google.sheets({ version: 'v4', auth });
 
-        // Cache 1 Hour at the EDGE
-        // This means subsequent requests from ANY user will hit Vercel's global cache
+        // Cache 1 Hour at edge
         res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=600');
 
         console.log("Fetching meta data...");
@@ -50,56 +49,62 @@ export default async function handler(req, res) {
 
         let allProducts = [];
 
-        // Parallel fetch with batching
-        // Vercel Serverless has a 10s or 60s timeout depending on plan. 
-        // 50 tabs might timeout if done sequentially.
-        // We will execute in parallel batches.
-        const BATCH_SIZE = 8;
-        for (let i = 0; i < companies.length; i += BATCH_SIZE) {
-            const batch = companies.slice(i, i + BATCH_SIZE);
-            const results = await Promise.all(batch.map(async (company) => {
-                try {
-                    const response = await sheets.spreadsheets.values.get({
-                        spreadsheetId: SPREADSHEET_ID,
-                        range: `${company.sheetName}!A:Z`,
-                    });
-                    const rows = response.data.values;
-                    if (!rows || rows.length === 0) return [];
+        // OPTIMIZATION: Use batchGet instead of loop
+        // We chunk requests to avoid URL length limits.
+        const CHUNK_SIZE = 15;
+        for (let i = 0; i < companies.length; i += CHUNK_SIZE) {
+            const chunk = companies.slice(i, i + CHUNK_SIZE);
+            const ranges = chunk.map(c => `${c.sheetName}!A:Z`);
 
-                    let headerIndex = 0;
-                    for (let r = 0; r < Math.min(rows.length, 5); r++) {
-                        const rowStr = rows[r].join(' ').toLowerCase();
-                        if (rowStr.includes('product') || rowStr.includes('name')) {
-                            headerIndex = r;
-                            break;
+            try {
+                const batchRes = await sheets.spreadsheets.values.batchGet({
+                    spreadsheetId: SPREADSHEET_ID,
+                    ranges: ranges,
+                });
+
+                const valueRanges = batchRes.data.valueRanges; // Array of ranges
+
+                if (valueRanges) {
+                    valueRanges.forEach((rangeData, idx) => {
+                        const company = chunk[idx]; // Match back to company info
+                        const rows = rangeData.values;
+                        if (!rows || rows.length === 0) return;
+
+                        let headerIndex = 0;
+                        for (let r = 0; r < Math.min(rows.length, 5); r++) {
+                            const rowStr = rows[r].join(' ').toLowerCase();
+                            if (rowStr.includes('product') || rowStr.includes('name')) {
+                                headerIndex = r;
+                                break;
+                            }
                         }
-                    }
-                    const headers = rows[headerIndex];
-                    const dataRows = rows.slice(headerIndex + 1);
-                    const products = mapRowsToObjects(headers, dataRows);
+                        const headers = rows[headerIndex];
+                        const dataRows = rows.slice(headerIndex + 1);
+                        const products = mapRowsToObjects(headers, dataRows);
 
-                    const brandSlug = company.companyName.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '-price-list';
+                        const brandSlug = company.companyName.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '-price-list';
 
-                    return products
-                        .filter(p => p.productName && p.productName.trim())
-                        .map(p => ({
-                            productName: p.productName || '',
-                            composition: p.composition || '',
-                            packing: p.packing || '',
-                            mrp: p.mrp || '',
-                            saleRate: p.saleRate || '',
-                            division: p.division || '',
-                            brandName: company.companyName,
-                            brandSlug: brandSlug
-                        }));
+                        const mapped = products
+                            .filter(p => p.productName && p.productName.trim())
+                            .map(p => ({
+                                productName: p.productName || '',
+                                composition: p.composition || '',
+                                packing: p.packing || '',
+                                mrp: p.mrp || '',
+                                saleRate: p.saleRate || '',
+                                division: p.division || '',
+                                brandName: company.companyName,
+                                brandSlug: brandSlug
+                            }));
 
-                } catch (e) {
-                    console.error(`Failed to fetch ${company.companyName}`, e);
-                    return [];
+                        allProducts.push(...mapped);
+                    });
                 }
-            }));
 
-            results.forEach(pList => allProducts.push(...pList));
+            } catch (chunkError) {
+                console.error(`Batch fetch failed for chunk ${i}`, chunkError.message);
+                // Continue to next chunk even if one fails
+            }
         }
 
         const payload = {
