@@ -187,7 +187,7 @@ export const About: React.FC = () => {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {/* Leadership Card */}
+                        {/* 1. Our Team (Leadership) */}
                         <div className="group relative bg-slate-50 rounded-2xl p-8 hover:bg-slate-900 hover:text-white transition-all duration-300 shadow-sm hover:shadow-2xl">
                             <div className="absolute top-0 left-0 w-2 h-full bg-brandBlue rounded-l-2xl"></div>
                             <div className="mb-6">
@@ -195,14 +195,14 @@ export const About: React.FC = () => {
                                     <Quote size={32} />
                                 </div>
                             </div>
-                            <h3 className="text-2xl font-bold mb-2">Leadership & Vision</h3>
-                            <p className="text-sm font-semibold text-slate-400 mb-4 group-hover:text-blue-300 uppercase tracking-wider">Strategy</p>
+                            <h3 className="text-2xl font-bold mb-2">Our Team</h3>
+                            <p className="text-sm font-semibold text-slate-400 mb-4 group-hover:text-blue-300 uppercase tracking-wider">Leadership</p>
                             <p className="text-slate-600 group-hover:text-slate-300 leading-relaxed">
-                                Led by <strong>Harshit Upadhyay</strong>, our leadership ensures we stay ahead of market trends, forging strict quality partnerships and expanding our footprint across Rajasthan.
+                                Led by <strong>Harshit Upadhyay</strong>, our team ensures we stay ahead of market trends, forging strict quality partnerships and expanding our footprint across Rajasthan.
                             </p>
                         </div>
 
-                        {/* Operations Team */}
+                        {/* 2. Business and Ops Team */}
                         <div className="group relative bg-slate-50 rounded-2xl p-8 hover:bg-slate-900 hover:text-white transition-all duration-300 shadow-sm hover:shadow-2xl">
                             <div className="absolute top-0 left-0 w-2 h-full bg-emerald-500 rounded-l-2xl"></div>
                             <div className="mb-6">
@@ -210,14 +210,14 @@ export const About: React.FC = () => {
                                     <ShieldCheck size={32} />
                                 </div>
                             </div>
-                            <h3 className="text-2xl font-bold mb-2">Operations & Quality</h3>
-                            <p className="text-sm font-semibold text-slate-400 mb-4 group-hover:text-emerald-300 uppercase tracking-wider">The Backbone</p>
+                            <h3 className="text-2xl font-bold mb-2">Business & Ops Team</h3>
+                            <p className="text-sm font-semibold text-slate-400 mb-4 group-hover:text-emerald-300 uppercase tracking-wider">Efficiency</p>
                             <p className="text-slate-600 group-hover:text-slate-300 leading-relaxed">
                                 Our zero-error operations team manages inventory with military precision. They ensure every batch is verified, stored in temperature-controlled zones, and dispatched correctly.
                             </p>
                         </div>
 
-                        {/* Logistics Team */}
+                        {/* 3. Supply Team (Logistics) */}
                         <div className="group relative bg-slate-50 rounded-2xl p-8 hover:bg-slate-900 hover:text-white transition-all duration-300 shadow-sm hover:shadow-2xl">
                             <div className="absolute top-0 left-0 w-2 h-full bg-orange-500 rounded-l-2xl"></div>
                             <div className="mb-6">
@@ -225,14 +225,14 @@ export const About: React.FC = () => {
                                     <Truck size={32} />
                                 </div>
                             </div>
-                            <h3 className="text-2xl font-bold mb-2">Fleet & Logistics</h3>
-                            <p className="text-sm font-semibold text-slate-400 mb-4 group-hover:text-orange-300 uppercase tracking-wider">Speed</p>
+                            <h3 className="text-2xl font-bold mb-2">Supply Team</h3>
+                            <p className="text-sm font-semibold text-slate-400 mb-4 group-hover:text-orange-300 uppercase tracking-wider">Delivery</p>
                             <p className="text-slate-600 group-hover:text-slate-300 leading-relaxed">
-                                The wheels that never stop. Our logistics pilots ensure same-day delivery in Bhilwara and 24-hour connectivity to remote districts like Raipur and Mohangarh.
+                                The wheels that never stop. Our supply team ensures same-day delivery in Bhilwara and 24-hour connectivity to remote districts like Raipur and Mohangarh.
                             </p>
                         </div>
 
-                        {/* Sales & Marketing */}
+                        {/* 4. Marketing Team */}
                         <div className="group relative bg-slate-50 rounded-2xl p-8 hover:bg-slate-900 hover:text-white transition-all duration-300 shadow-sm hover:shadow-2xl">
                             <div className="absolute top-0 left-0 w-2 h-full bg-purple-500 rounded-l-2xl"></div>
                             <div className="mb-6">
@@ -240,14 +240,14 @@ export const About: React.FC = () => {
                                     <TrendingUp size={32} />
                                 </div>
                             </div>
-                            <h3 className="text-2xl font-bold mb-2">Brand Management</h3>
+                            <h3 className="text-2xl font-bold mb-2">Marketing Team</h3>
                             <p className="text-sm font-semibold text-slate-400 mb-4 group-hover:text-purple-300 uppercase tracking-wider">Growth</p>
                             <p className="text-slate-600 group-hover:text-slate-300 leading-relaxed">
                                 Dedicated managers for each of our 100+ brands. They bridge the gap between pharmaceutical manufacturers and local retailers, ensuring seamless product availability.
                             </p>
                         </div>
 
-                        {/* Customer Support */}
+                        {/* 5. Customer Success (Support) */}
                         <div className="group relative bg-slate-50 rounded-2xl p-8 hover:bg-slate-900 hover:text-white transition-all duration-300 shadow-sm hover:shadow-2xl">
                             <div className="absolute top-0 left-0 w-2 h-full bg-cyan-500 rounded-l-2xl"></div>
                             <div className="mb-6">
@@ -262,7 +262,7 @@ export const About: React.FC = () => {
                             </p>
                         </div>
 
-                        {/* Tech & Innovation */}
+                        {/* 6. The Extended Family */}
                         <div className="group relative bg-slate-50 rounded-2xl p-8 hover:bg-slate-900 hover:text-white transition-all duration-300 shadow-sm hover:shadow-2xl">
                             <div className="absolute top-0 left-0 w-2 h-full bg-pink-500 rounded-l-2xl"></div>
                             <div className="mb-6">

@@ -1,8 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
-import { Navbar } from '../components/Navbar';
-import { Footer } from '../components/Footer';
 import { Building2, Stethoscope, Truck, Phone, ArrowRight, CheckCircle2, ShieldCheck, Users } from 'lucide-react';
 import { PHONE_VALUE } from '../constants';
 
@@ -101,7 +99,6 @@ const CustomerSegmentPage: React.FC = () => {
                 keywords={`wholesale medicines for ${data.target}, pharma distributor for ${data.target}, bulk medicine supply rajasthan`}
                 canonicalUrl={`https://balajipharma.com/customers-we-serve/${segment}`}
             />
-            <Navbar />
 
             {/* Hero Section */}
             <section className="relative h-[60vh] flex items-center justify-center overflow-hidden bg-slate-900 text-white">
@@ -208,8 +205,6 @@ const CustomerSegmentPage: React.FC = () => {
                     </a>
                 </div>
             </section>
-
-            <Footer />
         </div>
     );
 };

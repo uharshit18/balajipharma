@@ -68,12 +68,14 @@ export const Footer: React.FC = () => {
                </div>
             </div>
 
-            <div className="flex flex-col md:flex-row justify-between items-center text-xs text-slate-600 pt-8 border-t border-slate-800">
-               <p>&copy; {new Date().getFullYear()} Balaji Pharma Corp. All rights reserved.</p>
-               <div className="flex space-x-6 mt-4 md:mt-0">
-                  <span className="hover:text-slate-400 cursor-pointer">Privacy Policy</span>
-                  <span className="hover:text-slate-400 cursor-pointer">Terms of Use</span>
-               </div>
+            <div className="border-t border-slate-800 pt-8 text-center text-slate-500 text-sm">
+               <p>&copy; {new Date().getFullYear()} Balaji Pharma. All rights reserved.
+                  <span className="mx-2 hidden md:inline">|</span>
+                  <a href="/privacy-policy" className="hover:text-white mx-2 block md:inline">Privacy Policy</a>
+                  <span className="mx-2 hidden md:inline">|</span>
+                  <a href="/terms-of-service" className="hover:text-white mx-2 block md:inline">Terms of Service</a>
+               </p>
+               <p className="mt-2 text-xs opacity-60">Proudly serving Rajasthan since 2008.</p>
             </div>
          </div>
       </footer>

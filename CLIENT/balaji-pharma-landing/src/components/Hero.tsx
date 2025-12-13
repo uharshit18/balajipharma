@@ -96,24 +96,24 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                             </div>
 
                             {/* Floating Badge: Fast Turnaround (Top Right - Anchored) */}
-                            <div className="absolute -top-6 -right-4 md:-right-8 bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/20 animate-fade-in-up [animation-delay:800ms] flex items-center gap-4 max-w-[240px]">
-                                <div className="bg-orange-50 p-2.5 rounded-full shrink-0">
-                                    <Clock className="w-6 h-6 text-orange-600" />
+                            <div className="absolute -top-6 -right-4 md:-right-8 bg-white/95 backdrop-blur-md p-2 md:p-4 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/20 animate-fade-in-up [animation-delay:800ms] flex items-center gap-2 md:gap-4 max-w-[160px] md:max-w-[240px]">
+                                <div className="bg-orange-50 p-1.5 md:p-2.5 rounded-full shrink-0">
+                                    <Clock className="w-4 h-4 md:w-6 md:h-6 text-orange-600" />
                                 </div>
                                 <div>
-                                    <p className="text-sm font-bold text-slate-900 leading-tight">Swift Dispatch</p>
-                                    <p className="text-xs text-slate-500 font-medium mt-0.5">Same-day in Bhilwara</p>
+                                    <p className="text-xs md:text-sm font-bold text-slate-900 leading-tight">Swift Dispatch</p>
+                                    <p className="text-[10px] md:text-xs text-slate-500 font-medium mt-0.5">Same-day in Bhilwara</p>
                                 </div>
                             </div>
 
                             {/* Floating Badge: Quality (Bottom Left - Anchored) */}
-                            <div className="absolute -bottom-6 -left-4 md:-left-8 bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/20 animate-fade-in-up [animation-delay:1000ms] flex items-center gap-4 max-w-[240px]">
-                                <div className="bg-emerald-50 p-2.5 rounded-full shrink-0">
-                                    <CheckCircle2 className="w-6 h-6 text-emerald-600" />
+                            <div className="absolute -bottom-6 -left-4 md:-left-8 bg-white/95 backdrop-blur-md p-2 md:p-4 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/20 animate-fade-in-up [animation-delay:1000ms] flex items-center gap-2 md:gap-4 max-w-[160px] md:max-w-[240px]">
+                                <div className="bg-emerald-50 p-1.5 md:p-2.5 rounded-full shrink-0">
+                                    <CheckCircle2 className="w-4 h-4 md:w-6 md:h-6 text-emerald-600" />
                                 </div>
                                 <div>
-                                    <p className="text-sm font-bold text-slate-900 leading-tight">Quality Checked</p>
-                                    <p className="text-xs text-slate-500 font-medium mt-0.5">100% Genuine Stock</p>
+                                    <p className="text-xs md:text-sm font-bold text-slate-900 leading-tight">Quality Checked</p>
+                                    <p className="text-[10px] md:text-xs text-slate-500 font-medium mt-0.5">100% Genuine Stock</p>
                                 </div>
                             </div>
 

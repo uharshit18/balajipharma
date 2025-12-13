@@ -22,7 +22,9 @@ const BrandCard: React.FC<BrandCardProps> = ({ brand }) => {
           alt={`${brand.name} Logo`}
           className={`h-16 w-auto object-contain transition-all duration-300 mix-blend-multiply opacity-90 hover:opacity-100 hover:scale-110 ${shouldScaleUp ? 'scale-[1.6] hover:scale-[1.7]' : ''}`}
           onError={(e) => {
-            (e.target as HTMLImageElement).src = 'https://via.placeholder.com/150?text=Brand';
+            const target = e.target as HTMLImageElement;
+            target.style.display = 'none';
+            target.parentElement!.innerHTML = `<div class="text-xs font-bold text-slate-400 text-center uppercase">${brand.name}</div>`;
           }}
         />
       </div>

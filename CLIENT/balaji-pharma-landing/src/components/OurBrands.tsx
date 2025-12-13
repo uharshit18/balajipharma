@@ -193,6 +193,11 @@ const OurBrands: React.FC = () => {
                                                             src={getBrandLogo(brand.companyName) || brand.logoUrl}
                                                             alt={brand.companyName}
                                                             className="max-h-full w-auto object-contain transition-all duration-300 opacity-90 group-hover:opacity-100 group-hover:scale-110"
+                                                            onError={(e) => {
+                                                                (e.target as HTMLImageElement).style.display = 'none';
+                                                                ((e.target as HTMLImageElement).nextSibling as HTMLElement).classList.remove('hidden');
+                                                                ((e.target as HTMLImageElement).nextSibling as HTMLElement).style.display = 'flex';
+                                                            }}
                                                         />
                                                     ) : (
                                                         <div className="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center text-2xl font-bold text-slate-300 uppercase">

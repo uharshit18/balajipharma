@@ -21,7 +21,7 @@ interface Product {
 
 // Helper for price display
 const formatPrice = (price: string | number | null | undefined) => {
-    if (!price || price === '0' || price === 0 || price === '') return '₹';
+    if (!price || price === '0' || price === 0 || price === '' || price === '0.00' || price === '0.0') return '₹';
     return `₹${price}`;
 };
 
@@ -62,7 +62,8 @@ const BrandPriceList: React.FC = () => {
 
                 const matchingCompany = companies.find((c: any) => {
                     const cName = normalize(c.companyName);
-                    // Check for partial matches in both directions to handle "Pvt Ltd" and other suffixes
+                    // Check for partial matches in both directions to handle deletions/additions
+                    // Special fix for 'aavighna' which might be 'avighna' in DB or similar
                     return cName.includes(targetSlug) || targetSlug.includes(cName);
                 });
 
@@ -199,10 +200,10 @@ const BrandPriceList: React.FC = () => {
                         <table className="w-full text-left border-collapse">
                             <thead className="bg-slate-50/80">
                                 <tr>
-                                    <th className="p-5 font-semibold text-slate-500 uppercase text-xs tracking-wider">Product Name</th>
-                                    <th className="p-5 font-semibold text-slate-500 uppercase text-xs tracking-wider">Packing</th>
-                                    <th className="p-5 font-semibold text-slate-500 uppercase text-xs tracking-wider text-right">MRP</th>
-                                    <th className="p-5 font-semibold text-brandBlue uppercase text-xs tracking-wider text-right">Net Rate</th>
+                                    <th className="p-3 md:p-5 font-semibold text-slate-500 uppercase text-[10px] md:text-xs tracking-wider w-[40%]">Product Name</th>
+                                    <th className="p-3 md:p-5 font-semibold text-slate-500 uppercase text-[10px] md:text-xs tracking-wider w-[20%]">Packing</th>
+                                    <th className="p-3 md:p-5 font-semibold text-slate-500 uppercase text-[10px] md:text-xs tracking-wider text-right w-[20%]">MRP</th>
+                                    <th className="p-3 md:p-5 font-semibold text-brandBlue uppercase text-[10px] md:text-xs tracking-wider text-right w-[20%]">Net Rate</th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-slate-100">
@@ -222,17 +223,17 @@ const BrandPriceList: React.FC = () => {
                                 ) : filteredProducts.length > 0 ? (
                                     filteredProducts.map((product, idx) => (
                                         <tr key={idx} className="hover:bg-blue-50/50 transition-colors group">
-                                            <td className="p-5">
-                                                <div className="font-bold text-slate-800 group-hover:text-brandBlue transition-colors">{product.productName}</div>
-                                                <div className="text-xs text-slate-500 mt-1">{product.composition}</div>
+                                            <td className="p-2 md:p-5 align-top">
+                                                <div className="font-bold text-slate-800 text-xs md:text-base group-hover:text-brandBlue transition-colors whitespace-normal break-words">{product.productName}</div>
+                                                <div className="text-[10px] md:text-xs text-slate-500 mt-0.5 md:mt-1">{product.composition}</div>
                                             </td>
-                                            <td className="p-5">
-                                                <span className="inline-block bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded border border-slate-200">
+                                            <td className="p-2 md:p-5 align-top">
+                                                <span className="inline-block bg-slate-100 text-slate-600 text-[10px] md:text-xs px-1.5 py-0.5 md:px-2 md:py-1 rounded border border-slate-200 whitespace-nowrap">
                                                     {product.packing}
                                                 </span>
                                             </td>
-                                            <td className="p-5 text-right text-slate-600 font-bold text-sm">{formatPrice(product.mrp)}</td>
-                                            <td className="p-5 text-right font-bold text-emerald-600 text-lg">{formatPrice(product.saleRate)}</td>
+                                            <td className="p-2 md:p-5 text-right text-slate-600 font-bold text-xs md:text-sm align-top">{formatPrice(product.mrp)}</td>
+                                            <td className="p-2 md:p-5 text-right font-bold text-emerald-600 text-sm md:text-lg align-top">{formatPrice(product.saleRate)}</td>
                                         </tr>
                                     ))
                                 ) : (

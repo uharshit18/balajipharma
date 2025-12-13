@@ -58,7 +58,8 @@ class SearchService {
         if (this.brands.length > 0) {
             this.brandFuse = new Fuse(this.brands, {
                 keys: ['companyName'],
-                threshold: 0.4
+                threshold: 0.5,
+                ignoreLocation: true
             });
         }
     }
@@ -109,6 +110,13 @@ class SearchService {
 
         } catch (e) {
             console.error("[SearchService] Indexing failed", e);
+            // Retry logic: attempt once more after 5 seconds if failed
+            setTimeout(() => {
+                if (this.products.length === 0) {
+                    console.log("[SearchService] Retrying indexing...");
+                    this.buildIndex();
+                }
+            }, 5000);
         } finally {
             this.setIndexing(false);
         }
