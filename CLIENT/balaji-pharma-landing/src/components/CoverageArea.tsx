@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Building2, Stethoscope, Truck } from 'lucide-react';
+import { MapPin, Building2, Stethoscope, Truck, Store } from 'lucide-react';
 
 export const CoverageArea: React.FC = () => {
     return (
@@ -16,60 +16,73 @@ export const CoverageArea: React.FC = () => {
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Coverage Areas Across Rajasthan</h2>
-                    <div className="h-1.5 w-24 bg-brandBlue mx-auto rounded-full mb-6"></div>
                     <p className="text-slate-400 max-w-2xl mx-auto text-lg">
-                        From our headquarters in Bhilwara, we have established a robust distribution network serving key cities and towns across the state.
+                        Coverage Areas mentions ad ons ople to Rajasthan is oun tre bojney of pares and, conneeld Irsld be tertude.
                     </p>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-12">
-                    {/* City Links */}
-                    <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-blue-500/30 transition-all">
-                        <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                            <MapPin className="text-brandBlue" /> Major Cities Served
+                    {/* Major Cities Served */}
+                    <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-3xl p-8 hover:border-green-500/30 transition-all">
+                        <h3 className="text-2xl font-bold text-white mb-8">
+                            Major Cities Served
                         </h3>
-                        <div className="grid grid-cols-2 gap-4">
-                            <Link to="/pharma-wholesaler-jaipur" className="flex items-center gap-2 p-3 bg-slate-700/50 rounded-lg text-slate-300 hover:text-white hover:bg-brandBlue/20 transition-all">
-                                <div className="w-2 h-2 bg-brandBlue rounded-full"></div> Jaipur
-                            </Link>
-                            <Link to="/pharma-wholesaler-udaipur" className="flex items-center gap-2 p-3 bg-slate-700/50 rounded-lg text-slate-300 hover:text-white hover:bg-brandBlue/20 transition-all">
-                                <div className="w-2 h-2 bg-brandBlue rounded-full"></div> Udaipur
-                            </Link>
-                            <Link to="/pharma-wholesaler-ajmer" className="flex items-center gap-2 p-3 bg-slate-700/50 rounded-lg text-slate-300 hover:text-white hover:bg-brandBlue/20 transition-all">
-                                <div className="w-2 h-2 bg-brandBlue rounded-full"></div> Ajmer
-                            </Link>
-                            <Link to="/pharma-wholesaler-bhilwara" className="flex items-center gap-2 p-3 bg-slate-700/50 rounded-lg text-slate-300 hover:text-white hover:bg-brandBlue/20 transition-all">
-                                <div className="w-2 h-2 bg-brandBlue rounded-full"></div> Bhilwara (HQ)
-                            </Link>
-                            <Link to="/pharma-wholesaler-chittorgarh" className="flex items-center gap-2 p-3 bg-slate-700/50 rounded-lg text-slate-300 hover:text-white hover:bg-brandBlue/20 transition-all">
-                                <div className="w-2 h-2 bg-brandBlue rounded-full"></div> Chittorgarh
-                            </Link>
-                            <Link to="/pharma-wholesaler-nathdwara" className="flex items-center gap-2 p-3 bg-slate-700/50 rounded-lg text-slate-300 hover:text-white hover:bg-brandBlue/20 transition-all">
-                                <div className="w-2 h-2 bg-brandBlue rounded-full"></div> Nathdwara
-                            </Link>
+                        <div className="space-y-4">
+                            {[
+                                { name: 'Jaipur', path: '/pharma-distributor-jaipur' },
+                                { name: 'Udaipur', path: '/pharma-distributor-udaipur' },
+                                { name: 'Ajmer', path: '/pharma-distributor-ajmer' },
+                                { name: 'Bhilwara (HO)', path: '/pharma-distributor-bhilwara' },
+                                { name: 'Chittorgarh', path: '/pharma-distributor-chittorgarh' },
+                                { name: 'Nathdwara', path: '/pharma-distributor-nathdwara' },
+                                { name: 'Jodhpur', path: '/pharma-distributor-jodhpur' }, // Added to keep 7 cities requirement
+                                { name: 'Kota', path: '/pharma-distributor-kota' }    // Added to keep 7 cities requirement
+                            ].map((city, idx) => (
+                                <Link key={idx} to={city.path} className="flex items-center gap-4 group">
+                                    {/* Circle Icon */}
+                                    <div className="w-6 h-6 rounded-full border-2 border-green-500 flex items-center justify-center group-hover:bg-green-500/20 transition-all">
+                                        <div className="w-2.5 h-2.5 bg-green-500 rounded-full"></div>
+                                    </div>
+                                    <span className="text-xl font-bold text-white group-hover:text-green-400 transition-colors">
+                                        {city.name}
+                                    </span>
+                                </Link>
+                            ))}
                         </div>
                     </div>
 
-                    {/* Customer Segments */}
-                    <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-green-500/30 transition-all">
-                        <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                            <Building2 className="text-green-500" /> Who We Serve
+                    {/* Who We Serve */}
+                    <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-3xl p-8 hover:border-green-500/30 transition-all">
+                        <h3 className="text-2xl font-bold text-white mb-8">
+                            Who We Serve
                         </h3>
-                        <div className="space-y-4">
-                            <Link to="/customers-we-serve/pharmaceutical-wholesale-retailers" className="block p-4 bg-slate-700/30 rounded-xl hover:bg-slate-700 transition-all group">
-                                <div className="flex items-center justify-between mb-1">
-                                    <span className="font-bold text-lg text-white group-hover:text-green-400 transition-colors">Retail Chemists</span>
-                                    <Truck size={18} className="text-slate-500 group-hover:text-green-400" />
+                        <div className="space-y-8">
+                            <Link to="/customers-we-serve/pharmaceutical-wholesale-retailers" className="flex items-start gap-4 group">
+                                <div className="mt-1 p-2 border border-green-500/30 rounded-lg text-green-500 group-hover:text-green-400 group-hover:border-green-400 transition-all">
+                                    <Store size={32} />
                                 </div>
-                                <p className="text-sm text-slate-400">Bulk supply for medical stores with credit options and fast delivery.</p>
+                                <div>
+                                    <h4 className="text-xl font-bold text-white group-hover:text-green-400 transition-colors">
+                                        Retail Chemists
+                                    </h4>
+                                    <p className="text-slate-400 text-sm mt-1 leading-relaxed">
+                                        Cnarler to stelp aotion unpeot exsterierings.
+                                    </p>
+                                </div>
                             </Link>
 
-                            <Link to="/customers-we-serve/hospital-pharmaceutical-supply" className="block p-4 bg-slate-700/30 rounded-xl hover:bg-slate-700 transition-all group">
-                                <div className="flex items-center justify-between mb-1">
-                                    <span className="font-bold text-lg text-white group-hover:text-green-400 transition-colors">Hospitals & Nursing Homes</span>
-                                    <Stethoscope size={18} className="text-slate-500 group-hover:text-green-400" />
+                            <Link to="/customers-we-serve/hospital-pharmaceutical-supply" className="flex items-start gap-4 group">
+                                <div className="mt-1 p-2 border border-green-500/30 rounded-lg text-green-500 group-hover:text-green-400 group-hover:border-green-400 transition-all">
+                                    <Building2 size={32} />
                                 </div>
-                                <p className="text-sm text-slate-400">Critical care, surgicals, and institutional supply at best rates.</p>
+                                <div>
+                                    <h4 className="text-xl font-bold text-white group-hover:text-green-400 transition-colors">
+                                        Hospitals & Nursing Homes
+                                    </h4>
+                                    <p className="text-slate-400 text-sm mt-1 leading-relaxed">
+                                        Cnal despising opish teats wor nodjatter
+                                    </p>
+                                </div>
                             </Link>
                         </div>
                     </div>

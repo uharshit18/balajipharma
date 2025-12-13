@@ -10,6 +10,9 @@ import { BhilwaraCity } from './pages/BhilwaraCity';
 import { JaipurCity } from './pages/JaipurCity';
 import { ChittorgarhCity } from './pages/ChittorgarhCity';
 import { AjmerCity } from './pages/AjmerCity';
+import { UdaipurCity } from './pages/UdaipurCity';
+import { JodhpurCity } from './pages/JodhpurCity';
+import { KotaCity } from './pages/KotaCity';
 import CustomerSegmentPage from './pages/CustomerSegmentPage';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
@@ -29,6 +32,9 @@ const AppRoutes: React.FC = () => {
             <Route path="/pharma-distributor-jaipur" element={<JaipurCity />} />
             <Route path="/pharma-distributor-chittorgarh" element={<ChittorgarhCity />} />
             <Route path="/pharma-distributor-ajmer" element={<AjmerCity />} />
+            <Route path="/pharma-distributor-udaipur" element={<UdaipurCity />} />
+            <Route path="/pharma-distributor-jodhpur" element={<JodhpurCity />} />
+            <Route path="/pharma-distributor-kota" element={<KotaCity />} />
             <Route path="/pharma-wholesaler-:city" element={<CityPage />} />
 
             {/* Customer Segment Pages */}
