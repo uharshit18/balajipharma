@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 import { MapPin } from 'lucide-react';
 import { PHONE_VALUE } from '../constants';
 
@@ -30,6 +31,11 @@ export const ChittorgarhCity: React.FC = () => {
                     <p className="text-lg text-slate-300 max-w-2xl mx-auto">
                         From the historic fort city to the industrial hubs of Nimbahera, Balaji Pharma ensures steady medical supplies across the district.
                     </p>
+                    <div className="mt-8">
+                        <Link to="/wholesale-medicines-rajasthan" className="inline-block bg-brandBlue text-white font-bold py-4 px-10 rounded-full shadow-lg hover:bg-blue-700 hover:shadow-xl transition-all transform hover:-translate-y-1">
+                            Check Our Catalog
+                        </Link>
+                    </div>
                 </div>
             </section>
 

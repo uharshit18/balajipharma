@@ -44,7 +44,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                         </h1>
 
                         <p className="text-lg text-slate-300 mb-8 max-w-lg leading-relaxed font-medium opacity-0 animate-fade-in-up [animation-delay:400ms] fill-mode-forwards">
-                            As one of the leading <strong className="text-blue-200">pharma distributors in Bhilwara</strong>, we supply genuine healthcare products to retailers & wholesalers, establishing ourselves as a trusted <strong className="text-blue-200">wholesale medical supplier in Rajasthan</strong>.
+                            As a premier <strong className="text-blue-200">wholesale medical supplier in Rajasthan</strong>, <strong className="text-blue-200">Balaji Pharma</strong> is dedicated to distributing genuine healthcare products. From our base, we efficiently supply a comprehensive range to retailers and wholesalers across the region, ensuring reliable access to essential pharmaceuticals.
                         </p>
 
                         <div className="flex flex-wrap gap-4 opacity-0 animate-fade-in-up [animation-delay:600ms] fill-mode-forwards">

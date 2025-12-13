@@ -29,14 +29,16 @@ export const CoverageArea: React.FC = () => {
                         </h3>
                         <div className="space-y-4">
                             {[
+                                { name: 'Bhilwara (Head Office)', path: '/pharma-distributor-bhilwara' },
                                 { name: 'Jaipur', path: '/pharma-distributor-jaipur' },
                                 { name: 'Udaipur', path: '/pharma-distributor-udaipur' },
+                                { name: 'Jodhpur', path: '/pharma-distributor-jodhpur' },
+                                { name: 'Kota', path: '/pharma-distributor-kota' },
                                 { name: 'Ajmer', path: '/pharma-distributor-ajmer' },
-                                { name: 'Bhilwara (HO)', path: '/pharma-distributor-bhilwara' },
                                 { name: 'Chittorgarh', path: '/pharma-distributor-chittorgarh' },
-                                { name: 'Nathdwara', path: '/pharma-distributor-nathdwara' },
-                                { name: 'Jodhpur', path: '/pharma-distributor-jodhpur' }, // Added to keep 7 cities requirement
-                                { name: 'Kota', path: '/pharma-distributor-kota' }    // Added to keep 7 cities requirement
+                                { name: 'Kishangarh', path: '/pharma-distributor-kishangarh' },
+                                { name: 'Beawar', path: '/pharma-distributor-beawar' },
+                                { name: 'Bundi', path: '/pharma-distributor-bundi' }
                             ].map((city, idx) => (
                                 <Link key={idx} to={city.path} className="flex items-center gap-4 group">
                                     {/* Circle Icon */}
@@ -66,7 +68,7 @@ export const CoverageArea: React.FC = () => {
                                         Retail Chemists
                                     </h4>
                                     <p className="text-slate-400 text-sm mt-1 leading-relaxed">
-                                        Cnarler to stelp aotion unpeot exsterierings.
+                                        Partner with over 500+ retail pharmacies, offering flexible credit terms, fast delivery, and a wide range of products.
                                     </p>
                                 </div>
                             </Link>
@@ -80,7 +82,7 @@ export const CoverageArea: React.FC = () => {
                                         Hospitals & Nursing Homes
                                     </h4>
                                     <p className="text-slate-400 text-sm mt-1 leading-relaxed">
-                                        Cnal despising opish teats wor nodjatter
+                                        Dedicated supply chain for institutional buyers, ensuring timely availability of critical care and surgical supplies.
                                     </p>
                                 </div>
                             </Link>

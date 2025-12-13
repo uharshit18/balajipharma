@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 import { MapPin, Phone, Clock, UserCheck, Stethoscope, Building2 } from 'lucide-react';
 import { PHONE_DISPLAY, PHONE_VALUE } from '../constants';
 
@@ -28,6 +29,11 @@ export const BhilwaraCity: React.FC = () => {
                     <p className="text-lg text-slate-300 max-w-2xl mx-auto">
                         Headquartered in Nagori Garden, we are the backbone of Bhilwara's healthcare supply chain, delivering to every tehsil and village.
                     </p>
+                    <div className="mt-8">
+                        <Link to="/wholesale-medicines-rajasthan" className="inline-block bg-brandBlue text-white font-bold py-4 px-10 rounded-full shadow-lg hover:bg-blue-700 hover:shadow-xl transition-all transform hover:-translate-y-1">
+                            Check Our Catalog
+                        </Link>
+                    </div>
                 </div>
             </section>
 

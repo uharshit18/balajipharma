@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
-import { Phone, CheckCircle2, Search, ArrowLeft, Loader2 } from 'lucide-react';
+import { Phone, CheckCircle2, Search, ArrowLeft, Loader2, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { PHONE_VALUE } from '../constants';
 import { getBrandData } from '../data/mockData';
@@ -200,23 +200,24 @@ const BrandPriceList: React.FC = () => {
                         <table className="w-full text-left border-collapse">
                             <thead className="bg-slate-50/80">
                                 <tr>
-                                    <th className="p-3 md:p-5 font-semibold text-slate-500 uppercase text-[10px] md:text-xs tracking-wider w-[40%]">Product Name</th>
-                                    <th className="p-3 md:p-5 font-semibold text-slate-500 uppercase text-[10px] md:text-xs tracking-wider w-[20%]">Packing</th>
-                                    <th className="p-3 md:p-5 font-semibold text-slate-500 uppercase text-[10px] md:text-xs tracking-wider text-right w-[20%]">MRP</th>
-                                    <th className="p-3 md:p-5 font-semibold text-brandBlue uppercase text-[10px] md:text-xs tracking-wider text-right w-[20%]">Net Rate</th>
+                                    <th className="p-3 md:p-5 font-semibold text-slate-500 uppercase text-[10px] md:text-xs tracking-wider w-[35%]">Product Name</th>
+                                    <th className="p-3 md:p-5 font-semibold text-slate-500 uppercase text-[10px] md:text-xs tracking-wider w-[15%]">Packing</th>
+                                    <th className="p-3 md:p-5 font-semibold text-slate-500 uppercase text-[10px] md:text-xs tracking-wider text-right w-[15%]">MRP</th>
+                                    <th className="p-3 md:p-5 font-semibold text-brandBlue uppercase text-[10px] md:text-xs tracking-wider text-right w-[15%]">Net Rate</th>
+                                    <th className="p-3 md:p-5 font-semibold text-slate-500 uppercase text-[10px] md:text-xs tracking-wider text-center w-[20%]">Order</th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-slate-100">
                                 {loading ? (
                                     <tr>
-                                        <td colSpan={4} className="p-12 text-center text-slate-500">
+                                        <td colSpan={5} className="p-12 text-center text-slate-500">
                                             <Loader2 className="w-8 h-8 animate-spin mx-auto mb-2 text-brandBlue" />
                                             Fetching latest {brandName} rates...
                                         </td>
                                     </tr>
                                 ) : error ? (
                                     <tr>
-                                        <td colSpan={4} className="p-12 text-center text-red-500 font-medium">
+                                        <td colSpan={5} className="p-12 text-center text-red-500 font-medium">
                                             {error}
                                         </td>
                                     </tr>
@@ -234,11 +235,22 @@ const BrandPriceList: React.FC = () => {
                                             </td>
                                             <td className="p-2 md:p-5 text-right text-slate-600 font-bold text-xs md:text-sm align-top">{formatPrice(product.mrp)}</td>
                                             <td className="p-2 md:p-5 text-right font-bold text-emerald-600 text-sm md:text-lg align-top">{formatPrice(product.saleRate)}</td>
+                                            <td className="p-2 md:p-5 align-top text-center">
+                                                <a
+                                                    href={`https://wa.me/${PHONE_VALUE}?text=Hi, I am interested in ${product.productName}. Please confirm availability and rate.`}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    className="inline-flex items-center justify-center p-2 bg-[#25D366]/10 text-[#25D366] rounded-full hover:bg-[#25D366] hover:text-white transition-colors"
+                                                    title="Order on WhatsApp"
+                                                >
+                                                    <MessageCircle size={18} />
+                                                </a>
+                                            </td>
                                         </tr>
                                     ))
                                 ) : (
                                     <tr>
-                                        <td colSpan={4} className="p-12 text-center text-slate-400">
+                                        <td colSpan={5} className="p-12 text-center text-slate-400">
                                             No products found matching "{searchTerm}"
                                         </td>
                                     </tr>
