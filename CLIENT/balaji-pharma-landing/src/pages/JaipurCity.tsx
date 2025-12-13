@@ -170,6 +170,6 @@ export const JaipurCity: React.FC = () => {
             </section>
 
 
-        </div >
+        </div>
     );
 };

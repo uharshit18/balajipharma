@@ -13,8 +13,6 @@ export const BhilwaraCity: React.FC = () => {
                 <link rel="canonical" href="https://balajipharma.com/city/bhilwara" />
             </Helmet>
 
-
-
             {/* City Hero */}
             <section className="relative pt-32 pb-20 bg-slate-900 overflow-hidden">
                 <div className="absolute inset-0 opacity-20">
@@ -114,59 +112,59 @@ export const BhilwaraCity: React.FC = () => {
                         </a>
                     </div>
                 </div>
-        </div>
-            </section >
+            </section>
 
-    {/* Testimonials */ }
-    < section className = "py-20 bg-white" >
-        <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center text-slate-900 mb-12">Trusted by Bhilwara's Best</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {/* Testimonial 1 */}
-                <div className="bg-slate-50 p-8 rounded-2xl border border-gray-100">
-                    <div className="flex items-center gap-1 text-yellow-500 mb-4">
-                        {[1, 2, 3, 4, 5].map(i => <span key={i}>★</span>)}
-                    </div>
-                    <p className="text-slate-600 italic mb-6">"Balaji Pharma has completely stabilized our supply chain for critical cardiac injectables here at Brijesh Bangar. Their response time in emergencies is commendable."</p>
-                    <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">BB</div>
-                        <div className="text-sm">
-                            <p className="font-bold text-slate-900">Dr. Purchase Officer</p>
-                            <p className="text-slate-500">Brijesh Bangar Memorial Hospital</p>
+            {/* Testimonials */}
+            <section className="py-20 bg-white">
+                <div className="max-w-7xl mx-auto px-4">
+                    <h2 className="text-3xl font-bold text-center text-slate-900 mb-12">Trusted by Bhilwara's Best</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {/* Testimonial 1 */}
+                        <div className="bg-slate-50 p-8 rounded-2xl border border-gray-100">
+                            <div className="flex items-center gap-1 text-yellow-500 mb-4">
+                                {[1, 2, 3, 4, 5].map(i => <span key={i}>★</span>)}
+                            </div>
+                            <p className="text-slate-600 italic mb-6">"Balaji Pharma has completely stabilized our supply chain for critical cardiac injectables here at Brijesh Bangar. Their response time in emergencies is commendable."</p>
+                            <div className="flex items-center gap-4">
+                                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">BB</div>
+                                <div className="text-sm">
+                                    <p className="font-bold text-slate-900">Dr. Purchase Officer</p>
+                                    <p className="text-slate-500">Brijesh Bangar Memorial Hospital</p>
+                                </div>
+                            </div>
+                        </div>
+                        {/* Testimonial 2 */}
+                        <div className="bg-slate-50 p-8 rounded-2xl border border-gray-100">
+                            <div className="flex items-center gap-1 text-yellow-500 mb-4">
+                                {[1, 2, 3, 4, 5].map(i => <span key={i}>★</span>)}
+                            </div>
+                            <p className="text-slate-600 italic mb-6">"Genuine stock, transparent pricing, and they understand the local market of Bhilwara perfectly. Best wholesaler in Nagori Garden."</p>
+                            <div className="flex items-center gap-4">
+                                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold">KP</div>
+                                <div className="text-sm">
+                                    <p className="font-bold text-slate-900">Store Manager</p>
+                                    <p className="text-slate-500">Keshav Porwal Hospital</p>
+                                </div>
+                            </div>
+                        </div>
+                        {/* Testimonial 3 */}
+                        <div className="bg-slate-50 p-8 rounded-2xl border border-gray-100">
+                            <div className="flex items-center gap-1 text-yellow-500 mb-4">
+                                {[1, 2, 3, 4, 5].map(i => <span key={i}>★</span>)}
+                            </div>
+                            <p className="text-slate-600 italic mb-6">"For Ramsnehi Chikitsalya, quality is paramount. Balaji Pharma has consistently delivered 100% original batches for the last 10 years."</p>
+                            <div className="flex items-center gap-4">
+                                <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 font-bold">RC</div>
+                                <div className="text-sm">
+                                    <p className="font-bold text-slate-900">Head Pharmacist</p>
+                                    <p className="text-slate-500">Ram Snehi Chikitsalya</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                {/* Testimonial 2 */}
-                <div className="bg-slate-50 p-8 rounded-2xl border border-gray-100">
-                    <div className="flex items-center gap-1 text-yellow-500 mb-4">
-                        {[1, 2, 3, 4, 5].map(i => <span key={i}>★</span>)}
-                    </div>
-                    <p className="text-slate-600 italic mb-6">"Genuine stock, transparent pricing, and they understand the local market of Bhilwara perfectly. Best wholesaler in Nagori Garden."</p>
-                    <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold">KP</div>
-                        <div className="text-sm">
-                            <p className="font-bold text-slate-900">Store Manager</p>
-                            <p className="text-slate-500">Keshav Porwal Hospital</p>
-                        </div>
-                    </div>
-                </div>
-                {/* Testimonial 3 */}
-                <div className="bg-slate-50 p-8 rounded-2xl border border-gray-100">
-                    <div className="flex items-center gap-1 text-yellow-500 mb-4">
-                        {[1, 2, 3, 4, 5].map(i => <span key={i}>★</span>)}
-                    </div>
-                    <p className="text-slate-600 italic mb-6">"For Ramsnehi Chikitsalya, quality is paramount. Balaji Pharma has consistently delivered 100% original batches for the last 10 years."</p>
-                    <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 font-bold">RC</div>
-                        <div className="text-sm">
-                            <p className="font-bold text-slate-900">Head Pharmacist</p>
-                            <p className="text-slate-500">Ram Snehi Chikitsalya</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </section>
         </div>
-    </section >
     );
 };
 

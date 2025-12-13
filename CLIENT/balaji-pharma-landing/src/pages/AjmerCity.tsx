@@ -156,6 +156,6 @@ export const AjmerCity: React.FC = () => {
             </section>
 
 
-        </div >
+        </div>
     );
 };

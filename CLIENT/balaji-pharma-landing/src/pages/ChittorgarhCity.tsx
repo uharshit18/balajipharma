@@ -156,6 +156,6 @@ export const ChittorgarhCity: React.FC = () => {
             </section>
 
 
-        </div >
+        </div>
     );
 };
