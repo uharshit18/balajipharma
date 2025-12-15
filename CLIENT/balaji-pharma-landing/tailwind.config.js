@@ -10,8 +10,18 @@ export default {
         sans: ['Inter', 'sans-serif'],
       },
       colors: {
-        brandBlue: '#2563eb',
-        brandDark: '#1e3a8a',
+        brandBlue: '#2563eb', // Primary Trusted Blue
+        brandDark: '#1e3a8a', // Deep Navy for Text/Footer
+        brandLight: '#eff6ff', // Very light blue for backgrounds
+        brandAccent: '#06b6d4', // Cyan for highlights
+      },
+      boxShadow: {
+        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+        'soft-lg': '0 10px 40px -3px rgba(0, 0, 0, 0.08)',
+        'glow': '0 0 15px rgba(37, 99, 235, 0.3)',
+      },
+      spacing: {
+        '128': '32rem',
       },
       animation: {
         'fade-in-up': 'fadeInUp 0.8s ease-out forwards',

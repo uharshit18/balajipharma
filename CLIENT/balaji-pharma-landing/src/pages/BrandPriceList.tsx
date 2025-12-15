@@ -3,8 +3,11 @@ import { useParams } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import { Phone, CheckCircle2, Search, ArrowLeft, Loader2, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { searchService } from '../utils/searchService';
 import { PHONE_VALUE } from '../constants';
 import { getBrandData } from '../data/mockData';
+import { useCart } from '../context/CartContext';
+import { Button } from '../components/UI/Button';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "";
 
@@ -28,6 +31,7 @@ const formatPrice = (price: string | number | null | undefined) => {
 const BrandPriceList: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();
     const [products, setProducts] = useState<Product[]>([]);
+    const { items, addItem, updateQuantity } = useCart();
     const [brandName, setBrandName] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
     const [loading, setLoading] = useState(true);
@@ -42,61 +46,63 @@ const BrandPriceList: React.FC = () => {
             setLoading(true);
             setError('');
 
-            const cleanSlug = slug.replace('-price-list', '');
-            const readableName = cleanSlug
-                .split('-')
-                .map(w => w.charAt(0).toUpperCase() + w.slice(1))
-                .join(' ');
-            setBrandName(readableName);
-
             try {
-                // 1. Fetch company list
-                const companiesRes = await fetch(`${API_BASE_URL}/api/companies`);
-                if (!companiesRes.ok) throw new Error("Failed to fetch brand list");
+                // Initialize search service to ensure data is loaded
+                await searchService.initIndex();
 
-                const companies = await companiesRes.json();
+                // Get products directly using the slug
+                const brandProducts = searchService.getProductsByBrand(slug);
 
-                // Robust matching logic: normalize both to alphanumeric only
-                const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
-                const targetSlug = normalize(cleanSlug);
+                if (brandProducts.length > 0) {
+                    setProducts(brandProducts);
 
-                const matchingCompany = companies.find((c: any) => {
-                    const cName = normalize(c.companyName);
-                    // Check for partial matches in both directions to handle deletions/additions
-                    // Special fix for 'aavighna' which might be 'avighna' in DB or similar
-                    return cName.includes(targetSlug) || targetSlug.includes(cName);
-                });
+                    // Derive brand name from the first product
+                    // Use division or fallback to formatted slug
+                    const derivedBrandName = brandProducts[0].division ||
+                        slug.replace('-price-list', '').split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
 
-                if (!matchingCompany) {
-                    throw new Error("Brand not found in database");
+                    setBrandName(derivedBrandName);
+
+                    // SEO Logic
+                    const topProducts = brandProducts.slice(0, 6);
+                    const productNames = topProducts.map((p: Product) => p.productName).join(', ');
+                    const productKeywords = topProducts.map((p: Product) => `${p.productName} supplier in Rajasthan`).join(', ');
+
+                    setSeoDescription(`Authorized stockist and wholesale supplier of ${derivedBrandName} medicines in Rajasthan. We supply ${productNames} and more at best rates. Bulk delivery to Jaipur, Jodhpur, Udaipur.`);
+                    setSeoKeywords(`${derivedBrandName} price list, ${derivedBrandName} distributor rajasthan, ${productKeywords}, wholesale medicine supplier`);
+                } else {
+                    // Fallback to finding brand in list if no products found (might be empty brand)
+                    const cleanSlug = slug.replace('-price-list', '');
+                    const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+                    const targetSlug = normalize(cleanSlug);
+
+                    const allBrands = searchService.getAllBrands();
+                    const matchingBrand = allBrands.find(b => {
+                        const cName = normalize(b.companyName);
+                        return cName.includes(targetSlug) || targetSlug.includes(cName);
+                    });
+
+                    if (matchingBrand) {
+                        setBrandName(matchingBrand.companyName);
+                        setError("Catalog is currently being updated. Please check back shortly.");
+                    } else {
+                        // Final fallback to mock data
+                        throw new Error("Brand not found in live data");
+                    }
                 }
-
-                // 2. Fetch products
-                const productsRes = await fetch(`${API_BASE_URL}/api/company/${encodeURIComponent(matchingCompany.sheetName)}`);
-                if (!productsRes.ok) throw new Error("Failed to fetch price list");
-
-                const productsData = await productsRes.json();
-                setProducts(productsData);
-
-                // 3. SEO Logic
-                const topProducts = productsData.slice(0, 6);
-                const productNames = topProducts.map((p: Product) => p.productName).join(', ');
-
-                // Generate specific keywords for the top products
-                const productKeywords = topProducts.map((p: Product) => `${p.productName} supplier in Rajasthan`).join(', ');
-
-                setSeoDescription(`Authorized stockist and wholesale supplier of ${readableName} medicines in Rajasthan. We supply ${productNames} and more at best rates. Bulk delivery to Jaipur, Jodhpur, Udaipur.`);
-                setSeoKeywords(`${readableName} price list, ${readableName} distributor rajasthan, ${productKeywords}, wholesale medicine supplier`);
-
             } catch (err: any) {
-                console.warn("Backend failed, switching to mock data.", err);
+                console.warn("Live data load failed, switching to mock data.", err);
 
                 // Fallback to mock data
+                const cleanSlug = slug.replace('-price-list', '');
+                const readableName = cleanSlug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+                setBrandName(readableName);
+
                 const mockProducts = getBrandData(cleanSlug);
                 if (mockProducts.length > 0) {
                     const mappedProducts = mockProducts.map(p => ({
                         productName: p.product_name,
-                        composition: p.strength, // Using strength as composition placeholder
+                        composition: p.strength,
                         packing: p.pack,
                         mrp: p.mrp.toString(),
                         saleRate: p.wholesale_price.toString(),
@@ -107,10 +113,7 @@ const BrandPriceList: React.FC = () => {
                     // Mock SEO Logic
                     const topProducts = mappedProducts.slice(0, 6);
                     const productNames = topProducts.map(p => p.productName).join(', ');
-                    const productKeywords = topProducts.map(p => `${p.productName} supplier in Rajasthan`).join(', ');
-
-                    setSeoDescription(`Authorized stockist and wholesale supplier of ${readableName} medicines in Rajasthan. We supply ${productNames} and more at best rates. Bulk delivery to Jaipur, Jodhpur, Udaipur.`);
-                    setSeoKeywords(`${readableName} price list, ${readableName} distributor rajasthan, ${productKeywords}, wholesale medicine supplier`);
+                    setSeoDescription(`Authorized stockist and wholesale supplier of ${readableName} medicines in Rajasthan. We supply ${productNames} and more at best rates.`);
                 } else {
                     setError("Could not load price list. Please try again later.");
                 }
@@ -148,7 +151,7 @@ const BrandPriceList: React.FC = () => {
             />
 
             {/* Premium Header */}
-            <div className="bg-slate-900 text-white pt-12 pb-24 relative overflow-hidden">
+            <div className="bg-slate-900 text-white pt-32 pb-24 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
                 <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brandBlue/30 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
 
@@ -236,15 +239,39 @@ const BrandPriceList: React.FC = () => {
                                             <td className="p-2 md:p-5 text-right text-slate-600 font-bold text-xs md:text-sm align-top">{formatPrice(product.mrp)}</td>
                                             <td className="p-2 md:p-5 text-right font-bold text-emerald-600 text-sm md:text-lg align-top">{formatPrice(product.saleRate)}</td>
                                             <td className="p-2 md:p-5 align-top text-center">
-                                                <a
-                                                    href={`https://wa.me/${PHONE_VALUE}?text=Hi, I am interested in ${product.productName}. Please confirm availability and rate.`}
-                                                    target="_blank"
-                                                    rel="noreferrer"
-                                                    className="inline-flex items-center justify-center p-2 bg-[#25D366]/10 text-[#25D366] rounded-full hover:bg-[#25D366] hover:text-white transition-colors"
-                                                    title="Order on WhatsApp"
-                                                >
-                                                    <MessageCircle size={18} />
-                                                </a>
+                                                {(() => {
+                                                    const cartItem = items.find(i => i.productName === product.productName);
+                                                    return cartItem ? (
+                                                        <div className="flex items-center justify-center gap-2 bg-blue-50 border border-blue-200 rounded-lg p-1 min-w-[100px] mx-auto">
+                                                            <button
+                                                                onClick={() => updateQuantity(product.productName, -1)}
+                                                                className="w-6 h-6 flex items-center justify-center bg-white rounded shadow-sm text-slate-700 hover:text-brandBlue font-bold"
+                                                            >
+                                                                -
+                                                            </button>
+                                                            <span className="font-bold text-slate-900 text-sm w-4">{cartItem.quantity}</span>
+                                                            <button
+                                                                onClick={() => updateQuantity(product.productName, 1)}
+                                                                className="w-6 h-6 flex items-center justify-center bg-white rounded shadow-sm text-slate-700 hover:text-brandBlue font-bold"
+                                                            >
+                                                                +
+                                                            </button>
+                                                        </div>
+                                                    ) : (
+                                                        <Button
+                                                            variant="primary"
+                                                            size="sm"
+                                                            onClick={() => addItem({
+                                                                ...product,
+                                                                brandName: product.division || brandName,
+                                                                brandSlug: slug || ''
+                                                            })}
+                                                            className="!px-4 !py-1 !text-xs"
+                                                        >
+                                                            Add
+                                                        </Button>
+                                                    );
+                                                })()}
                                             </td>
                                         </tr>
                                     ))

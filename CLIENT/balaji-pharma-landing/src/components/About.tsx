@@ -29,7 +29,7 @@ export const About: React.FC = () => {
                         </span>
                     </h1>
                     <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-medium">
-                        From a local Bhilwara store to Rajasthan's trusted pharmaceutical partner. We bridge the gap between world-class manufacturers and the healthcare providers who serve our communities.
+                        From our roots in Bhilwara, we have evolved into Rajasthan's premier **Wholesale Medical Supplier**. We serve as the vital link between top pharmaceutical manufacturers and healthcare providers, streamlining the supply chain to ensure patient care never stops.
                     </p>
                 </div>
             </section>
@@ -54,9 +54,9 @@ export const About: React.FC = () => {
             </section>
 
             {/* 3. The Balaji Pharma Growth Story (Redesigned) */}
-            <section className="py-24 lg:py-32 bg-slate-50 relative overflow-hidden">
+            <section className="py-24 lg:py-32 bg-slate-50 relative">
                 {/* Subtle Background Pattern */}
-                <div className="absolute inset-0 opacity-40 pointer-events-none"
+                <div className="absolute inset-0 opacity-40 pointer-events-none overflow-hidden"
                     style={{ backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)', backgroundSize: '32px 32px' }}>
                 </div>
 
@@ -64,11 +64,14 @@ export const About: React.FC = () => {
 
                     {/* Section Header */}
                     <div className="mb-20 max-w-3xl">
+                        <div className="inline-block mb-4 px-4 py-1.5 rounded-full bg-blue-100 text-brandBlue font-bold text-sm uppercase tracking-wider">
+                            Our Mission
+                        </div>
                         <h2 className="text-4xl lg:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
-                            The Balaji Journey
+                            The "Silent Engine" of Healthcare
                         </h2>
                         <p className="text-xl text-slate-600 leading-relaxed">
-                            From humble beginnings in 2008 to becoming Rajasthan’s trusted pharmaceutical supply network, our story is defined by resilience and reliability.
+                            Our mission is to ensure the **seamless availability of life-saving medicines** and healthcare products. Through efficient logistics, uncompromised quality, and timely delivery, we empower healthcare professionals to focus on what matters most: treating patients.
                         </p>
                         <div className="h-1.5 w-24 bg-brandBlue rounded-full mt-8"></div>
                     </div>
@@ -77,27 +80,18 @@ export const About: React.FC = () => {
 
                         {/* Left Column: Video Story (40%) */}
                         <div className="lg:col-span-2 sticky top-24">
-                            <div className="relative group cursor-pointer rounded-2xl overflow-hidden shadow-2xl shadow-blue-900/10 hover:shadow-blue-900/20 transition-all duration-500 transform hover:-translate-y-1">
-                                {/* Video Thumbnail Placeholder */}
+                            <div className="relative group rounded-2xl overflow-hidden shadow-2xl shadow-blue-900/10 hover:shadow-blue-900/20 transition-all duration-500 transform hover:-translate-y-1">
+                                {/* Video Element */}
                                 <div className="aspect-[4/5] bg-slate-900 relative overflow-hidden">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?auto=format&fit=crop&q=80&w=800"
-                                        alt="Balaji Pharma Success Story"
-                                        className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80"></div>
-
-                                    {/* Play Button */}
-                                    <div className="absolute inset-0 flex items-center justify-center">
-                                        <div className="w-20 h-20 bg-white/10 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                            <Play className="w-8 h-8 text-white fill-current ml-1" />
-                                        </div>
-                                    </div>
-
-                                    <div className="absolute bottom-0 left-0 p-8">
-                                        <h3 className="text-white text-2xl font-bold mb-2">Building Trust</h3>
-                                        <p className="text-slate-300 text-sm">Watch how we deliver promises, one box at a time.</p>
-                                    </div>
+                                    <video
+                                        src="/assets/video.mp4"
+                                        title="Balaji Pharma Success Story"
+                                        controls
+                                        className="w-full h-full object-cover"
+                                        poster="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?auto=format&fit=crop&q=80&w=800"
+                                    >
+                                        Your browser does not support the video tag.
+                                    </video>
                                 </div>
                             </div>
                         </div>
@@ -179,10 +173,10 @@ export const About: React.FC = () => {
                             Our People
                         </div>
                         <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">
-                            The Force Behind the Distribution
+                            The "Silent Engine" at Work
                         </h2>
                         <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                            Wholesale is not just about moving boxes; it's about people, precision, and trust. Meet the dedicated teams that power Rajasthan's medical supply chain.
+                            Wholesale is not just about moving boxes; it's about <strong>Efficiency, Trust, and Health-Focus</strong>. Meet the dedicated teams that power Rajasthan's medical supply chain.
                         </p>
                     </div>
 
@@ -292,10 +286,10 @@ export const About: React.FC = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {[
-                            { title: "Reliability", icon: Truck, desc: "Consistent delivery schedules you can plan your business around." },
-                            { title: "Integrity", icon: ShieldCheck, desc: "100% genuine products sourced directly from manufacturers." },
-                            { title: "Reach", icon: TrendingUp, desc: "An extensive network covering the entire state of Rajasthan." },
-                            { title: "Partnership", icon: HeartHandshake, desc: "Strong, long-term relationships with 100+ top pharma brands." }
+                            { title: "Reliability", icon: Truck, desc: "We pride ourselves on consistent stock availability and dependable schedules that pharmacies can count on." },
+                            { title: "Integrity", icon: ShieldCheck, desc: "100% Authentic products sourced directly from trusted manufacturers. Zero compromise on quality." },
+                            { title: "Efficiency", icon: TrendingUp, desc: "A robust distribution network that minimizes downtime for our partners, ensuring rapid restocking." },
+                            { title: "Partnership", icon: HeartHandshake, desc: "We act as a growth partner, offering market insights and support to help our retailers thrive." }
                         ].map((item, i) => (
                             <div key={i} className="bg-slate-50 p-8 rounded-2xl border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
                                 <div className="bg-white w-14 h-14 rounded-xl flex items-center justify-center shadow-sm mb-6 group-hover:scale-110 transition-transform duration-300">

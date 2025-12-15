@@ -5,10 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/generate-data.cjs",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "framer-motion": "^12.23.26",
     "fuse.js": "^7.1.0",
     "googleapis": "^129.0.0",
     "gsap": "^3.12.5",

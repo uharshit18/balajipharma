@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { CartDrawer } from './components/Cart/CartDrawer';
 import AppRoutes from './routes';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -16,6 +17,7 @@ function App() {
         <AppRoutes />
       </main>
 
+      <CartDrawer />
       <Footer />
     </div>
   );
