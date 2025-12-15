@@ -41,11 +41,15 @@ else {
         console.log('Found ID in backend folder:', backendFile);
         authConfig = { keyFile: backendFile, scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'] };
     } else {
-        console.error('CRITICAL: No Google Cloud credentials found.');
-        console.error('Checked Env Vars, scripts/service-account.json, and SERVER/backend/service-account.json');
-        process.exit(1);
+        console.warn('WARNING: No Google Cloud credentials found.');
+        console.warn('Skipping static data generation. The app will rely on the live API or mock data.');
+        console.warn('To enable static generation, set GOOGLE_CREDENTIALS_JSON in Vercel Environment Variables.');
+        return null;
+        // process.exit(0); // Don't fail the build, just skip data
     }
 }
+
+if (!authConfig) return;
 
 const auth = new google.auth.GoogleAuth(authConfig);
 const sheets = google.sheets({ version: 'v4', auth });
