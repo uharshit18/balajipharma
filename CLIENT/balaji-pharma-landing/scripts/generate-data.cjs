@@ -16,6 +16,7 @@ const OUTPUT_PATH = path.join(__dirname, '../public/master-data.json');
 // Auth setup
 let authConfig;
 // Priority 1: Vercel Env Var (JSON content)
+console.log('DEBUG: Environment Variables Keys:', Object.keys(process.env).join(', '));
 if (process.env.GOOGLE_CREDENTIALS_JSON) {
     const credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS_JSON);
     authConfig = {
