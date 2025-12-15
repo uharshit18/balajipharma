@@ -12,7 +12,7 @@ export const Hero: React.FC = () => {
     const y2 = useTransform(scrollY, [0, 500], [0, -150]);
 
     return (
-        <section className="relative min-h-[90vh] flex items-center bg-slate-900 overflow-hidden pt-32 pb-24 md:pt-40 md:pb-0">
+        <section className="relative min-h-[90vh] flex items-center bg-slate-900 overflow-hidden pt-32 pb-28 md:pt-40 md:pb-0">
             {/* Original Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
                 <img
@@ -82,7 +82,7 @@ export const Hero: React.FC = () => {
                     </motion.div>
 
                     {/* Trust Badges */}
-                    <motion.div variants={fadeInUp} className="mt-8 md:mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
+                    <motion.div variants={fadeInUp} className="mt-8 md:mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-8">
                         <div className="flex -space-x-3">
                             {[1, 2, 3, 4].map((i) => (
                                 <img key={i} src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="Pharmacist" className="w-10 h-10 rounded-full border-2 border-slate-900" />
