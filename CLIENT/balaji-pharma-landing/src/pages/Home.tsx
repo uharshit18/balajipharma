@@ -68,7 +68,7 @@ const Home: React.FC = () => {
             />
 
             {/* Original Design Components */}
-            <Hero onNavigate={handleNavigation} />
+            <Hero />
 
             <BrandShowcase />
 
