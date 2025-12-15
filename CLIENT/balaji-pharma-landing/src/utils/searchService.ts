@@ -186,10 +186,18 @@ class SearchService {
         };
     }
 
-    // Get products filtered by brand slug
     public getProductsByBrand(brandSlug: string): SearchProduct[] {
         if (!this.products.length) return [];
         return this.products.filter(p => p.brandSlug === brandSlug);
+    }
+
+    public getProductsByCompanyName(companyName: string): SearchProduct[] {
+        if (!this.products.length || !companyName) return [];
+        const target = companyName.toLowerCase().trim();
+        return this.products.filter(p =>
+            (p.brandName && p.brandName.toLowerCase() === target) ||
+            (p.division && p.division.toLowerCase() === target)
+        );
     }
 
     public getAllBrands(): SearchBrand[] {

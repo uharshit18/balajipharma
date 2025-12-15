@@ -1,8 +1,8 @@
 import { NavItem, FeatureItem, TestimonialItem, FooterLink } from './types';
 
 export const LOGO_URL = "/assets/LOGO.png";
-export const PHONE_DISPLAY = "+91 1482-239078";
-export const PHONE_VALUE = '911482239078';
+export const PHONE_DISPLAY = "+91 94143-72078";
+export const PHONE_VALUE = '919414372078';
 export const EMAIL_CONTACT = "balajipharmabhl@gmail.com";
 
 export const NAV_ITEMS: NavItem[] = [

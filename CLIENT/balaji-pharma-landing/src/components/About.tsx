@@ -79,7 +79,7 @@ export const About: React.FC = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 items-start">
 
                         {/* Left Column: Video Story (40%) */}
-                        <div className="lg:col-span-2 sticky top-24">
+                        <div className="lg:col-span-2 lg:sticky lg:top-24">
                             <div className="relative group rounded-2xl overflow-hidden shadow-2xl shadow-blue-900/10 hover:shadow-blue-900/20 transition-all duration-500 transform hover:-translate-y-1">
                                 {/* Video Element */}
                                 <div className="aspect-[4/5] bg-slate-900 relative overflow-hidden">

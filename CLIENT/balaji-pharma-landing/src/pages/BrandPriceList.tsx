@@ -63,13 +63,31 @@ const BrandPriceList: React.FC = () => {
 
                     setBrandName(derivedBrandName);
 
-                    // SEO Logic
+                    // SEO Logic - KEYWORD EXPLOSION
                     const topProducts = brandProducts.slice(0, 6);
                     const productNames = topProducts.map((p: Product) => p.productName).join(', ');
-                    const productKeywords = topProducts.map((p: Product) => `${p.productName} supplier in Rajasthan`).join(', ');
 
-                    setSeoDescription(`Authorized stockist and wholesale supplier of ${derivedBrandName} medicines in Rajasthan. We supply ${productNames} and more at best rates. Bulk delivery to Jaipur, Jodhpur, Udaipur.`);
-                    setSeoKeywords(`${derivedBrandName} price list, ${derivedBrandName} distributor rajasthan, ${productKeywords}, wholesale medicine supplier`);
+                    const cities = ["Jaipur", "Jodhpur", "Udaipur", "Kota", "Bikaner", "Ajmer", "Bhilwara", "Alwar", "Sikar", "Pali"];
+                    const roles = ["Stockist", "Distributor", "Wholesaler", "Supplier", "Agency", "C&F"];
+
+                    // Generate permutations
+                    const keywordPermutations = [];
+                    cities.forEach(city => {
+                        roles.forEach(role => {
+                            keywordPermutations.push(`${derivedBrandName} ${role} in ${city}`);
+                        });
+                    });
+
+                    // Add product specific keywords
+                    topProducts.forEach(p => {
+                        keywordPermutations.push(`${p.productName} wholesale price`);
+                    });
+
+                    const seoKeywordsString = keywordPermutations.slice(0, 40).join(', ') + ", " +
+                        `${derivedBrandName} price list rajasthan, wholesale medicine supplier`;
+
+                    setSeoDescription(`Authorized ${derivedBrandName} Stockist & Wholesaler in Rajasthan. Supply to Jaipur, Jodhpur, Udaipur, Kota. Best rates for ${productNames}. Direct bulk order.`);
+                    setSeoKeywords(seoKeywordsString);
                 } else {
                     // Fallback to finding brand in list if no products found (might be empty brand)
                     const cleanSlug = slug.replace('-price-list', '');
@@ -84,7 +102,40 @@ const BrandPriceList: React.FC = () => {
 
                     if (matchingBrand) {
                         setBrandName(matchingBrand.companyName);
-                        setError("Catalog is currently being updated. Please check back shortly.");
+
+                        // Fallback: Try to find products by company name since slug match failed
+                        const fallbackProducts = searchService.getProductsByCompanyName(matchingBrand.companyName);
+
+                        if (fallbackProducts.length > 0) {
+                            setProducts(fallbackProducts);
+                            // We already know the brand name, so we can skip setting it again
+
+                            // Run SEO Logic for fallback products
+                            const topProducts = fallbackProducts.slice(0, 6);
+                            const productNames = topProducts.map((p: Product) => p.productName).join(', ');
+
+                            const cities = ["Jaipur", "Jodhpur", "Udaipur", "Kota", "Bikaner", "Ajmer", "Bhilwara", "Alwar", "Sikar", "Pali"];
+                            const roles = ["Stockist", "Distributor", "Wholesaler", "Supplier", "Agency", "C&F"];
+
+                            const keywordPermutations = [];
+                            cities.forEach(city => {
+                                roles.forEach(role => {
+                                    keywordPermutations.push(`${matchingBrand.companyName} ${role} in ${city}`);
+                                });
+                            });
+
+                            topProducts.forEach(p => {
+                                keywordPermutations.push(`${p.productName} wholesale price`);
+                            });
+
+                            const seoKeywordsString = keywordPermutations.slice(0, 40).join(', ') + ", " +
+                                `${matchingBrand.companyName} price list rajasthan, wholesale medicine supplier`;
+
+                            setSeoDescription(`Authorized ${matchingBrand.companyName} Stockist & Wholesaler in Rajasthan. Supply to Jaipur, Jodhpur, Udaipur, Kota. Best rates for ${productNames}. Direct bulk order.`);
+                            setSeoKeywords(seoKeywordsString);
+                        } else {
+                            setError("Catalog is currently being updated. Please check back shortly.");
+                        }
                     } else {
                         // Final fallback to mock data
                         throw new Error("Brand not found in live data");
@@ -147,7 +198,23 @@ const BrandPriceList: React.FC = () => {
                 title={`Wholesale ${brandName} Price List Rajasthan - Balaji Pharma`}
                 description={seoDescription || `Get the latest ${brandName} medicine price list for retailers in Rajasthan. Bulk discounts on all ${brandName} products.`}
                 keywords={seoKeywords}
-                canonicalUrl={`https://balajipharma.com/${slug}`}
+                canonicalUrl={`https://balaji-pharma.in/${slug}`}
+                schema={JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "WholesaleStore",
+                    "name": `Balaji Pharma - ${brandName} Distributor`,
+                    "description": `Authorized wholesale stockist for ${brandName} medicines in Rajasthan. Serving Jaipur, Jodhpur, Udaipur, and all major districts.`,
+                    "url": `https://balaji-pharma.in/${slug}`,
+                    "telephone": PHONE_VALUE,
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Jaipur",
+                        "addressRegion": "Rajasthan",
+                        "addressCountry": "IN"
+                    },
+                    "areaServed": "Rajasthan",
+                    "priceRange": "₹₹"
+                })}
             />
 
             {/* Premium Header */}
@@ -162,11 +229,15 @@ const BrandPriceList: React.FC = () => {
                     <h1 className="text-4xl md:text-5xl font-bold mb-6">{brandName} Wholesale Distributor Rajasthan</h1>
 
                     {/* Rich Content for SEO */}
+                    {/* Rich Content for SEO */}
                     <div className="max-w-3xl text-lg text-slate-300 leading-relaxed mb-8">
                         <p>
-                            Balaji Pharma is a leading <strong>wholesale distributor for {brandName}</strong> in Rajasthan.
-                            We provide the complete range of {brandName} tablets, syrups, and injectables at the most competitive stockist rates.
-                            Whether you are a retailer in Jaipur, Udaipur, or Jodhpur, access our live real-time inventory below and book your bulk orders instantly.
+                            Balaji Pharma is your trusted <strong className="text-white">{brandName} Wholesale Distributor & Stockist in Rajasthan</strong>,
+                            serving <span className="text-brandBlue font-semibold">Jaipur, Jodhpur, Udaipur, Kota, Bhilwara, and Ajmer</span>.
+                        </p>
+                        <p className="mt-3 text-base text-slate-400">
+                            We offer the complete range of {brandName} medicines (Tablets, Syrups, Injectables) at best bulk rates.
+                            Order online for <span className="text-slate-300">100% Genuine stock</span> and fast delivery.
                         </p>
                     </div>
 
