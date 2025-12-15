@@ -79,7 +79,7 @@ export const CoverageArea: React.FC = () => {
                             Client Segments
                         </h3>
                         <div className="space-y-4">
-                            <Link to="/customers-we-serve/pharmaceutical-wholesale-retailers">
+                            <Link to="/medical-distributor/pharmaceutical-wholesale-retailers">
                                 <motion.div
                                     whileHover={{ x: 5 }}
                                     className="flex items-center gap-4 p-4 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-green-500/30 transition-all group"
@@ -98,7 +98,7 @@ export const CoverageArea: React.FC = () => {
                                 </motion.div>
                             </Link>
 
-                            <Link to="/customers-we-serve/hospital-pharmaceutical-supply">
+                            <Link to="/medical-distributor/hospital-pharmaceutical-supply">
                                 <motion.div
                                     whileHover={{ x: 5 }}
                                     className="flex items-center gap-4 p-4 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-blue-500/30 transition-all group"

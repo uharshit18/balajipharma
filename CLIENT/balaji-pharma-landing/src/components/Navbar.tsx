@@ -55,7 +55,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
           </Link>
 
           {/* Desktop Menu - Creada Style */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden xl:flex items-center space-x-8">
             <div className={`flex items-center space-x-1 p-1 rounded-full backdrop-blur-sm border transition-all duration-300 ${showWhiteNavbar ? 'bg-slate-100/50 border-white/20' : 'bg-white/10 border-white/10'}`}>
               {NAV_ITEMS.map((item) => {
                 const isActive = item.href === currentPath || (item.href === '/' && currentPath === '/');
@@ -105,7 +105,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="lg:hidden flex items-center gap-3">
+          <div className="xl:hidden flex items-center gap-3">
             <a href="tel:+911482239078" className={`flex items-center justify-center w-10 h-10 rounded-full shadow-sm transition-colors ${showWhiteNavbar ? 'bg-blue-50 text-brandBlue' : 'bg-white/20 text-white backdrop-blur-sm'}`}>
               <Phone size={20} fill="currentColor" />
             </a>
@@ -127,8 +127,20 @@ export const Navbar: React.FC<NavbarProps> = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-40 bg-white lg:hidden flex flex-col pt-24 px-6"
+            className="fixed inset-0 z-[60] bg-white xl:hidden flex flex-col p-6"
           >
+            <div className="flex justify-between items-center mb-8">
+              <div className="flex items-center gap-2">
+                <img src={LOGO_URL} alt="Balaji Pharma" className="h-10 object-contain" />
+                <span className="font-extrabold text-lg text-blue-950">Balaji Pharma</span>
+              </div>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="p-2 rounded-full bg-slate-100 text-slate-600 hover:bg-red-50 hover:text-red-500 transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
             <div className="flex flex-col space-y-6">
               {NAV_ITEMS.map((item, idx) => (
                 <motion.div

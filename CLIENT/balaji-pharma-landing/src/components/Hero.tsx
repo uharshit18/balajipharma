@@ -12,7 +12,7 @@ export const Hero: React.FC = () => {
     const y2 = useTransform(scrollY, [0, 500], [0, -150]);
 
     return (
-        <section className="relative min-h-[90vh] flex items-center bg-slate-900 overflow-hidden pt-32 pb-28 md:pt-40 md:pb-0">
+        <section className="relative flex items-center bg-slate-900 overflow-hidden pt-32 pb-8 md:min-h-[90vh] md:pt-40 md:pb-12">
             {/* Original Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
                 <img
@@ -69,11 +69,11 @@ export const Hero: React.FC = () => {
                     </motion.p>
 
                     <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 mb-4">
-                        <Button size="lg" className="shadow-lg shadow-blue-500/25 border-none !bg-brandBlue text-white hover:!bg-blue-600 w-full sm:w-auto">
-                            <Link to="/wholesale-medicines-rajasthan" className="flex items-center justify-center">
+                        <Link to="/wholesale-medicines-rajasthan" className="w-full sm:w-auto">
+                            <Button size="lg" className="shadow-lg shadow-blue-500/25 border-none !bg-brandBlue text-white hover:!bg-blue-600 w-full sm:w-auto">
                                 Start Ordering
-                            </Link>
-                        </Button>
+                            </Button>
+                        </Link>
                         <Link to="/wholesale-medicines-rajasthan" className="w-full sm:w-auto">
                             <Button variant="secondary" size="lg" className="!bg-white/10 !text-white hover:!bg-white/20 backdrop-blur-sm border-white/10 w-full sm:w-auto">
                                 View Catalog
