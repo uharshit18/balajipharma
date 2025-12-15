@@ -12,7 +12,7 @@ export const Hero: React.FC = () => {
     const y2 = useTransform(scrollY, [0, 500], [0, -150]);
 
     return (
-        <section className="relative min-h-[90vh] flex items-center bg-slate-900 overflow-hidden pt-32 md:pt-40">
+        <section className="relative min-h-[90vh] flex items-center bg-slate-900 overflow-hidden pt-32 pb-20 md:pt-40 md:pb-0">
             {/* Original Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
                 <img
@@ -55,7 +55,7 @@ export const Hero: React.FC = () => {
 
                     <motion.h1
                         variants={fadeInUp}
-                        className="text-5xl md:text-7xl font-bold text-white leading-[1.1] mb-6 tracking-tight"
+                        className="text-4xl md:text-7xl font-bold text-white leading-[1.1] mb-6 tracking-tight"
                     >
                         Wholesale Pharmaceuticals <br className="hidden md:block" />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">in Rajasthan</span>
@@ -63,33 +63,33 @@ export const Hero: React.FC = () => {
 
                     <motion.p
                         variants={fadeInUp}
-                        className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-lg font-medium"
+                        className="text-base md:text-xl text-slate-300 mb-8 md:mb-10 leading-relaxed max-w-lg font-medium"
                     >
                         As a premier <strong className="text-blue-200">wholesale medical supplier in Rajasthan</strong>, <strong className="text-blue-200">Balaji Pharma</strong> is dedicated to distributing genuine healthcare products. From our base, we efficiently supply a comprehensive range to retailers and wholesalers across the region.
                     </motion.p>
 
-                    <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4">
-                        <Button size="lg" className="shadow-lg shadow-blue-500/25 border-none !bg-brandBlue text-white hover:!bg-blue-600">
-                            <Link to="/wholesale-medicines-rajasthan" className="flex items-center">
+                    <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 mb-4">
+                        <Button size="lg" className="shadow-lg shadow-blue-500/25 border-none !bg-brandBlue text-white hover:!bg-blue-600 w-full sm:w-auto">
+                            <Link to="/wholesale-medicines-rajasthan" className="flex items-center justify-center">
                                 Start Ordering
                             </Link>
                         </Button>
-                        <Link to="/wholesale-medicines-rajasthan">
-                            <Button variant="secondary" size="lg" className="!bg-white/10 !text-white hover:!bg-white/20 backdrop-blur-sm border-white/10">
+                        <Link to="/wholesale-medicines-rajasthan" className="w-full sm:w-auto">
+                            <Button variant="secondary" size="lg" className="!bg-white/10 !text-white hover:!bg-white/20 backdrop-blur-sm border-white/10 w-full sm:w-auto">
                                 View Catalog
                             </Button>
                         </Link>
                     </motion.div>
 
                     {/* Trust Badges */}
-                    <motion.div variants={fadeInUp} className="mt-12 flex items-center gap-8">
+                    <motion.div variants={fadeInUp} className="mt-8 md:mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
                         <div className="flex -space-x-3">
                             {[1, 2, 3, 4].map((i) => (
                                 <img key={i} src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="Pharmacist" className="w-10 h-10 rounded-full border-2 border-slate-900" />
                             ))}
                         </div>
                         <div className="text-sm text-slate-400">
-                            <span className="font-bold text-white block">500+ Retailers and Wholesalers</span>
+                            <span className="font-bold text-white block mb-0.5">500+ Retailers and Wholesalers</span>
                             Trusted in Rajasthan
                         </div>
                     </motion.div>
