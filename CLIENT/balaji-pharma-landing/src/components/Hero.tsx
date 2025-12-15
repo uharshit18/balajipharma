@@ -12,7 +12,7 @@ export const Hero: React.FC = () => {
     const y2 = useTransform(scrollY, [0, 500], [0, -150]);
 
     return (
-        <section className="relative min-h-[90vh] flex items-center bg-slate-900 overflow-hidden pt-32 pb-20 md:pt-40 md:pb-0">
+        <section className="relative min-h-[90vh] flex items-center bg-slate-900 overflow-hidden pt-32 pb-32 md:pt-40 md:pb-0">
             {/* Original Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
                 <img
