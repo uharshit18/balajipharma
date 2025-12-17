@@ -48,21 +48,21 @@ export const TESTIMONIALS: TestimonialItem[] = [
     quote: "Balaji Pharma has completely stabilized our supply chain for critical cardiac injectables immediately. Their response time in emergencies is commendable.",
     author: "Dr. Purchase Officer",
     role: "Brijesh Bangar Memorial Hospital",
-    image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=200",
+    image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=100",
   },
   {
     id: 2,
     quote: "Genuine stock, transparent pricing, and they understand the local market of Bhilwara perfectly. Best wholesaler in Nagori Garden.",
     author: "Store Manager",
     role: "Keshav Porwal Hospital",
-    image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=200",
+    image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=100",
   },
   {
     id: 3,
     quote: "For Ramsnehi Chikitsalya, quality is paramount. Balaji Pharma has consistently delivered 100% original batches for the last 10 years.",
     author: "Head Pharmacist",
     role: "Ram Snehi Chikitsalya",
-    image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&q=80&w=200",
+    image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&q=80&w=100",
   }
 ];
 

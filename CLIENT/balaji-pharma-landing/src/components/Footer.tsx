@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             {/* CTA Banner */}
-            <div className="text-center mb-16 pb-12 border-b border-slate-800">
+            <div className="text-center mb-16 pb-12 border-b border-slate-800 min-h-[160px] flex flex-col justify-center">
                <h2 className="text-2xl text-white font-bold mb-2">Ready to Streamline Your Pharma Procurement?</h2>
                <p className="text-slate-400 mb-0 text-sm">Connect with Balaji Pharma today for reliable supply and service in Rajasthan.</p>
             </div>
