@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Search, ChevronRight, Loader2, Pill } from "lucide-react";
@@ -38,6 +39,26 @@ const getBrandLogo = (brandName: string) => {
         k.toLowerCase().includes(lowerName)
     );
     return key ? BRAND_LOGOS[key] : null;
+};
+
+const getPrettyName = (originalName: string) => {
+    // 1. Try Local Map to get "full" filename
+    const snakeSlug = originalName.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '');
+    const kebabSlug = originalName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+
+    // Map keys point to filenames like "abbott_pharma.png"
+    const filename = (logoMap as any)[snakeSlug] || (logoMap as any)[kebabSlug];
+
+    if (filename) {
+        // "abbott_pharma.png" -> "abbott_pharma"
+        const namePart = filename.split('.')[0];
+        // "abbott_pharma" -> "Abbott Pharma"
+        return namePart.split('_')
+            .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+            .join(' ');
+    }
+
+    return originalName;
 };
 
 const OurBrands: React.FC = () => {
@@ -159,7 +180,7 @@ const OurBrands: React.FC = () => {
                                                     )}
                                                 </div>
                                                 <h3 className="text-sm font-bold text-slate-700 text-center w-full group-hover:text-brandBlue transition-colors">
-                                                    {brand.companyName}
+                                                    {getPrettyName(brand.companyName)}
                                                 </h3>
                                             </Card>
                                         </Link>

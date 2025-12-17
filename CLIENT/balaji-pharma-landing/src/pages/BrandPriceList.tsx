@@ -59,8 +59,22 @@ const BrandPriceList: React.FC = () => {
 
                     // Derive brand name from the first product
                     // Use division or fallback to formatted slug
-                    const derivedBrandName = brandProducts[0].division ||
+                    let derivedBrandName = brandProducts[0].division ||
                         slug.replace('-price-list', '').split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+
+                    // Try to improve name using logoMap (New Logic)
+                    const formatPretty = (originalName: string) => {
+                        const snakeSlug = originalName.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '');
+                        const kebabSlug = originalName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+                        const filename = (logoMap as any)[snakeSlug] || (logoMap as any)[kebabSlug];
+                        if (filename) {
+                            return filename.split('.')[0].split('_')
+                                .map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+                        }
+                        return originalName;
+                    };
+
+                    derivedBrandName = formatPretty(derivedBrandName);
 
                     setBrandName(derivedBrandName);
 
