@@ -232,9 +232,8 @@ const generateData = async () => {
 `;
 
         companies.forEach(company => {
-            const rawSlug = company.companyName.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '-price-list';
-            // Remove leading/trailing dashes if specific regex caused them
-            const cleanSlug = rawSlug.replace(/^-+|-+$/g, '');
+            const companySlug = company.companyName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+            const cleanSlug = `${companySlug}-price-list`;
             const loc = `https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/${escapeXml(cleanSlug)}`;
 
             sitemapContent += `  <url>

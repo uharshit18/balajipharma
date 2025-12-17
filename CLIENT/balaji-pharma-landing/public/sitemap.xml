@@ -1,818 +1,827 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Static Pages -->
   <url>
     <loc>https://balaji-pharma.in/</loc>
-    <lastmod>2025-12-16</lastmod>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://balaji-pharma.in/about</loc>
-    <lastmod>2025-12-16</lastmod>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://balaji-pharma.in/contact</loc>
-    <lastmod>2025-12-16</lastmod>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://balaji-pharma.in/compliance</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://balaji-pharma.in/wholesale-medicines-rajasthan</loc>
-    <lastmod>2025-12-16</lastmod>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
+
+  <!-- Brand Pages -->
   <url>
-    <loc>https://balaji-pharma.in/aimill-pharama-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/aimill-pharama-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/alembic-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/alembic-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/apex-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/apex-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/abbott-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/abbott-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/adonis-laboratries-pvt-ltd-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/adonis-laboratries-pvt-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/ajanta-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/ajanta-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/akumentis-healthcere-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/akumentis-healthcere-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/alkem-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/alkem-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/amagen-india-life-sciences-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/amagen-india-life-sciences-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/arinna-lifesciences-pvt-ltd-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/arinna-lifesciences-pvt-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/arissa-life-science-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/arissa-life-science-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/aristo-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/aristo-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/assurica-life-sciences-pvt-ltd-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/assurica-life-sciences-pvt-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/astaris-lifesciences-pvt-ltd-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/astaris-lifesciences-pvt-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/aventis-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/aventis-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/biochem-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/biochem-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/boots-knoll-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/boots-knoll-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/bennet-pharmaceutical-pvtltd-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/bennet-pharmaceutical-pvt-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/bestochem-formulations-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/bestochem-formulations-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/blucross-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/blucross-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/cipla-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/cipla-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/cachet-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/cachet-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/cadila-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/cadila-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/canixa-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/canixa-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/coman-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/coman-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/comed-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/comed-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/connote-heathcare-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/connote-heathcare-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/cu-card-skincare-div-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/cu-card-skincare-div-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/cyrus-remedies-pvt-ltd-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/cyrus-remedies-pvt-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/cytus-healthcare-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/cytus-healthcare-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/duphar-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/duphar-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/dakshinamurti-pharma-pvt-ltd-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/dakshinamurti-pharma-pvt-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/demorbus(india)pvtltd-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/demorbus-india-pvt-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/dr-reddy-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/dr-reddy-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/e-merck-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/e-merck-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/emcure-gen-div-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/emcure-gen-div-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/erie-pharmaceuticals-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/erie-pharmaceuticals-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/fdc-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/fdc-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/fluford-india-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/fluford-india-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/franco-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/franco-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/glaxo-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/glaxo-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/gufic-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/gufic-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/galcare-pharmaceutical-pvt-ltd-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/galcare-pharmaceutical-pvt-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/german-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/german-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/glaxosmithkline-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/glaxosmithkline-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/glenmark-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/glenmark-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/glowderma-lab-pvtltd-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/glowderma-lab-pvt-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/grenitta-pharmaceuticals-pvt-l-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/grenitta-pharmaceuticals-pvt-l-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/group-pharmaceuticals-limited-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/group-pharmaceuticals-limited-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/houechst-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/houechst-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/hbl-lifesciences-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/hbl-lifesciences-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/healing-pharma-india-ltd-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/healing-pharma-india-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/himalaya-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/himalaya-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/hll-lifecare-ltd-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/hll-lifecare-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/ignited-india-pharmaceutical-p-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/ignited-india-pharmaceutical-p-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/ikon-rememdies-pvt-ltd-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/ikon-rememdies-pvt-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/ind-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/ind-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/indchemie-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/indchemie-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/indoco-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/indoco-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/indswift-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/indswift-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/innovcare-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/innovcare-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/intas-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/intas-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/ipca-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/ipca-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/jb-chemicals-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/j-b-chemicals-pvt-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/jb-chemicals-pvt-ltd-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/jagsonpal-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/jagsonpal-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/johnson-johnson-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/johnson-&-johnson-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/juggat-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/juggat-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/klm-laboratories-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/klm-laboratories-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/kelgan-pharmaceutical-pvt-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/kelgan-pharmaceutical-pvtltd-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/kenmed-pharma-pvt-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/kenmed-pharma-pvt-ltd-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/kenrox-healthcare-pvt-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/kenrox-healthcare-pvt-ltd-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/kepler-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/kepler-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/khandelwal-laboratories-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/khandelwal-laboratories-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/knoll-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/knoll-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/lupin-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/lupin-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/laures-pharmacetical-pvt-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/laures-pharmacetical-pvt-ltd-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/lincoln-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/lincoln-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/macleods-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/macleods-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/mayer-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/mayer-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/medely-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/medely-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/mankind-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/mankind-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/mapra-pharmaceuticals-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/mapra-pharmaceuticals-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/martyn-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/martyn-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/mclean-laboratories-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/mclean-laboratories-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/med-manor-organics-pvt-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/med-manor-organics-pvt-ltd-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/meksun-biotec-pvt-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/meksun-biotec-pvt-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/merion-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/merion-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/micro-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/micro-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/nabarun-life-sciences-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/nabarun-life-sciences-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/neuborn-life-sciences-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/neuborn-life-sciences-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/nicholas-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/nicholas-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/otsira-genetica-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/otsira-genetica-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/olcare-laboratoies-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/olcare--laboratoies-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/psycotropics-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/psycotropics-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/pfizer-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/pfizer-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/pil-psychotropics-india-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/pil-(psychotropics-india-ltd)-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/piramal-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/piramal-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/protec-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/protec-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/rpg-life-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/rpg-life-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/radical-div-of-pil-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/radical-(div-of-pil)-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/radico-remedies-bipl-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/radico-remedies-bipl-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/rapross-pharmaceuticals-p-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/rapross-pharmaceuticals-pltd-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/raptakos-brett-co-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/raptakos,brett&-co,ltd-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/research-pharma-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/research-pharma-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/rv-lifesciences-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/rv-lifesciences-ltd-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/sanofi-india-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/sanofi-india-ltd-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/sigma-labo-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/sigma-labo-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/sun-pharmaceutical-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/sun-pharmaceutical-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/segull-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/segull-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/sertec-pharmaceuticals-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/sertec-pharmaceuticals-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/shreya-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/shreya-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/solderma-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/solderma-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/sunwin-healthcare-pvt-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/sunwin-healthcare-pvt-ltd-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/svizera-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/svizera-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/swiss-medicare-pvt-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/swiss-medicare-pvtltd-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/syncom-formulations-i-ltd-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/syncom-formulations-(i)-ltd-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/t-t-k-pharma-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/ttk-pharma-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/tablet-india-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/tablet-india-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/torrent-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/torrent-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/troika-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/torrent-pharma-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/j-b-chemicals-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/troika-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/unisankyo-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/unisankyo-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/torrent-pharma-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/unimarck-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/unimarck-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/univentis-medicare-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/univentis-medicare-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/universal-pharmaceuticals-pvt-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/universal-pharmaceuticals-pvt-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/win-medicare-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/win-medicare-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/wallace-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/wallace-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/westcost-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/westcost-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/willcare-life-sciences-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/willcare-life-sciences-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/wockhardt-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/wockhardt-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://balaji-pharma.in/zydus-cadila-healthcare-price-list</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/zydus-cadila-healthcare-price-list</loc>
+    <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
