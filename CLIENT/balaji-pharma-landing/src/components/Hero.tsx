@@ -63,9 +63,10 @@ export const Hero: React.FC = () => {
 
                     <motion.p
                         variants={fadeInUp}
-                        className="text-base md:text-xl text-slate-300 mb-8 md:mb-10 leading-relaxed max-w-lg font-medium"
+                        className="text-lg md:text-xl text-slate-300 mb-8 md:mb-10 leading-relaxed max-w-lg font-medium"
                     >
-                        As a premier <strong className="text-blue-200">wholesale medical supplier in Rajasthan</strong>, <strong className="text-blue-200">Balaji Pharma</strong> is dedicated to distributing genuine healthcare products. From our base, we efficiently supply a comprehensive range to retailers and wholesalers across the region.
+                        Rajasthan's trusted <strong className="text-blue-200">Wholesale Medical Distributor</strong>.
+                        Genuine medicines, best bulk rates, and fast delivery to <span className="text-blue-200">Jaipur, Jodhpur, & all major cities</span>.
                     </motion.p>
 
                     <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 mb-4">

@@ -41,7 +41,7 @@ export const BhilwaraCity: React.FC = () => {
                         Top Pharmaceutical Distributor in <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Bhilwara</span>
                     </motion.h1>
                     <motion.p variants={fadeInUp} className="text-lg text-slate-300 max-w-2xl mx-auto">
-                        Headquartered in Nagori Garden, we are the backbone of Bhilwara's healthcare supply chain, delivering to every tehsil and village.
+                        Bhilwara's trusted healthcare backbone. Authentic medicines delivered from Nagori Garden to every tehsil.
                     </motion.p>
                     <motion.div variants={fadeInUp} className="mt-8">
                         <Link to="/wholesale-medicines-rajasthan" className="inline-block bg-brandBlue text-white font-bold py-4 px-10 rounded-full shadow-lg hover:bg-blue-700 hover:shadow-xl transition-all transform hover:-translate-y-1">
@@ -155,10 +155,7 @@ export const BhilwaraCity: React.FC = () => {
 
                             <div className="space-y-6 text-slate-600 text-lg leading-relaxed">
                                 <p>
-                                    Balaji Pharma is not just a distributor; we are a part of Bhilwara's medical infrastructure. From the bustling markets of <strong className="text-slate-900">Nagori Garden</strong> to the rural medical centers in <strong className="text-slate-900">Raipur</strong> and <strong className="text-slate-900">Asind</strong>, our logistics network ensures that no patient waits for critical medicine.
-                                </p>
-                                <p>
-                                    We are the authorized stockists for <strong className="text-slate-900">100+ global brands</strong>, ensuring that local hospitals like Brijesh Bangar Memorial and Keshav Porwal Hospital receive 100% authentic stock on time, every time.
+                                    Bhilwara's medical infrastructure relies on us. Authorized stockist for <strong className="text-slate-900">100+ brands</strong>, ensuring <strong className="text-slate-900">Nagori Garden</strong> to <strong className="text-slate-900">Asind</strong> receives 100% authentic stock on time.
                                 </p>
                             </div>
 

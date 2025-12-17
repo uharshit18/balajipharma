@@ -155,10 +155,7 @@ export const JaipurCity: React.FC = () => {
 
                             <div className="space-y-6 text-slate-600 text-lg leading-relaxed">
                                 <p>
-                                    As Rajasthan's capital expands, so does our commitment. Balaji Pharma provides a critical supply line to the densest medical markets of <strong className="text-slate-900">MI Road</strong> and the sprawling residential hubs of <strong className="text-slate-900">Mansarovar</strong> and <strong className="text-slate-900">Vaishali Nagar</strong>.
-                                </p>
-                                <p>
-                                    We understand the high volume demands of Jaipur's hospitals and the diverse stock requirements of its chemists. With our extensive catalog of <strong className="text-slate-900">100+ global brands</strong>, we act as the central warehouse for many leading pharmacies in the city.
+                                    Serving Jaipur's hospitals and chemists with <strong className="text-slate-900">100+ global brands</strong>. From <strong className="text-slate-900">MI Road</strong> to <strong className="text-slate-900">Mansarovar</strong>, we are your central warehouse for authentic stock.
                                 </p>
                             </div>
 

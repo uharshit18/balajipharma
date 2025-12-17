@@ -230,14 +230,10 @@ const BrandPriceList: React.FC = () => {
 
                     {/* Rich Content for SEO */}
                     {/* Rich Content for SEO */}
-                    <div className="max-w-3xl text-lg text-slate-300 leading-relaxed mb-8">
+                    <div className="max-w-4xl text-lg text-slate-300 leading-relaxed mb-8">
                         <p>
-                            Balaji Pharma is your trusted <strong className="text-white">{brandName} Wholesale Distributor & Stockist in Rajasthan</strong>,
-                            serving <span className="text-brandBlue font-semibold">Jaipur, Jodhpur, Udaipur, Kota, Bhilwara, and Ajmer</span>.
-                        </p>
-                        <p className="mt-3 text-base text-slate-400">
-                            We offer the complete range of {brandName} medicines (Tablets, Syrups, Injectables) at best bulk rates.
-                            Order online for <span className="text-slate-300">100% Genuine stock</span> and fast delivery.
+                            Authorized <strong className="text-white">{brandName} Wholesale Distributor & Stockist</strong> serving <span className="text-brandBlue font-semibold">Jaipur, Jodhpur, Udaipur, Kota, Bhilwara, & Ajmer</span>.
+                            Get the complete range of genuine medicines at best bulk rates across Rajasthan.
                         </p>
                     </div>
 

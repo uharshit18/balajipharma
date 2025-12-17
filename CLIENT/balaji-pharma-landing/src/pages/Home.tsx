@@ -9,6 +9,8 @@ import { ContactForm } from '../components/ContactForm';
 import { CoverageArea } from '../components/CoverageArea';
 import SEOHead from '../components/SEOHead';
 
+import { GoogleReviewsBadge } from '../components/GoogleReviewsBadge';
+
 const Home: React.FC = () => {
     const location = useLocation();
 
@@ -69,6 +71,9 @@ const Home: React.FC = () => {
 
             {/* Original Design Components */}
             <Hero />
+
+            {/* Google Reviews Trust Badge */}
+            <GoogleReviewsBadge className="relative z-20" />
 
             <BrandShowcase />
 

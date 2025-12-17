@@ -3,6 +3,7 @@ import { Button } from './Button';
 import { Calendar, TrendingUp, Users, ShieldCheck, Truck, HeartHandshake, Quote, Play } from 'lucide-react';
 import { RajasthanMap } from './RajasthanMap';
 import { BrandShowcase } from './BrandShowcase';
+import { BalajiJourneySection } from './BalajiJourneySection';
 
 export const About: React.FC = () => {
     return (
@@ -29,10 +30,13 @@ export const About: React.FC = () => {
                         </span>
                     </h1>
                     <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-medium">
-                        From our roots in Bhilwara, we have evolved into Rajasthan's premier **Wholesale Medical Supplier**. We serve as the vital link between top pharmaceutical manufacturers and healthcare providers, streamlining the supply chain to ensure patient care never stops.
+                        Rajasthan's premier <strong className="text-white">Wholesale Medical Supplier</strong>. Connecting top manufacturers with healthcare providers for seamless delivery.
                     </p>
                 </div>
             </section>
+
+            {/* 1.5. Inside Balaji Journey Section */}
+            <BalajiJourneySection />
 
             {/* 2. Key Metrics */}
             <section className="py-12 bg-white relative z-20 -mt-8">
@@ -71,7 +75,7 @@ export const About: React.FC = () => {
                             The "Silent Engine" of Healthcare
                         </h2>
                         <p className="text-xl text-slate-600 leading-relaxed">
-                            Our mission is to ensure the **seamless availability of life-saving medicines** and healthcare products. Through efficient logistics, uncompromised quality, and timely delivery, we empower healthcare professionals to focus on what matters most: treating patients.
+                            Ensuring <strong className="text-brandBlue">seamless availability of life-saving medicines</strong>. Efficient logistics and uncompromised quality to help you focus on patient care.
                         </p>
                         <div className="h-1.5 w-24 bg-brandBlue rounded-full mt-8"></div>
                     </div>
@@ -337,6 +341,6 @@ export const About: React.FC = () => {
                     </Button>
                 </div>
             </section>
-        </div>
+        </div >
     );
 };

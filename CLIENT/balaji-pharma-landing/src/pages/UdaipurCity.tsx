@@ -27,7 +27,7 @@ export const UdaipurCity: React.FC = () => {
                         Trusted Pharmaceutical Distributor in <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Udaipur</span>
                     </h1>
                     <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-                        Delivering high-quality medicines to the City of Lakes. We support Udaipur's thriving medical infrastructure with timely supplies.
+                        High-quality wholesale medicines for the City of Lakes. Timely supply for Udaipur's medical infrastructure.
                     </p>
                     <div className="mt-8">
                         <Link to="/wholesale-medicines-rajasthan" className="inline-block bg-brandBlue text-white font-bold py-4 px-10 rounded-full shadow-lg hover:bg-blue-700 hover:shadow-xl transition-all transform hover:-translate-y-1">
@@ -122,10 +122,7 @@ export const UdaipurCity: React.FC = () => {
 
                             <div className="space-y-6 text-slate-600 text-lg leading-relaxed">
                                 <p>
-                                    Udaipur's medical landscape is as diverse as its heritage. Balaji Pharma plays a pivotal role in keeping the City of Lakes healthy. From the clinic-dense streets of <strong className="text-slate-900">Delhi Gate</strong> to the expanding hospitals in <strong className="text-slate-900">Hiran Magri</strong>, our supply chain is unwavering.
-                                </p>
-                                <p>
-                                    We partner with medical colleges and private healthcare institutions to provide a steady stream of critical care medicines and surgical supplies.
+                                    Unwavering supply chain for Udaipur. From <strong className="text-slate-900">Delhi Gate</strong> to <strong className="text-slate-900">Hiran Magri</strong>, we provide critical care medicines to medical colleges and private hospitals.
                                 </p>
                             </div>
 
