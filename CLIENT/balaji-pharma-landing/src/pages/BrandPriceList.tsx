@@ -8,6 +8,7 @@ import { PHONE_VALUE } from '../constants';
 import { getBrandData } from '../data/mockData';
 import { useCart } from '../context/CartContext';
 import { Button } from '../components/UI/Button';
+import logoMap from '../data/logoMap.json';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "";
 
@@ -176,6 +177,17 @@ const BrandPriceList: React.FC = () => {
         fetchData();
     }, [slug]);
 
+    const getBrandLogo = (slug: string) => {
+        if (!slug) return null;
+        const cleanSlug = slug.replace('-price-list', '');
+        // Try exact match, or snake_case match; map has both
+        const logoFile = (logoMap as any)[cleanSlug];
+        return logoFile ? `/brands/${logoFile}` : null;
+    };
+
+    const brandLogoUrl = getBrandLogo(slug || '');
+
+
     const filteredProducts = products.filter(p =>
         (p.productName && p.productName.toLowerCase().includes(searchTerm.toLowerCase())) ||
         (p.composition && p.composition.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -217,6 +229,7 @@ const BrandPriceList: React.FC = () => {
                 })}
             />
 
+
             {/* Premium Header */}
             <div className="bg-slate-900 text-white pt-32 pb-24 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
@@ -226,7 +239,20 @@ const BrandPriceList: React.FC = () => {
                     <Link to="/wholesale-medicines-rajasthan" className="inline-flex items-center text-slate-400 hover:text-white mb-6 transition-colors">
                         <ArrowLeft size={16} className="mr-2" /> Back to All Brands
                     </Link>
-                    <h1 className="text-4xl md:text-5xl font-bold mb-6">{brandName} Wholesale Distributor Rajasthan</h1>
+
+                    <div className="flex flex-col md:flex-row items-start md:items-center gap-6 mb-6">
+                        {brandLogoUrl && (
+                            <div className="bg-white p-3 rounded-xl shadow-lg w-24 h-24 flex items-center justify-center shrink-0">
+                                <img
+                                    src={brandLogoUrl}
+                                    alt={`${brandName} logo`}
+                                    className="max-w-full max-h-full object-contain"
+                                />
+                            </div>
+                        )}
+                        <h1 className="text-4xl md:text-5xl font-bold">{brandName} Wholesale Distributor Rajasthan</h1>
+                    </div>
+
 
                     {/* Rich Content for SEO */}
                     {/* Rich Content for SEO */}
