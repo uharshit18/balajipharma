@@ -16,9 +16,13 @@ export const Hero: React.FC = () => {
             {/* Original Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
                 <img
-                    src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=2000"
+                    src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=60&w=1200&fm=webp"
                     alt="Pharmaceutical Warehouse"
                     className="w-full h-full object-cover opacity-20"
+                    width="1200"
+                    height="800"
+                    loading="eager" // LCP Critical
+                    fetchPriority="high"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900/40"></div>
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
@@ -86,7 +90,15 @@ export const Hero: React.FC = () => {
                     <motion.div variants={fadeInUp} className="mt-8 md:mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-8">
                         <div className="flex -space-x-3">
                             {[1, 2, 3, 4].map((i) => (
-                                <img key={i} src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="Pharmacist" className="w-10 h-10 rounded-full border-2 border-slate-900" />
+                                <img
+                                    key={i}
+                                    src={`https://i.pravatar.cc/100?img=${i + 10}`}
+                                    alt="Pharmacist"
+                                    className="w-10 h-10 rounded-full border-2 border-slate-900"
+                                    loading="lazy"
+                                    width="40"
+                                    height="40"
+                                />
                             ))}
                         </div>
                         <div className="text-sm text-slate-400">
@@ -126,10 +138,14 @@ export const Hero: React.FC = () => {
                         </motion.div>
 
                         <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-blue-900/40 ring-1 ring-white/10 max-w-lg">
+                            {/* NOTE: This image should serve as secondary LCP or similar. Use optimized version if available. */}
                             <img
                                 src="/assets/BANNER-IAMGE.png"
                                 alt="Bhilwara Medicine Dispatch"
                                 className="w-full h-auto object-contain"
+                                width="512"
+                                height="512" // Explicit size to prevent CLS
+                                loading="lazy"
                             />
                             {/* Gradient Fade Envelopes */}
                             <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent opacity-60"></div>

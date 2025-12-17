@@ -106,11 +106,12 @@ export const Navbar: React.FC<NavbarProps> = () => {
 
           {/* Mobile menu button */}
           <div className="xl:hidden flex items-center gap-3">
-            <a href="tel:+911482239078" className={`flex items-center justify-center w-10 h-10 rounded-full shadow-sm transition-colors ${showWhiteNavbar ? 'bg-blue-50 text-brandBlue' : 'bg-white/20 text-white backdrop-blur-sm'}`}>
+            <a href="tel:+911482239078" aria-label="Call Us" className={`flex items-center justify-center w-10 h-10 rounded-full shadow-sm transition-colors ${showWhiteNavbar ? 'bg-blue-50 text-brandBlue' : 'bg-white/20 text-white backdrop-blur-sm'}`}>
               <Phone size={20} fill="currentColor" />
             </a>
             <button
               onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? "Close Menu" : "Open Menu"}
               className={`focus:outline-none p-2 rounded-lg backdrop-blur-sm transition-colors ${showWhiteNavbar ? 'text-slate-700 hover:text-brandBlue bg-white/50' : 'text-white hover:bg-white/20'}`}
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}

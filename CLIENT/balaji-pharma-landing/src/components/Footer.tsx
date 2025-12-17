@@ -69,9 +69,9 @@ export const Footer: React.FC = () => {
                <div>
                   <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Social</h3>
                   <div className="flex space-x-4">
-                     <a href="#" className="hover:text-white transition-colors"><Facebook size={20} /></a>
-                     <a href="#" className="hover:text-white transition-colors"><Twitter size={20} /></a>
-                     <a href="#" className="hover:text-white transition-colors"><Linkedin size={20} /></a>
+                     <a href="#" aria-label="Facebook" className="hover:text-white transition-colors"><Facebook size={20} /></a>
+                     <a href="#" aria-label="Twitter" className="hover:text-white transition-colors"><Twitter size={20} /></a>
+                     <a href="#" aria-label="LinkedIn" className="hover:text-white transition-colors"><Linkedin size={20} /></a>
                   </div>
                </div>
             </div>
