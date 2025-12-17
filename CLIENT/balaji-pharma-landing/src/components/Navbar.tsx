@@ -107,7 +107,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="xl:hidden flex items-center gap-3">
+          <div className="xl:hidden flex-shrink-0 flex items-center gap-3">
             <a href="tel:+911482239078" aria-label="Call Us" className={`flex items-center justify-center w-10 h-10 rounded-full shadow-sm transition-colors ${showWhiteNavbar ? 'bg-blue-50 text-brandBlue' : 'bg-white/20 text-white backdrop-blur-sm'}`}>
               <Phone size={20} fill="currentColor" />
             </a>
@@ -116,7 +116,15 @@ export const Navbar: React.FC<NavbarProps> = () => {
               aria-label={isOpen ? "Close Menu" : "Open Menu"}
               className={`focus:outline-none p-2 rounded-lg backdrop-blur-sm transition-colors ${showWhiteNavbar ? 'text-slate-700 hover:text-brandBlue bg-white/50' : 'text-white hover:bg-white/20'}`}
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
+                  <line x1="4" x2="20" y1="12" y2="12" />
+                  <line x1="4" x2="20" y1="6" y2="6" />
+                  <line x1="4" x2="20" y1="18" y2="18" />
+                </svg>
+              )}
             </button>
           </div>
         </div>
