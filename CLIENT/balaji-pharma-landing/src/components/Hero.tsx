@@ -14,9 +14,15 @@ export const Hero: React.FC = () => {
     return (
         <section className="relative flex items-center bg-slate-900 overflow-hidden pt-32 pb-8 md:min-h-[90vh] md:pt-40 md:pb-12">
             {/* Original Background Image with Overlay */}
-            <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 z-0 bg-slate-900">
                 <img
                     src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=60&w=1200&fm=webp"
+                    srcSet="
+                        https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=60&w=400&fm=webp 400w,
+                        https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=60&w=800&fm=webp 800w,
+                        https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=60&w=1200&fm=webp 1200w
+                    "
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 1200px"
                     alt="Pharmaceutical Warehouse"
                     className="w-full h-full object-cover opacity-20"
                     width="1200"
