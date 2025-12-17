@@ -38,19 +38,19 @@ export const Navbar: React.FC<NavbarProps> = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo Section */}
-          <Link to="/" className="flex-shrink-0 flex items-center gap-3 cursor-pointer group" onClick={() => setIsOpen(false)}>
+          <Link to="/" className="flex items-center gap-2 cursor-pointer group min-w-0 flex-1 mr-2" onClick={() => setIsOpen(false)}>
             <img
               src={LOGO_URL}
               alt="Balaji Pharma"
               width="97"
               height="126"
-              className={`transition-all duration-300 object-contain drop-shadow-sm group-hover:scale-105 ${showWhiteNavbar ? 'h-12' : 'h-16'}`}
+              className={`transition-all duration-300 object-contain drop-shadow-sm group-hover:scale-105 flex-shrink-0 w-auto ${showWhiteNavbar ? 'h-10 md:h-12' : 'h-12 md:h-16'}`}
             />
-            <div className={`flex flex-col justify-center transition-opacity duration-300 ${showWhiteNavbar ? 'opacity-100' : 'opacity-90'}`}>
-              <span className={`font-extrabold leading-none tracking-tight font-sans drop-shadow-sm transition-colors duration-300 ${showWhiteNavbar ? 'text-xl text-blue-950' : 'text-2xl md:text-3xl text-white'}`}>
+            <div className={`flex flex-col justify-center transition-opacity duration-300 min-w-0 ${showWhiteNavbar ? 'opacity-100' : 'opacity-90'}`}>
+              <span className={`font-extrabold leading-none tracking-tight font-sans drop-shadow-sm transition-colors duration-300 truncate ${showWhiteNavbar ? 'text-lg md:text-xl text-blue-950' : 'text-xl md:text-3xl text-white'}`}>
                 Balaji Pharma
               </span>
-              <span className={`text-[10px] md:text-xs font-bold uppercase tracking-widest mt-1 transition-colors duration-300 ${showWhiteNavbar ? 'text-blue-600' : 'text-blue-200'}`}>
+              <span className={`text-[10px] md:text-xs font-bold uppercase tracking-wider md:tracking-widest mt-0.5 md:mt-1 transition-colors duration-300 truncate ${showWhiteNavbar ? 'text-blue-600' : 'text-blue-200'}`}>
                 Wholesalers & Distributors
               </span>
             </div>
