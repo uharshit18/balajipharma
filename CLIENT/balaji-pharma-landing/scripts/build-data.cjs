@@ -179,6 +179,78 @@ const generateData = async () => {
             fs.mkdirSync(dir, { recursive: true });
         }
 
+        // GENERATE SITEMAP
+        const sitemapPath = path.join(__dirname, '../public/sitemap.xml');
+
+        const escapeXml = (unsafe) => {
+            return unsafe.replace(/[<>&'"]/g, function (c) {
+                switch (c) {
+                    case '<': return '&lt;';
+                    case '>': return '&gt;';
+                    case '&': return '&amp;';
+                    case '\'': return '&apos;';
+                    case '"': return '&quot;';
+                }
+            });
+        };
+
+        let sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Static Pages -->
+  <url>
+    <loc>https://balaji-pharma.in/</loc>
+    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://balaji-pharma.in/about</loc>
+    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://balaji-pharma.in/contact</loc>
+    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://balaji-pharma.in/compliance</loc>
+    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://balaji-pharma.in/wholesale-medicines-rajasthan</loc>
+    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Brand Pages -->
+`;
+
+        companies.forEach(company => {
+            const rawSlug = company.companyName.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '-price-list';
+            // Remove leading/trailing dashes if specific regex caused them
+            const cleanSlug = rawSlug.replace(/^-+|-+$/g, '');
+            const loc = `https://balaji-pharma.in/wholesale-medicines/pharmaceutical-brands/${escapeXml(cleanSlug)}`;
+
+            sitemapContent += `  <url>
+    <loc>${loc}</loc>
+    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+`;
+        });
+
+        sitemapContent += `</urlset>`;
+
+        fs.writeFileSync(sitemapPath, sitemapContent);
+        console.log(`Successfully wrote sitemap.xml to ${sitemapPath}`);
+
         fs.writeFileSync(OUTPUT_PATH, JSON.stringify(payload)); // Minified
         console.log(`Successfully wrote master-data.json to ${OUTPUT_PATH}`);
         console.log(`Total Products: ${allProducts.length}`);
