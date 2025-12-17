@@ -191,6 +191,28 @@ const BrandPriceList: React.FC = () => {
         fetchData();
     }, [slug]);
 
+    // Dynamic Favicon Effect
+    useEffect(() => {
+        if (!brandName) return;
+
+        const snakeSlug = brandName.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '');
+        const kebabSlug = brandName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+        const logoFile = (logoMap as any)[snakeSlug] || (logoMap as any)[kebabSlug];
+
+        const link = document.querySelector("link[rel*='icon']") as HTMLLinkElement;
+
+        if (logoFile && link) {
+            link.href = `/brands/${logoFile}`;
+        } else if (link) {
+            link.href = '/assets/LOGO.png';
+        }
+
+        return () => {
+            // Cleanup: revert to default when leaving page
+            if (link) link.href = '/assets/LOGO.png';
+        };
+    }, [brandName]);
+
     const getBrandLogo = (slug: string) => {
         if (!slug) return null;
         const cleanSlug = slug.replace('-price-list', '');
