@@ -16,11 +16,11 @@ export const Hero: React.FC = () => {
             {/* Original Background Image with Overlay */}
             <div className="absolute inset-0 z-0 bg-slate-900">
                 <img
-                    src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=60&w=1200&fm=webp"
+                    src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=50&w=1200&fm=webp"
                     srcSet="
-                        https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=60&w=400&fm=webp 400w,
-                        https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=60&w=800&fm=webp 800w,
-                        https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=60&w=1200&fm=webp 1200w
+                        https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=50&w=400&fm=webp 400w,
+                        https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=50&w=800&fm=webp 800w,
+                        https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=50&w=1200&fm=webp 1200w
                     "
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 1200px"
                     alt="Pharmaceutical Warehouse"

@@ -42,6 +42,8 @@ export const Navbar: React.FC<NavbarProps> = () => {
             <img
               src={LOGO_URL}
               alt="Balaji Pharma"
+              width="97"
+              height="126"
               className={`transition-all duration-300 object-contain drop-shadow-sm group-hover:scale-105 ${showWhiteNavbar ? 'h-12' : 'h-16'}`}
             />
             <div className={`flex flex-col justify-center transition-opacity duration-300 ${showWhiteNavbar ? 'opacity-100' : 'opacity-90'}`}>

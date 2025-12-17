@@ -9,4 +9,12 @@ html {
 body {
   background-color: #f8fafc; /* slate-50 */
   color: #0f172a; /* slate-900 */
+  font-display: swap;
+}
+
+/* Ensure all fonts use swap */
+@font-face {
+  font-family: 'Inter';
+  font-display: swap;
+  src: local('Inter');
 }

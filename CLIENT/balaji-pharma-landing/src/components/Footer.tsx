@@ -20,6 +20,8 @@ export const Footer: React.FC = () => {
                      <img
                         src={LOGO_URL}
                         alt="Balaji Pharma"
+                        width="97"
+                        height="126"
                         className="h-20 w-auto object-contain bg-white/5 rounded-xl p-1"
                      />
                      <div className="flex flex-col">

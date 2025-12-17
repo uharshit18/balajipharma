@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getOptimizedLogoUrl } from '../utils/imageProxy';
 
 interface BrandCardProps {
   brand: { name: string; logo: string };
@@ -14,12 +15,18 @@ const BrandCard: React.FC<BrandCardProps> = ({ brand }) => {
   const shouldScaleUp = brand.name.includes("Indchemie") || brand.name.includes("Unimarck");
   const slug = createBrandSlug(brand.name);
 
+  // Optimize: Resize to 200px width (retina ready for 100px display) and webp
+  const optimizedLogo = getOptimizedLogoUrl(brand.logo, 200);
+
   return (
     <Link to={`/wholesale-medicines/pharmaceutical-brands/${slug}`} className="block">
       <div className="w-[180px] h-28 mx-6 flex-shrink-0 flex items-center justify-center p-4 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-blue-100 transition-all duration-300 group cursor-pointer">
         <img
-          src={brand.logo}
+          src={optimizedLogo}
           alt={`${brand.name} Logo`}
+          width="200"
+          height="100" // Estimated ratio
+          loading="lazy"
           className={`h-16 w-auto object-contain transition-all duration-300 mix-blend-multiply opacity-90 hover:opacity-100 hover:scale-110 ${shouldScaleUp ? 'scale-[1.6] hover:scale-[1.7]' : ''}`}
           onError={(e) => {
             const target = e.target as HTMLImageElement;
