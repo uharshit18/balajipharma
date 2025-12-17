@@ -40,7 +40,7 @@ export const Testimonials: React.FC = () => {
                 <div key={testimonial.id} className="bg-white/10 rounded-xl p-6 backdrop-blur-sm border border-white/5 hover:bg-white/15 transition-colors">
                   <p className="text-blue-50 italic mb-4">"{testimonial.quote}"</p>
                   <div className="flex items-center gap-4">
-                    <img src={testimonial.image} alt={testimonial.author} className="w-10 h-10 rounded-full object-cover border-2 border-white/20" />
+                    <img src={testimonial.image} alt={testimonial.author} width="40" height="40" className="w-10 h-10 rounded-full object-cover border-2 border-white/20" />
                     <div>
                       <div className="font-semibold text-white text-sm">{testimonial.author}</div>
                       <div className="text-blue-200 text-xs">{testimonial.role}</div>

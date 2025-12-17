@@ -16,7 +16,12 @@
   <link rel="preconnect" href="https://www.transparenttextures.com">
   <link rel="preconnect" href="https://i.pravatar.cc">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font CSS inlined in index.css to prevent blocking -->
+
+  <!-- Preload Inter Font (LCP Dependency) -->
+  <link rel="preload"
+    href="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hjp-Ek-_EeA.woff"
+    as="font" type="font/woff" crossorigin>
 
   <!-- Preload LCP Image (Must match Hero.tsx exactly: q=50) -->
   <link rel="preload" as="image"

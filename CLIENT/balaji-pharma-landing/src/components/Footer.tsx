@@ -33,7 +33,7 @@ export const Footer: React.FC = () => {
                         </span>
                      </div>
                   </div>
-                  <p className="text-xs leading-relaxed text-slate-500">
+                  <p className="text-xs leading-relaxed text-slate-400">
                      Your trusted wholesale medical supplier in Bhilwara, ensuring quality healthcare products reach every doorstep since 2008.<br />
                      <span className="opacity-70 mt-2 block">GST: 08ABLPU9122B1ZT</span>
                   </p>

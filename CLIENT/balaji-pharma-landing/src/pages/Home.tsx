@@ -1,15 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Hero } from '../components/Hero';
 import { BrandShowcase } from '../components/BrandShowcase';
 import { BusinessDetails } from '../components/BusinessDetails';
-import { Features } from '../components/Features';
-import { Testimonials } from '../components/Testimonials';
-import { ContactForm } from '../components/ContactForm';
-import { CoverageArea } from '../components/CoverageArea';
 import SEOHead from '../components/SEOHead';
-
 import { GoogleReviewsBadge } from '../components/GoogleReviewsBadge';
+
+// Lazy Load Below-the-Fold Components
+const Features = React.lazy(() => import('../components/Features').then(module => ({ default: module.Features })));
+const Testimonials = React.lazy(() => import('../components/Testimonials').then(module => ({ default: module.Testimonials })));
+const ContactForm = React.lazy(() => import('../components/ContactForm').then(module => ({ default: module.ContactForm })));
+const CoverageArea = React.lazy(() => import('../components/CoverageArea').then(module => ({ default: module.CoverageArea })));
+
+const SuspenseFallback = () => <div className="h-40 w-full animate-pulse bg-slate-50"></div>;
 
 const Home: React.FC = () => {
     const location = useLocation();
@@ -70,16 +73,24 @@ const Home: React.FC = () => {
             <BusinessDetails />
 
             {/* New SEO Section: Coverage Areas & Customer Segments */}
-            <CoverageArea />
+            <Suspense fallback={<SuspenseFallback />}>
+                <CoverageArea />
+            </Suspense>
 
             <div id="network">
-                <Features />
+                <Suspense fallback={<SuspenseFallback />}>
+                    <Features />
+                </Suspense>
             </div>
 
-            <Testimonials />
+            <Suspense fallback={<SuspenseFallback />}>
+                <Testimonials />
+            </Suspense>
 
             <div id="contact">
-                <ContactForm />
+                <Suspense fallback={<SuspenseFallback />}>
+                    <ContactForm />
+                </Suspense>
             </div>
         </div>
     );
