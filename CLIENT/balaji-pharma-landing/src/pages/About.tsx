@@ -8,6 +8,7 @@ const About: React.FC = () => {
             <SEOHead
                 title="About Balaji Pharma - Wholesale Distributor"
                 description="Learn about Balaji Pharma, the leading wholesale medicines supplier in Rajasthan. Reliable B2B Pharmaceutical Partner since 2010."
+                canonicalUrl="https://balaji-pharma.in/about"
             />
             <AboutComponent />
         </>

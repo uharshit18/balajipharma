@@ -69,6 +69,7 @@ export const TESTIMONIALS: TestimonialItem[] = [
 export const FOOTER_LINKS: FooterLink[] = [
   { label: 'Our Brands', href: '/wholesale-medicines-rajasthan' },
   { label: 'About Us', href: '/about' },
+  { label: 'Compliance & Licenses', href: '/compliance' },
   { label: 'Contact Support', href: '/contact' },
   { label: 'Place Order', href: `https://wa.me/${PHONE_VALUE}` },
 ];

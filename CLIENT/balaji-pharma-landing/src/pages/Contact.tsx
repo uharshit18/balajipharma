@@ -8,6 +8,7 @@ const Contact: React.FC = () => {
             <SEOHead
                 title="Contact Wholesale Pharma"
                 description="Contact Balaji Pharma for bulk orders and distributor inquiries."
+                canonicalUrl="https://balaji-pharma.in/contact"
             />
             <div className="pt-8">
                 <ContactForm />

@@ -21,6 +21,7 @@ import { BundiCity } from './pages/BundiCity';
 import CustomerSegmentPage from './pages/CustomerSegmentPage';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
+import Compliance from './pages/Compliance';
 
 const AppRoutes: React.FC = () => {
     const location = useLocation();
@@ -53,6 +54,7 @@ const AppRoutes: React.FC = () => {
                 {/* Info Pages */}
                 <Route path="/about" element={<PageTransition><About /></PageTransition>} />
                 <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+                <Route path="/compliance" element={<PageTransition><Compliance /></PageTransition>} />
                 <Route path="/privacy-policy" element={<PageTransition><PrivacyPolicy /></PageTransition>} />
                 <Route path="/terms-of-service" element={<PageTransition><TermsOfService /></PageTransition>} />
 

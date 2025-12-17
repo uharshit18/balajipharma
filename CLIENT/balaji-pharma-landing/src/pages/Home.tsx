@@ -35,38 +35,28 @@ const Home: React.FC = () => {
         }
     };
 
-    // Schema for Organization
-    const organizationSchema = JSON.stringify({
+    // WebSite Schema for "Site Name"
+    const websiteSchema = JSON.stringify({
         "@context": "https://schema.org",
-        "@type": "Organization",
+        "@type": "WebSite",
         "name": "Balaji Pharma",
-        "url": "https://balajipharma.com",
-        "logo": "https://balajipharma.com/logo.png",
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+91-9876543210",
-            "contactType": "customer service",
-            "areaServed": "IN",
-            "availableLanguage": ["en", "hi"]
-        },
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Nagori Garden",
-            "addressLocality": "Bhilwara",
-            "addressRegion": "Rajasthan",
-            "postalCode": "311001",
-            "addressCountry": "IN"
+        "alternateName": "Balaji Pharma",
+        "url": "https://balaji-pharma.in/",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://balaji-pharma.in/wholesale-medicines-rajasthan?q={search_term_string}",
+            "query-input": "required name=search_term_string"
         }
     });
 
     return (
         <div className="min-h-screen bg-white">
             <SEOHead
-                title="Wholesale Pharmaceuticals in Rajasthan | Balaji Pharma"
-                description="Leading wholesale medicine supplier in Rajasthan. Authorized distributor for Cipla, Sun Pharma, and 100+ brands. Serving Jaipur, Udaipur, Bhilwara with bulk medicines."
-                keywords="wholesale pharmaceuticals rajasthan, medicine distributor bhilwara, bulk medicine supplier jaipur, pharma stockist rajasthan"
-                canonicalUrl="https://balajipharma.com/"
-                schema={organizationSchema}
+                title="Balaji Pharma | Wholesale Medicines & Stockist in Rajasthan"
+                description="Balaji Pharma is Rajasthan's leading wholesale medicine supplier. Authorized distributor for Cipla, Sun Pharma, and 100+ brands. Bulk delivery to Jaipur, Udaipur, and Bhilwara."
+                keywords="wholesale pharmaceuticals rajasthan, medicine distributor bhilwara, bulk medicine supplier jaipur, pharma stockist rajasthan, Balaji Pharma"
+                canonicalUrl="https://balaji-pharma.in"
+                schema={websiteSchema}
             />
 
             {/* Original Design Components */}

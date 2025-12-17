@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from './Button';
-import { Calendar, TrendingUp, Users, ShieldCheck, Truck, HeartHandshake, Quote, Play } from 'lucide-react';
+import { Calendar, TrendingUp, Users, ShieldCheck, Truck, HeartHandshake, Quote, Play, Thermometer } from 'lucide-react';
 import { RajasthanMap } from './RajasthanMap';
 import { BrandShowcase } from './BrandShowcase';
 import { BalajiJourneySection } from './BalajiJourneySection';
@@ -200,7 +200,7 @@ export const About: React.FC = () => {
                             </p>
                         </div>
 
-                        {/* 2. Business and Ops Team */}
+                        {/* 2. Quality & Compliance (New E-E-A-T Signal) */}
                         <div className="group relative bg-slate-50 rounded-2xl p-8 hover:bg-slate-900 hover:text-white transition-all duration-300 shadow-sm hover:shadow-2xl">
                             <div className="absolute top-0 left-0 w-2 h-full bg-emerald-500 rounded-l-2xl"></div>
                             <div className="mb-6">
@@ -208,10 +208,10 @@ export const About: React.FC = () => {
                                     <ShieldCheck size={32} />
                                 </div>
                             </div>
-                            <h3 className="text-2xl font-bold mb-2">Business & Ops Team</h3>
-                            <p className="text-sm font-semibold text-slate-400 mb-4 group-hover:text-emerald-300 uppercase tracking-wider">Efficiency</p>
+                            <h3 className="text-2xl font-bold mb-2">Quality & Compliance</h3>
+                            <p className="text-sm font-semibold text-slate-400 mb-4 group-hover:text-emerald-300 uppercase tracking-wider">Pharmacist Oversight</p>
                             <p className="text-slate-600 group-hover:text-slate-300 leading-relaxed">
-                                Our zero-error operations team manages inventory with military precision. They ensure every batch is verified, stored in temperature-controlled zones, and dispatched correctly.
+                                Our operations are strictly supervised by registered pharmacists. Every batch undergoes rigorous verification for <strong>authenticity, expiry, and cold-chain integrity</strong> before dispatch.
                             </p>
                         </div>
 
@@ -292,7 +292,7 @@ export const About: React.FC = () => {
                         {[
                             { title: "Reliability", icon: Truck, desc: "We pride ourselves on consistent stock availability and dependable schedules that pharmacies can count on." },
                             { title: "Integrity", icon: ShieldCheck, desc: "100% Authentic products sourced directly from trusted manufacturers. Zero compromise on quality." },
-                            { title: "Efficiency", icon: TrendingUp, desc: "A robust distribution network that minimizes downtime for our partners, ensuring rapid restocking." },
+                            { title: "Cold Chain Infrastructure", icon: Thermometer, desc: "State-of-the-art temperature-controlled warehousing ensures potency of sensitive vaccines and injectables." },
                             { title: "Partnership", icon: HeartHandshake, desc: "We act as a growth partner, offering market insights and support to help our retailers thrive." }
                         ].map((item, i) => (
                             <div key={i} className="bg-slate-50 p-8 rounded-2xl border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">

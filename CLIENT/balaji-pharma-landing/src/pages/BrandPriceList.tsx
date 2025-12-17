@@ -227,22 +227,67 @@ const BrandPriceList: React.FC = () => {
                 description={seoDescription || `Get the latest ${brandName} medicine price list for retailers in Rajasthan. Bulk discounts on all ${brandName} products.`}
                 keywords={seoKeywords}
                 canonicalUrl={`https://balaji-pharma.in/${slug}`}
-                schema={JSON.stringify({
-                    "@context": "https://schema.org",
-                    "@type": "WholesaleStore",
-                    "name": `Balaji Pharma - ${brandName} Distributor`,
-                    "description": `Authorized wholesale stockist for ${brandName} medicines in Rajasthan. Serving Jaipur, Jodhpur, Udaipur, and all major districts.`,
-                    "url": `https://balaji-pharma.in/${slug}`,
-                    "telephone": PHONE_VALUE,
-                    "address": {
-                        "@type": "PostalAddress",
-                        "addressLocality": "Jaipur",
-                        "addressRegion": "Rajasthan",
-                        "addressCountry": "IN"
+                schema={JSON.stringify([
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "BreadcrumbList",
+                        "itemListElement": [
+                            {
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "Home",
+                                "item": "https://balaji-pharma.in"
+                            },
+                            {
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "Brands",
+                                "item": "https://balaji-pharma.in/wholesale-medicines-rajasthan"
+                            },
+                            {
+                                "@type": "ListItem",
+                                "position": 3,
+                                "name": brandName,
+                                "item": `https://balaji-pharma.in/${slug}`
+                            }
+                        ]
                     },
-                    "areaServed": "Rajasthan",
-                    "priceRange": "₹₹"
-                })}
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "WholesaleStore",
+                        "name": `Balaji Pharma - ${brandName} Distributor`,
+                        "description": `Authorized wholesale stockist for ${brandName} medicines in Rajasthan. Serving Jaipur, Jodhpur, Udaipur.`,
+                        "image": brandLogoUrl ? `https://balaji-pharma.in${brandLogoUrl}` : undefined,
+                        "telephone": PHONE_VALUE,
+                        "address": {
+                            "@type": "PostalAddress",
+                            "addressLocality": "Bhilwara",
+                            "addressRegion": "Rajasthan",
+                            "postalCode": "311001",
+                            "addressCountry": "IN"
+                        },
+                        "priceRange": "₹₹"
+                    },
+                    ...products.slice(0, 10).map(product => ({
+                        "@context": "https://schema.org",
+                        "@type": "Product",
+                        "name": product.productName,
+                        "brand": {
+                            "@type": "Brand",
+                            "name": brandName
+                        },
+                        "offers": {
+                            "@type": "Offer",
+                            "priceCurrency": "INR",
+                            "price": product.saleRate,
+                            "availability": "https://schema.org/InStock",
+                            "seller": {
+                                "@type": "WholesaleStore",
+                                "name": "Balaji Pharma"
+                            }
+                        }
+                    }))
+                ])}
             />
 
 
