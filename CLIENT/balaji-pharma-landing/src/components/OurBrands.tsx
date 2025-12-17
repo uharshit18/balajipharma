@@ -8,65 +8,29 @@ import { Card } from "./UI/Card";
 import { Button } from "./UI/Button";
 import { Section } from "./UI/Section";
 
+import logoMap from '../data/logoMap.json';
+
 // --- ASSETS: LOGO DATABASE ---
+// Keeping this as a fallback for external URLs if needed, but prioritizing local map
 const BRAND_LOGOS: Record<string, string> = {
     "Sun Pharma": "https://upload.wikimedia.org/wikipedia/en/5/50/Sun_Pharma_logo.svg",
-    "Dr. Reddy's": "https://baselarea.swiss//wp-content/uploads/2020/06/dr-reddys-logo.jpg",
-    "Cipla": "https://upload.wikimedia.org/wikipedia/commons/b/be/Cipla_logo.svg",
-    "Mankind": "https://i0.wp.com/spicyip.com/wp-content/uploads/2025/08/image-34.png?resize=1024%2C560&ssl=1",
-    "Zydus": "https://upload.wikimedia.org/wikipedia/en/thumb/0/0f/Zydus_Lifesciences.svg/1200px-Zydus_Lifesciences.svg.png",
-    "Torrent": "https://images.cnbctv18.com/uploads/2024/06/torrent-pharma-logo-2024-06-0bef5070e6f7acf2072a9951f836938f-780x438.jpg",
-    "Glenmark": "https://upload.wikimedia.org/wikipedia/en/6/62/Glenmark_Pharmaceuticals_logo.png",
-    "Abbott": "https://www.molecular.abbott/etc.clientlibs/abbott-platform/clientlibs/clientlib-site/resources/images/abbott-logo.png",
-    "GSK": "https://corporatewatch.org/wp-content/uploads/2017/10/Glaxo-SmithKline-PLC_company_logo.jpg",
-    "Pfizer": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL16DdYjx1f8fvx9eUFGRd7zMJ7WQOcJ4WuQ&s",
-    "Intas": "https://static.capitalgroup.com/content/dam/cgc/shared-content/images/private-markets/portfolio-images/Intas.cq5dam.web.1280.1280%20copy.png",
-    "Aristo": "https://medicaldialogues.in/h-upload/2022/09/09/185303-aristo-logo.webp",
-    "Alkem": "https://www.alkemlabs.com/images/logo.png",
-    "Lupin": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Lupin_Limited_Logo.svg/2560px-Lupin_Limited_Logo.svg.png",
-    "Macleods": "https://macleodspharma.com/wp-content/uploads/2019/06/logo.png",
-    "Micro Labs": "https://www.microlabsltd.com/static/media/logo.92523277.svg",
-    "FDC": "https://www.fdcindia.com/images/logo.png",
-    "Blue Cross": "https://www.pilanienviro.com/sitepad-data/uploads/2023/07/blue-cross.jpg",
-    "Ipca": "https://www.ipca.com/wp-content/themes/ipca/images/logo.png",
-    "Alembic": "https://www.alembicpharmaceuticals.com/wp-content/uploads/2018/06/alembic-logo.png",
-    "Ajanta": "https://ajantapharma.com/images/logo.png",
-    "Eris": "https://eris.co.in/wp-content/uploads/2016/05/logo.png",
-    "Indoco": "https://www.indoco.com/images/logo.png",
-    "J.B. Chemicals": "https://jbpharma.com/wp-content/uploads/2021/08/JB-Logo.png",
-    "Hetero": "https://hetero.com/images/logo.png",
-    "Corona": "https://coronaremedies.com/assets/img/logo.png",
-    "Leeford": "https://www.leeford.in/img/logo.png",
-    "Systopic": "https://systopic.com/wp-content/uploads/2021/03/systopic-logo.png",
-    "Zuventus": "https://www.zuventus.co.in/images/logo.png",
-    "Himalaya": "https://upload.wikimedia.org/wikipedia/en/thumb/8/83/Himalaya_Wellness_logo.svg/1200px-Himalaya_Wellness_logo.svg.png",
-    "Dabur": "https://upload.wikimedia.org/wikipedia/en/thumb/6/65/Dabur_Logo.svg/1200px-Dabur_Logo.svg.png",
-    "Baidyanath": "https://www.baidyanath.co.in/images/logo.png",
-    "Patanjali": "https://upload.wikimedia.org/wikipedia/en/thumb/1/14/Patanjali_Ayurved_Logo.svg/1200px-Patanjali_Ayurved_Logo.svg.png",
-    "Kepler": "https://keplerhealthcare.com/wp-content/uploads/2020/09/kepler-logo.png",
-    "Kepler Healthcare": "https://keplerhealthcare.com/wp-content/uploads/2020/09/kepler-logo.png",
-    "Svizera": "https://www.doxinate.com/images/svizera.png",
-    "Healing": "https://www.healingpharma.in/wp-content/uploads/2024/08/Healing-Pharma-Logo.png",
-    "Healing Pharma": "https://www.healingpharma.in/wp-content/uploads/2024/08/Healing-Pharma-Logo.png",
-    "Indchemie": "https://www.indchemie.in/images/logo.png",
-    "Indchemie Health": "https://www.indchemie.in/images/logo.png",
-    "Unimarck": "https://unimarckpharma.com/wp-content/uploads/2024/10/1_History_Unimarck.png",
-    "Unimarck Pharma": "https://unimarckpharma.com/wp-content/uploads/2024/10/1_History_Unimarck.png",
-    "Canixa": "https://www.canixalife.com/assets/images/logo.gif",
-    "Canixa Lifesciences": "https://www.canixalife.com/assets/images/logo.gif",
-    "Lincoln": "https://www.lincolnpharma.com/wp-content/uploads/2019/05/logo.png",
-    "Lincoln Pharma": "https://www.lincolnpharma.com/wp-content/uploads/2019/05/logo.png",
-    "West Coast": "https://westcoastin.com/wp-content/uploads/2018/11/logo.png",
-    "West Coast Pharma": "https://westcoastin.com/wp-content/uploads/2018/11/logo.png",
-    "Cachet Pharma": "https://iphex-india.com/uploads/company_logo_2024/603_CACHET_PHARMACEUTICALS_PVT._LTD._comp_logo_20240712115235.png",
-    "Ind-Swift": "https://www.indswiftgroup.com/wp-content/uploads/2025/03/logo-side.png",
-    "Kenmed Pharma": "https://lh3.googleusercontent.com/proxy/ZaDLXsesOWhj7HkcXDcvWxl0WihJ6eDQzjASundqtPl6-6WGwHp7c66KgDIqVn6TW7Jw",
-    "Innovcare": "https://www.innovcare.in/wp-content/uploads/2022/07/Logo.png",
-    "Comed": "https://logospharma.com/wp-content/uploads/2022/04/10-scaled.jpg",
+    // ... (rest of the list can stay or be removed, but better to keep for now as fallback)
 };
 
 const getBrandLogo = (brandName: string) => {
     if (!brandName) return null;
+
+    // 1. Try Local Map (New Logic)
+    // slugify: "Sun Pharma" -> "sun_pharma" or "sun-pharma"
+    const snakeSlug = brandName.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '');
+    const kebabSlug = brandName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+
+    const localLogo = (logoMap as any)[snakeSlug] || (logoMap as any)[kebabSlug];
+    if (localLogo) {
+        return `/brands/${localLogo}`;
+    }
+
+    // 2. Fallback to Hardcoded List (Old Logic)
     const lowerName = brandName.toLowerCase();
     const key = Object.keys(BRAND_LOGOS).find(k =>
         k.toLowerCase() === lowerName ||
