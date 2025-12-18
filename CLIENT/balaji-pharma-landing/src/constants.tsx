@@ -5,6 +5,12 @@ export const PHONE_DISPLAY = "+91 94143-72078";
 export const PHONE_VALUE = '919414372078';
 export const EMAIL_CONTACT = "balajipharmabhl@gmail.com";
 
+export const EMAILJS_CONFIG = {
+  SERVICE_ID: "YOUR_SERVICE_ID", // Placeholder
+  TEMPLATE_ID: "YOUR_TEMPLATE_ID", // Placeholder
+  PUBLIC_KEY: "YOUR_PUBLIC_KEY", // Placeholder
+};
+
 export const NAV_ITEMS: NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about' },

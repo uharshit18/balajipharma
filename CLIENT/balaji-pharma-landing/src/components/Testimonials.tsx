@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { TESTIMONIALS } from '../constants';
 import { Button } from './Button';
 import { RajasthanMap } from './RajasthanMap';
@@ -51,8 +52,12 @@ export const Testimonials: React.FC = () => {
             </div>
 
             <div className="mt-10 flex flex-wrap gap-4">
-              <Button variant="white">Request a Partner Quote</Button>
-              <Button variant="outline">Contact Our Sales Team</Button>
+              <Link to="/contact">
+                <Button variant="white">Request a Partner Quote</Button>
+              </Link>
+              <Link to="/contact">
+                <Button variant="outline">Contact Our Sales Team</Button>
+              </Link>
             </div>
           </div>
         </div>

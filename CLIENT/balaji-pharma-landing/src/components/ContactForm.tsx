@@ -1,45 +1,136 @@
 import React, { useState } from 'react';
 import { Button } from './Button';
-import { Phone, Mail, MapPin, Send, CheckCircle2, MessageCircle } from 'lucide-react';
-import { PHONE_VALUE, PHONE_DISPLAY, EMAIL_CONTACT } from '../constants';
+import { Phone, Mail, MapPin, Send, MessageCircle, Building2, ShoppingBag, ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { PHONE_VALUE, PHONE_DISPLAY, EMAIL_CONTACT, EMAILJS_CONFIG } from '../constants';
+import emailjs from '@emailjs/browser';
+
+type Segment = 'retailer' | 'brand' | null;
+type SubmissionMethod = 'whatsapp' | 'email' | null;
 
 export const ContactForm: React.FC = () => {
+    const [activeSegment, setActiveSegment] = useState<Segment>(null);
+    const [submissionMethod, setSubmissionMethod] = useState<SubmissionMethod>(null);
+    const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
     const [formData, setFormData] = useState({
+        // Common
         name: '',
-        orgName: '',
         phone: '',
         email: '',
         city: '',
-        message: ''
+        message: '',
+
+        // Retailer Specific
+        businessName: '',
+        drugLicense: 'yes', // yes, no, applied
+
+        // Brand Specific
+        companyName: '',
+        website: '',
+        productCategory: 'generic' // generic, ethical, otc, surgical
     });
 
-    const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (!submissionMethod) return;
+
         setStatus('submitting');
 
-        // Construct Messages
-        const whatsappMessage = `*New Inquiry via Website* %0A%0A*Name:* ${formData.name}%0A*Org:* ${formData.orgName}%0A*Phone:* ${formData.phone}%0A*City:* ${formData.city}%0A*Message:* ${formData.message}`;
+        // Construct Message Body
+        let messageBody = "";
+        let subject = "";
 
-        // Simulate "sending" then redirect
-        setTimeout(() => {
-            setStatus('success');
+        if (activeSegment === 'retailer') {
+            subject = `[New Retailer Order] ${formData.businessName} - ${formData.city}`;
+            messageBody = `
+*New Retailer/Hospital Inquiry*
+--------------------------------
+*Name:* ${formData.name}
+*Business:* ${formData.businessName}
+*City:* ${formData.city}
+*Phone:* ${formData.phone}
+*Email:* ${formData.email}
+*Drug License:* ${formData.drugLicense.toUpperCase()}
+--------------------------------
+*Message:*
+${formData.message}
+            `;
+        } else {
+            subject = `[New Partner Proposal] ${formData.companyName}`;
+            messageBody = `
+*New Brand Partnership Proposal*
+--------------------------------
+*Name:* ${formData.name}
+*Company:* ${formData.companyName}
+*Website:* ${formData.website}
+*Category:* ${formData.productCategory.toUpperCase()}
+*Phone:* ${formData.phone}
+*Email:* ${formData.email}
+--------------------------------
+*Message:*
+${formData.message}
+            `;
+        }
 
-            // Open WhatsApp (Primary)
-            window.open(`https://wa.me/${PHONE_VALUE}?text=${whatsappMessage}`, '_blank');
-
-            // Reset form after delay
+        if (submissionMethod === 'whatsapp') {
+            // WhatsApp Logic
             setTimeout(() => {
-                setStatus('idle');
-                setFormData({ name: '', orgName: '', phone: '', email: '', city: '', message: '' });
-            }, 3000);
-        }, 1000);
+                setStatus('success');
+                const encodedMessage = encodeURIComponent(messageBody);
+                window.open(`https://wa.me/${PHONE_VALUE}?text=${encodedMessage}`, '_blank');
+                resetForm();
+            }, 1000);
+        } else {
+            // EmailJS Logic
+            try {
+                // If keys are placeholders, mock success to prevent crash
+                if (EMAILJS_CONFIG.PUBLIC_KEY === "YOUR_PUBLIC_KEY") {
+                    console.warn("EmailJS Keys are placeholders. Simulating success.");
+                    setTimeout(() => {
+                        setStatus('success');
+                        resetForm();
+                    }, 1500);
+                    return;
+                }
+
+                await emailjs.send(
+                    EMAILJS_CONFIG.SERVICE_ID,
+                    EMAILJS_CONFIG.TEMPLATE_ID,
+                    {
+                        subject: subject,
+                        message: messageBody,
+                        from_name: formData.name,
+                        reply_to: formData.email,
+                        to_email: EMAIL_CONTACT
+                    },
+                    EMAILJS_CONFIG.PUBLIC_KEY
+                );
+                setStatus('success');
+                resetForm();
+            } catch (error) {
+                console.error("EmailJS Error:", error);
+                setStatus('error');
+                setTimeout(() => setStatus('idle'), 3000);
+            }
+        }
+    };
+
+    const resetForm = () => {
+        setTimeout(() => {
+            setStatus('idle');
+            setFormData({
+                name: '', phone: '', email: '', city: '', message: '',
+                businessName: '', drugLicense: 'yes',
+                companyName: '', website: '', productCategory: 'generic'
+            });
+            setActiveSegment(null);
+            setSubmissionMethod(null);
+        }, 5000);
     };
 
     return (
@@ -51,213 +142,203 @@ export const ContactForm: React.FC = () => {
             </div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="text-center mb-16">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-sm font-bold mb-4">
-                        <Mail size={16} /> Get in Touch
-                    </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Ready to Streamline Your Pharma Procurement?</h2>
+                <div className="text-center mb-12">
+                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Partner with Balaji Pharma</h2>
                     <p className="text-slate-600 max-w-2xl mx-auto text-lg">
-                        Connect with Balaji Pharma today. Whether you are a retailer, hospital, or manufacturer, we are here to support your healthcare logistics needs.
+                        Select your profile to get started with the most relevant inquiry process.
                     </p>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 rounded-3xl overflow-hidden shadow-2xl bg-white border border-gray-100">
 
-                    {/* Left Column: Contact Info */}
+                    {/* Left Sidebar: Contact Info */}
                     <div className="bg-slate-900 p-10 text-white flex flex-col justify-between relative overflow-hidden">
                         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
                         <div className="relative z-10">
-                            <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-                            <p className="text-slate-300 mb-10 leading-relaxed">
-                                Reach out via WhatsApp for the fastest response, or visit our headquarters.
-                            </p>
-
-                            <div className="space-y-8">
-                                {/* Primary WhatsApp CTA in Sidebar */}
-                                <a
-                                    href={`https://wa.me/${PHONE_VALUE}`}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="flex items-center gap-4 bg-green-600 hover:bg-green-500 p-4 rounded-xl transition-all shadow-lg hover:shadow-green-900/30 group cursor-pointer border border-green-500/50"
-                                >
-                                    <div className="bg-white p-2 rounded-full text-green-600 group-hover:scale-110 transition-transform">
-                                        <MessageCircle size={24} fill="currentColor" />
-                                    </div>
+                            <h3 className="text-2xl font-bold mb-6">Quick Contact</h3>
+                            <div className="space-y-6">
+                                <a href={`https://wa.me/${PHONE_VALUE}`} target="_blank" rel="noreferrer" className="flex items-center gap-4 bg-white/10 p-4 rounded-xl hover:bg-white/20 transition-all cursor-pointer">
+                                    <MessageCircle className="text-green-400" size={24} />
                                     <div>
-                                        <p className="text-xs text-green-100 font-semibold uppercase tracking-wider mb-0.5">Recommended</p>
-                                        <p className="text-lg font-bold text-white">WhatsApp Us</p>
+                                        <p className="text-xs text-slate-400 uppercase font-semibold">WhatsApp Support</p>
+                                        <p className="text-lg font-bold">{PHONE_DISPLAY}</p>
                                     </div>
                                 </a>
-
-                                <div className="flex items-start gap-4 pt-4">
-                                    <div className="bg-white/10 p-3 rounded-lg text-blue-400">
-                                        <Phone size={24} />
-                                    </div>
+                                <div className="flex items-start gap-4">
+                                    <MapPin className="text-blue-400 mt-1" size={20} />
                                     <div>
-                                        <p className="text-sm text-slate-400 font-semibold uppercase tracking-wider mb-1">Call Us</p>
-                                        <a href="tel:01482239078" className="block text-lg font-semibold hover:text-blue-300 transition-colors">01482-239078</a>
-                                        <a href={`tel:${PHONE_VALUE}`} className="block text-lg font-semibold hover:text-blue-300 transition-colors">{PHONE_DISPLAY}</a>
+                                        <p className="text-sm text-slate-400">Headquarters</p>
+                                        <p className="font-medium">Nagori Garden, Bhilwara, Rajasthan</p>
                                     </div>
                                 </div>
-
                                 <div className="flex items-start gap-4">
-                                    <div className="bg-white/10 p-3 rounded-lg text-blue-400">
-                                        <Mail size={24} />
-                                    </div>
+                                    <Mail className="text-blue-400 mt-1" size={20} />
                                     <div>
-                                        <p className="text-sm text-slate-400 font-semibold uppercase tracking-wider mb-1">Email Us</p>
-                                        <a href={`mailto:${EMAIL_CONTACT}`} className="block text-lg font-semibold hover:text-blue-300 transition-colors break-all">{EMAIL_CONTACT}</a>
-                                    </div>
-                                </div>
-
-                                <div className="flex items-start gap-4">
-                                    <div className="bg-white/10 p-3 rounded-lg text-blue-400">
-                                        <MapPin size={24} />
-                                    </div>
-                                    <div>
-                                        <p className="text-sm text-slate-400 font-semibold uppercase tracking-wider mb-1">Visit HQ</p>
-                                        <p className="text-lg font-semibold leading-snug">
-                                            B-6, Fateh Tower,<br />
-                                            Nagori Garden, Bhilwara,<br />
-                                            Rajasthan 311001
-                                        </p>
+                                        <p className="text-sm text-slate-400">Email Us</p>
+                                        <p className="font-medium">{EMAIL_CONTACT}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Right Column: Form with Priority WhatsApp Block */}
-                    <div className="lg:col-span-2 p-10 bg-white flex flex-col h-full">
+                    {/* Right Column: Progressive Form */}
+                    <div className="lg:col-span-2 p-8 md:p-12 bg-white flex flex-col h-full transition-all">
 
-                        {/* Priority Action Block */}
-                        <div className="bg-green-50 border border-green-100 rounded-2xl p-6 mb-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
-                            <div>
-                                <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-                                    <MessageCircle className="text-green-600" fill="currentColor" />
-                                    Get Faster Response
-                                </h3>
-                                <p className="text-slate-600 text-sm mt-1">Average response time: <span className="font-semibold text-green-700">under 15 minutes</span> during working hours.</p>
-                            </div>
-                            <a
-                                href={`https://wa.me/${PHONE_VALUE}`}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="w-full sm:w-auto bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition-all shadow-md active:scale-95 whitespace-nowrap"
-                            >
-                                Chat on WhatsApp
-                            </a>
-                        </div>
+                        {/* Step 1: Segment Selection */}
+                        {!activeSegment ? (
+                            <div className="flex flex-col h-full justify-center">
+                                <h3 className="text-2xl font-bold text-slate-800 mb-8 text-center">How can we help you today?</h3>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <button
+                                        onClick={() => setActiveSegment('retailer')}
+                                        className="group p-8 border-2 border-slate-100 rounded-2xl hover:border-brandBlue hover:bg-blue-50/50 transition-all text-left flex flex-col gap-4 relative overflow-hidden"
+                                    >
+                                        <div className="bg-blue-100 w-14 h-14 rounded-full flex items-center justify-center text-brandBlue mb-2 group-hover:scale-110 transition-transform">
+                                            <ShoppingBag size={28} />
+                                        </div>
+                                        <div>
+                                            <h4 className="text-xl font-bold text-slate-900 mb-2">I am a Retailer / Hospital</h4>
+                                            <p className="text-slate-600 text-sm">Looking to procure medicines at wholesale rates.</p>
+                                        </div>
+                                        <ArrowRight className="absolute bottom-8 right-8 text-brandBlue opacity-0 group-hover:opacity-100 transition-all -translate-x-4 group-hover:translate-x-0" />
+                                    </button>
 
-                        {/* Divider */}
-                        <div className="relative flex items-center py-4 mb-8">
-                            <div className="flex-grow border-t border-slate-200"></div>
-                            <span className="flex-shrink-0 mx-4 text-slate-400 text-sm font-medium">Or send a detailed enquiry below</span>
-                            <div className="flex-grow border-t border-slate-200"></div>
-                        </div>
-
-                        <form onSubmit={handleSubmit} className="space-y-6 flex-1">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">Full Name <span className="text-red-500">*</span></label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        name="name"
-                                        required
-                                        className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-brandBlue focus:ring-2 focus:ring-blue-100 transition-all outline-none"
-                                        placeholder="Your Name"
-                                        value={formData.name}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="orgName" className="block text-sm font-medium text-slate-700 mb-2">Pharmacy / Hospital</label>
-                                    <input
-                                        type="text"
-                                        id="orgName"
-                                        name="orgName"
-                                        className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-brandBlue focus:ring-2 focus:ring-blue-100 transition-all outline-none"
-                                        placeholder="Your Business Name"
-                                        value={formData.orgName}
-                                        onChange={handleChange}
-                                    />
+                                    <button
+                                        onClick={() => setActiveSegment('brand')}
+                                        className="group p-8 border-2 border-slate-100 rounded-2xl hover:border-purple-500 hover:bg-purple-50/50 transition-all text-left flex flex-col gap-4 relative overflow-hidden"
+                                    >
+                                        <div className="bg-purple-100 w-14 h-14 rounded-full flex items-center justify-center text-purple-600 mb-2 group-hover:scale-110 transition-transform">
+                                            <Building2 size={28} />
+                                        </div>
+                                        <div>
+                                            <h4 className="text-xl font-bold text-slate-900 mb-2">I am a Pharma Brand</h4>
+                                            <p className="text-slate-600 text-sm">Looking to expand distribution network in Rajasthan.</p>
+                                        </div>
+                                        <ArrowRight className="absolute bottom-8 right-8 text-purple-600 opacity-0 group-hover:opacity-100 transition-all -translate-x-4 group-hover:translate-x-0" />
+                                    </button>
                                 </div>
                             </div>
-
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-2">Phone Number <span className="text-red-500">*</span></label>
-                                    <input
-                                        type="tel"
-                                        id="phone"
-                                        name="phone"
-                                        required
-                                        pattern="[0-9]{10}"
-                                        className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-brandBlue focus:ring-2 focus:ring-blue-100 transition-all outline-none"
-                                        placeholder="10-digit mobile number"
-                                        value={formData.phone}
-                                        onChange={handleChange}
-                                    />
+                        ) : (
+                            // Step 2: Form Fields
+                            <form onSubmit={handleSubmit} className="flex flex-col h-full animate-fadeIn">
+                                <div className="flex items-center justify-between mb-8 pb-4 border-b border-slate-100">
+                                    <h3 className="text-xl font-bold text-slate-800">
+                                        {activeSegment === 'retailer' ? 'Retailer / Hospital Inquiry' : 'Brand Partnership Inquiry'}
+                                    </h3>
+                                    <button
+                                        type="button"
+                                        onClick={() => setActiveSegment(null)}
+                                        className="text-sm text-slate-500 hover:text-brandBlue flex items-center gap-1"
+                                    >
+                                        <ArrowLeft size={16} /> Change
+                                    </button>
                                 </div>
-                                <div>
-                                    <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-brandBlue focus:ring-2 focus:ring-blue-100 transition-all outline-none"
-                                        placeholder="you@example.com"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                            </div>
 
-                            <div>
-                                <label htmlFor="city" className="block text-sm font-medium text-slate-700 mb-2">City / District <span className="text-red-500">*</span></label>
-                                <input
-                                    type="text"
-                                    id="city"
-                                    name="city"
-                                    required
-                                    className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-brandBlue focus:ring-2 focus:ring-blue-100 transition-all outline-none"
-                                    placeholder="e.g. Bhilwara"
-                                    value={formData.city}
-                                    onChange={handleChange}
-                                />
-                            </div>
+                                <div className="space-y-6 flex-grow">
+                                    {/* Common Fields */}
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div>
+                                            <label className="block text-sm font-medium text-slate-700 mb-2">Your Name *</label>
+                                            <input required name="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-brandBlue outline-none" placeholder="John Doe" />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-slate-700 mb-2">Phone Number *</label>
+                                            <input required name="phone" type="tel" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-brandBlue outline-none" placeholder="+91..." />
+                                        </div>
+                                    </div>
 
-                            <div>
-                                <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">Message</label>
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    rows={3}
-                                    className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-brandBlue focus:ring-2 focus:ring-blue-100 transition-all outline-none resize-none"
-                                    placeholder="I am interested in..."
-                                    value={formData.message}
-                                    onChange={handleChange}
-                                ></textarea>
-                            </div>
-
-                            <div className="pt-2">
-                                <Button
-                                    type="submit"
-                                    variant="white"
-                                    className="w-full md:w-auto text-lg px-8 py-3 shadow-sm border-slate-300 text-slate-600 hover:bg-slate-50 flex items-center justify-center gap-2"
-                                    disabled={status === 'submitting' || status === 'success'}
-                                >
-                                    {status === 'submitting' ? (
-                                        <>Opening WhatsApp...</>
-                                    ) : status === 'success' ? (
-                                        <><CheckCircle2 /> Request Sent!</>
+                                    {/* Segment Specific Fields */}
+                                    {activeSegment === 'retailer' ? (
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                            <div className="md:col-span-2">
+                                                <label className="block text-sm font-medium text-slate-700 mb-2">Pharmacy / Hospital Name *</label>
+                                                <input required name="businessName" value={formData.businessName} onChange={handleChange} className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-brandBlue outline-none" placeholder="e.g. City Life Pharmacy" />
+                                            </div>
+                                            <div>
+                                                <label className="block text-sm font-medium text-slate-700 mb-2">City *</label>
+                                                <input required name="city" value={formData.city} onChange={handleChange} className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-brandBlue outline-none" placeholder="e.g. Bhilwara" />
+                                            </div>
+                                            <div>
+                                                <label className="block text-sm font-medium text-slate-700 mb-2">Drug License Status</label>
+                                                <select name="drugLicense" value={formData.drugLicense} onChange={handleChange} className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-brandBlue outline-none">
+                                                    <option value="yes">Available</option>
+                                                    <option value="no">Not Available</option>
+                                                    <option value="applied">Applied For</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     ) : (
-                                        <><Send size={18} /> Send Inquiry via WhatsApp</>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                            <div className="md:col-span-2">
+                                                <label className="block text-sm font-medium text-slate-700 mb-2">Company Name *</label>
+                                                <input required name="companyName" value={formData.companyName} onChange={handleChange} className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-brandBlue outline-none" placeholder="e.g. Zenith Healthcare" />
+                                            </div>
+                                            <div>
+                                                <label className="block text-sm font-medium text-slate-700 mb-2">Product Category</label>
+                                                <select name="productCategory" value={formData.productCategory} onChange={handleChange} className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-brandBlue outline-none">
+                                                    <option value="generic">Generic Medicines</option>
+                                                    <option value="ethical">Ethical / Branded</option>
+                                                    <option value="otc">OTC / Consumer Health</option>
+                                                    <option value="surgical">Surgical / Devices</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label className="block text-sm font-medium text-slate-700 mb-2">Website (Optional)</label>
+                                                <input name="website" value={formData.website} onChange={handleChange} className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-brandBlue outline-none" placeholder="https://..." />
+                                            </div>
+                                        </div>
                                     )}
-                                </Button>
-                            </div>
-                        </form>
+
+                                    <div>
+                                        <label className="block text-sm font-medium text-slate-700 mb-2">Message (Optional)</label>
+                                        <textarea name="message" value={formData.message} onChange={handleChange} rows={3} className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-brandBlue outline-none resize-none" placeholder="Any specific requirements..."></textarea>
+                                    </div>
+
+                                    {/* Email Field if submitting via Email */}
+                                    <div>
+                                        <label className="block text-sm font-medium text-slate-700 mb-2">Email Address *</label>
+                                        <input required name="email" type="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-brandBlue outline-none" placeholder="official@company.com" />
+                                    </div>
+                                </div>
+
+                                {/* Action Buttons */}
+                                <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <button
+                                        type="submit"
+                                        onClick={() => setSubmissionMethod('whatsapp')}
+                                        disabled={status === 'submitting' || status === 'success'}
+                                        className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-md active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
+                                    >
+                                        <MessageCircle size={20} />
+                                        {status === 'submitting' && submissionMethod === 'whatsapp' ? 'Opening...' : 'Send via WhatsApp'}
+                                    </button>
+
+                                    <button
+                                        type="submit"
+                                        onClick={() => setSubmissionMethod('email')}
+                                        disabled={status === 'submitting' || status === 'success'}
+                                        className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-900 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-md active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
+                                    >
+                                        <Mail size={20} />
+                                        {status === 'submitting' && submissionMethod === 'email' ? 'Sending...' : 'Send via Email'}
+                                    </button>
+                                </div>
+
+                                {status === 'success' && (
+                                    <div className="mt-4 p-4 bg-green-50 text-green-700 rounded-lg flex items-center gap-2 border border-green-200 animate-fadeIn">
+                                        <CheckCircle2 size={20} />
+                                        <p className="font-medium">Thank you! Your inquiry has been sent successfully.</p>
+                                    </div>
+                                )}
+
+                                {status === 'error' && (
+                                    <div className="mt-4 p-4 bg-red-50 text-red-700 rounded-lg border border-red-200 animate-fadeIn">
+                                        <p className="font-medium">Something went wrong. Please try WhatsApp instead.</p>
+                                    </div>
+                                )}
+                            </form>
+                        )}
                     </div>
                 </div>
             </div>

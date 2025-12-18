@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Building2, Users, Truck, ArrowRight } from 'lucide-react';
 import { fadeInUp } from '../utils/animations';
@@ -36,7 +36,21 @@ const JOURNEY_IMAGES = [
 
 export const BalajiJourneySection: React.FC = () => {
     const [activeImageId, setActiveImageId] = useState('collage');
+    const [isHovering, setIsHovering] = useState(false);
     const activeImage = JOURNEY_IMAGES.find(img => img.id === activeImageId) || JOURNEY_IMAGES[0];
+
+    // Auto-rotate logic
+    useEffect(() => {
+        if (isHovering) return;
+
+        const interval = setInterval(() => {
+            const currentIndex = JOURNEY_IMAGES.findIndex(img => img.id === activeImageId);
+            const nextIndex = (currentIndex + 1) % JOURNEY_IMAGES.length;
+            setActiveImageId(JOURNEY_IMAGES[nextIndex].id);
+        }, 4000); // 4 seconds per slide
+
+        return () => clearInterval(interval);
+    }, [activeImageId, isHovering]);
 
     return (
         <section id="about-journey" className="py-16 lg:py-24 bg-white overflow-hidden relative">
@@ -75,14 +89,18 @@ export const BalajiJourneySection: React.FC = () => {
                         </div>
 
                         {/* Interactive Tabs */}
-                        <div className="flex flex-col gap-3">
+                        <div
+                            className="flex flex-col gap-3"
+                            onMouseEnter={() => setIsHovering(true)}
+                            onMouseLeave={() => setIsHovering(false)}
+                        >
                             {JOURNEY_IMAGES.slice(1).map((img) => (
                                 <button
                                     key={img.id}
                                     onClick={() => setActiveImageId(img.id)}
                                     className={`flex items-center gap-4 p-4 rounded-xl border transition-all duration-300 group text-left ${activeImageId === img.id
-                                        ? 'bg-blue-50/80 border-blue-200 shadow-md ring-1 ring-blue-100'
-                                        : 'bg-white border-slate-100 hover:border-blue-200 hover:bg-slate-50'
+                                        ? 'bg-blue-50/80 border-blue-200 shadow-md ring-1 ring-blue-100 scale-[1.02]'
+                                        : 'bg-white border-slate-100 hover:border-blue-200 hover:bg-slate-50 opacity-70 hover:opacity-100 grayscale hover:grayscale-0'
                                         }`}
                                 >
                                     <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-colors ${activeImageId === img.id ? 'bg-brandBlue text-white shadow-lg shadow-blue-500/30' : 'bg-slate-100 text-slate-400 group-hover:bg-blue-100 group-hover:text-brandBlue'
@@ -124,22 +142,22 @@ export const BalajiJourneySection: React.FC = () => {
                             </AnimatePresence>
 
                             {/* Overlay Gradient */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent pointer-events-none" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent pointer-events-none" />
 
                             <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-20">
                                 <span className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-brandBlue/90 backdrop-blur-md text-white text-xs font-bold uppercase tracking-wider mb-2 shadow-lg">
                                     <activeImage.icon size={12} /> {activeImage.label}
                                 </span>
-                                <p className="text-white/90 text-sm font-medium hidden sm:block">{activeImage.description}</p>
+                                <p className="text-white/90 text-sm font-medium hidden sm:block leading-snug">{activeImage.description}</p>
                             </div>
                         </div>
 
-                        {/* Floating Badge (Now Responsive) */}
+                        {/* Floating Badge (Moved to Top-Right to prevent overlap) */}
                         <motion.div
-                            initial={{ y: 20, opacity: 0 }}
+                            initial={{ y: -20, opacity: 0 }}
                             whileInView={{ y: 0, opacity: 1 }}
                             transition={{ delay: 0.5 }}
-                            className="relative mt-6 md:mt-0 md:absolute md:-bottom-6 md:-left-12 bg-white p-4 md:p-6 rounded-2xl shadow-xl border border-gray-100 max-w-full md:max-w-[200px] flex md:block items-center justify-between md:justify-start gap-4"
+                            className="relative mt-6 md:mt-0 md:absolute md:-top-6 md:-right-6 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 max-w-full md:max-w-[200px] flex md:block items-center justify-between md:justify-start gap-4 z-30"
                         >
                             <div className="flex -space-x-3 mb-0 md:mb-3">
                                 {[1, 2, 3].map(i => (

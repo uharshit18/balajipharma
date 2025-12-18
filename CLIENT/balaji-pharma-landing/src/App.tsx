@@ -1,4 +1,5 @@
 import React from 'react';
+import { Analytics } from "@vercel/analytics/react";
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { CartDrawer } from './components/Cart/CartDrawer';
@@ -59,6 +60,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 flex flex-col">
+      <Analytics />
       <SchemaMarkup schema={orgSchema} />
       <ScrollToTop />
       {/* Navbar now handles navigation via Links */}
