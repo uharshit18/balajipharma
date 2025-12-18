@@ -6,9 +6,9 @@ export const PHONE_VALUE = '919414372078';
 export const EMAIL_CONTACT = "balajipharmabhl@gmail.com";
 
 export const EMAILJS_CONFIG = {
-  SERVICE_ID: "service_bq7pvoc", // Placeholder
-  TEMPLATE_ID: "Ytemplate_kilyrum", // Placeholder
-  PUBLIC_KEY: "etZx6pbhS5bDeM0BR", // Placeholder
+  SERVICE_ID: "service_bq7pvoc",
+  TEMPLATE_ID: "template_kilyrum",
+  PUBLIC_KEY: "etZx6pbhS5bDeM0BR",
 };
 
 export const NAV_ITEMS: NavItem[] = [

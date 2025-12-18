@@ -11,6 +11,7 @@ export const ContactForm: React.FC = () => {
     const [activeSegment, setActiveSegment] = useState<Segment>(null);
     const [submissionMethod, setSubmissionMethod] = useState<SubmissionMethod>(null);
     const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+    const [errorMessage, setErrorMessage] = useState<string>('');
 
     const [formData, setFormData] = useState({
         // Common
@@ -112,10 +113,11 @@ ${formData.message}
                 );
                 setStatus('success');
                 resetForm();
-            } catch (error) {
+            } catch (error: any) {
                 console.error("EmailJS Error:", error);
+                setErrorMessage(error.text || error.message || "Unknown Error");
                 setStatus('error');
-                setTimeout(() => setStatus('idle'), 3000);
+                setTimeout(() => setStatus('idle'), 5000);
             }
         }
     };
@@ -335,6 +337,7 @@ ${formData.message}
                                 {status === 'error' && (
                                     <div className="mt-4 p-4 bg-red-50 text-red-700 rounded-lg border border-red-200 animate-fadeIn">
                                         <p className="font-medium">Something went wrong. Please try WhatsApp instead.</p>
+                                        {errorMessage && <p className="text-sm mt-1 opacity-75">Error: {errorMessage}</p>}
                                     </div>
                                 )}
                             </form>
