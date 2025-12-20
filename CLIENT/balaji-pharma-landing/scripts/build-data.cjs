@@ -11,6 +11,32 @@ console.error("DEBUG: Starting build-data.cjs (Robust Version)");
 const SPREADSHEET_ID = '12N4UwzTV0f6s5T_4JtxRwbh9bIir5IU3DgOLepqblnk';
 const OUTPUT_PATH = path.join(__dirname, '../public/master-data.json');
 
+// --- SYNC STOCK DATA (Runs before Auth Check) ---
+try {
+    const stockSource = path.join(__dirname, '../public/assets/ADMINStocks.json');
+    const stockDest = path.join(__dirname, '../api/stock-data.json');
+
+    if (fs.existsSync(stockSource)) {
+        // Read and write to ensure valid JSON and clean file
+        const rawStock = fs.readFileSync(stockSource, 'utf8');
+        // Optional: Validate JSON before writing
+        JSON.parse(rawStock);
+        fs.writeFileSync(stockDest, rawStock);
+        console.log('SUCCESS: Synced stock-data.json from public/assets/ADMINStocks.json');
+    } else {
+        console.warn('WARNING: public/assets/ADMINStocks.json not found. Keeping existing api/stock-data.json if any.');
+        // Create an empty array if destination doesn't exist to prevent build error
+        if (!fs.existsSync(stockDest)) {
+            fs.writeFileSync(stockDest, '[]');
+            console.log('Created empty stock-data.json to prevent build failure.');
+        }
+    }
+} catch (err) {
+    console.error('ERROR: Failed to sync stock data:', err.message);
+}
+// ------------------------------------------------
+
+
 // Auth setup
 let authConfig;
 
