@@ -21,6 +21,7 @@ interface Product {
     division: string;
     sku?: string;
     strength?: string;
+    stock?: string;
 }
 
 // Helper for price display
@@ -359,6 +360,7 @@ const BrandPriceList: React.FC = () => {
                                 <tr>
                                     <th className="p-3 md:p-5 font-semibold text-slate-500 uppercase text-[10px] md:text-xs tracking-wider w-[35%]">Product Name</th>
                                     <th className="p-3 md:p-5 font-semibold text-slate-500 uppercase text-[10px] md:text-xs tracking-wider w-[15%]">Packing</th>
+                                    <th className="p-3 md:p-5 font-semibold text-slate-500 uppercase text-[10px] md:text-xs tracking-wider w-[10%]">Stock</th>
                                     <th className="p-3 md:p-5 font-semibold text-slate-500 uppercase text-[10px] md:text-xs tracking-wider text-right w-[15%]">MRP</th>
                                     <th className="p-3 md:p-5 font-semibold text-brandBlue uppercase text-[10px] md:text-xs tracking-wider text-right w-[15%]">Net Rate</th>
                                     <th className="p-3 md:p-5 font-semibold text-slate-500 uppercase text-[10px] md:text-xs tracking-wider text-center w-[20%]">Order</th>
@@ -367,14 +369,14 @@ const BrandPriceList: React.FC = () => {
                             <tbody className="divide-y divide-slate-100">
                                 {loading ? (
                                     <tr>
-                                        <td colSpan={5} className="p-12 text-center text-slate-500">
+                                        <td colSpan={6} className="p-12 text-center text-slate-500">
                                             <Loader2 className="w-8 h-8 animate-spin mx-auto mb-2 text-brandBlue" />
                                             Fetching latest {brandName} rates...
                                         </td>
                                     </tr>
                                 ) : error ? (
                                     <tr>
-                                        <td colSpan={5} className="p-12 text-center text-red-500 font-medium">
+                                        <td colSpan={6} className="p-12 text-center text-red-500 font-medium">
                                             {error}
                                         </td>
                                     </tr>
@@ -388,6 +390,14 @@ const BrandPriceList: React.FC = () => {
                                             <td className="p-2 md:p-5 align-top">
                                                 <span className="inline-block bg-slate-100 text-slate-600 text-[10px] md:text-xs px-1.5 py-0.5 md:px-2 md:py-1 rounded border border-slate-200 whitespace-nowrap">
                                                     {product.packing}
+                                                </span>
+                                            </td>
+                                            <td className="p-2 md:p-5 align-top">
+                                                <span className={`inline-block text-[10px] md:text-xs px-1.5 py-0.5 md:px-2 md:py-1 rounded border whitespace-nowrap font-medium ${!product.stock || product.stock === '0'
+                                                    ? 'bg-red-50 text-red-600 border-red-100'
+                                                    : 'bg-emerald-50 text-emerald-600 border-emerald-100'
+                                                    }`}>
+                                                    {!product.stock || product.stock === '0' ? 'Out of Stock' : `${product.stock} Qty`}
                                                 </span>
                                             </td>
                                             <td className="p-2 md:p-5 text-right text-slate-600 font-bold text-xs md:text-sm align-top">{formatPrice(product.mrp)}</td>
@@ -431,7 +441,7 @@ const BrandPriceList: React.FC = () => {
                                     ))
                                 ) : (
                                     <tr>
-                                        <td colSpan={5} className="p-12 text-center text-slate-400">
+                                        <td colSpan={6} className="p-12 text-center text-slate-400">
                                             No products found matching "{searchTerm}"
                                         </td>
                                     </tr>

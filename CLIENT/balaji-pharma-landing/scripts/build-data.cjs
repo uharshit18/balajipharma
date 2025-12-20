@@ -72,6 +72,7 @@ const sheets = google.sheets({ version: 'v4', auth });
 const normalizeHeader = (header) => {
     if (!header) return '';
     const h = header.toString().toLowerCase().trim();
+    if (h.includes('code') || h.includes('sku')) return 'productCode'; // Moved to top
     if (h.includes('product') || h.includes('item') || h.includes('name') || h.includes('description')) return 'productName';
     if (h.includes('pack')) return 'packing';
     if (h.includes('mrp')) return 'mrp';
@@ -137,8 +138,7 @@ const generateData = async () => {
         console.log(`Found ${companies.length} companies.`);
 
         const allProducts = [];
-        const BATCH_SIZE = 2; // Reduced to prevent rate limits
-
+        const BATCH_SIZE = 2; // User requested to keep this setting
         for (let i = 0; i < companies.length; i += BATCH_SIZE) {
             const batch = companies.slice(i, i + BATCH_SIZE);
             console.log(`Processing batch ${Math.floor(i / BATCH_SIZE) + 1} / ${Math.ceil(companies.length / BATCH_SIZE)}...`);
@@ -146,9 +146,11 @@ const generateData = async () => {
             await Promise.all(batch.map(async (company) => {
                 try {
                     const products = await fetchSheetData(company.sheetName);
+
                     const brandSlug = company.companyName.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '-price-list';
                     products.forEach(p => {
                         allProducts.push({
+                            ...p, // Include all other columns dynamicallly
                             productName: p.productName || '',
                             composition: p.composition || '',
                             packing: p.packing || '',
@@ -156,7 +158,8 @@ const generateData = async () => {
                             saleRate: p.saleRate || '',
                             division: p.division || '',
                             brandName: company.companyName,
-                            brandSlug: brandSlug
+                            brandSlug: brandSlug,
+                            productCode: p.productCode || '' // Included in output
                         });
                     });
                 } catch (err) {

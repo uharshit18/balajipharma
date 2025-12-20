@@ -10,6 +10,19 @@ export const cors = (res) => {
     );
 };
 
+export const normalizeHeader = (header) => {
+    if (!header) return '';
+    const h = header.toString().toLowerCase().trim();
+    if (h.includes('code') || h.includes('sku') || h.includes('id')) return 'productCode'; // Moved to top
+    if (h.includes('product') || h.includes('item') || h.includes('name') || h.includes('description')) return 'productName';
+    if (h.includes('pack')) return 'packing';
+    if (h.includes('mrp')) return 'mrp';
+    if (h.includes('sale') || h.includes('rate') || h.includes('ptr') || h.includes('price')) return 'saleRate';
+    if (h.includes('div')) return 'division';
+    if (h.includes('comp') || h.includes('generic')) return 'composition';
+    return h.replace(/\s+/g, '');
+};
+
 export const getAuth = () => {
     // Vercel Environment Variables need to handle newlines in private keys correctly
     let privateKey = process.env.GOOGLE_PRIVATE_KEY;

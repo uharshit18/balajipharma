@@ -1,18 +1,5 @@
-import { google } from 'googleapis';
-import { getAuth, SPREADSHEET_ID, cors } from './_utils.js';
+import { getAuth, SPREADSHEET_ID, cors, normalizeHeader } from './_utils.js';
 
-// Helper to normalize headers
-const normalizeHeader = (header) => {
-    if (!header) return '';
-    const h = header.toString().toLowerCase().trim();
-    if (h.includes('product') || h.includes('item') || h.includes('name') || h.includes('description')) return 'productName';
-    if (h.includes('pack')) return 'packing';
-    if (h.includes('mrp')) return 'mrp';
-    if (h.includes('sale') || h.includes('rate') || h.includes('ptr') || h.includes('price')) return 'saleRate';
-    if (h.includes('div')) return 'division';
-    if (h.includes('comp') || h.includes('generic')) return 'composition';
-    return h.replace(/\s+/g, '');
-};
 
 const mapRowsToObjects = (headers, rows) => {
     const normalizedHeaders = headers.map(normalizeHeader);
@@ -93,6 +80,7 @@ export default async function handler(req, res) {
                                 mrp: p.mrp || '',
                                 saleRate: p.saleRate || '',
                                 division: p.division || '',
+                                productCode: p.productCode || '',
                                 brandName: company.companyName,
                                 brandSlug: brandSlug
                             }));
