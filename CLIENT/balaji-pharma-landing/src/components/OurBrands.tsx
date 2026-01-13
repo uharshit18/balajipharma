@@ -149,13 +149,15 @@ const OurBrands: React.FC = () => {
                     </div>
                 ) : (
                     <div className="space-y-16">
-                        {/* BRANDS GRID */}
-                        {results.brands.length > 0 && searchQuery.length < 3 && (
+                        {/* BRANDS GRID - Show if there are brand matches */}
+                        {results.brands.length > 0 && (
                             <div>
                                 <div className="flex items-center justify-between mb-8">
-                                    <h2 className="text-2xl font-bold text-slate-800">Available Brands</h2>
+                                    <h2 className="text-2xl font-bold text-slate-800">
+                                        {searchQuery.length >= 3 ? "Brand Matches" : "Available Brands"}
+                                    </h2>
                                     <span className="text-sm font-semibold text-slate-500 bg-white border border-slate-200 px-3 py-1 rounded-full shadow-sm">
-                                        {results.brands.length} Companies
+                                        {results.brands.length} {results.brands.length === 1 ? 'Company' : 'Companies'}
                                     </span>
                                 </div>
                                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">

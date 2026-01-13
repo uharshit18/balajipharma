@@ -5,6 +5,9 @@ const CACHE_KEY = 'balaji_search_index_v8_static'; // Incremented to v8 to clear
 const CACHE_DURATION = 1000 * 60 * 60 * 24; // 24 hours (for master data)
 const STOCK_POLL_INTERVAL = 60 * 60 * 1000; // 60 minutes
 
+// Google Cloud Storage URL for stock data (synced hourly from office server)
+const GCS_STOCK_URL = 'https://storage.googleapis.com/balaji-pharma-stock-data/ADMINStocks.json';
+
 export interface SearchBrand {
     companyName: string;
     sheetName: string;
@@ -77,21 +80,21 @@ class SearchService {
         if (this.products.length > 0) {
             this.productFuse = new Fuse(this.products, {
                 keys: [
-                    { name: 'productName', weight: 0.6 },
-                    { name: 'composition', weight: 0.3 },
-                    { name: 'brandName', weight: 0.1 }
+                    { name: 'productName', weight: 0.5 },
+                    { name: 'composition', weight: 0.2 },
+                    { name: 'brandName', weight: 0.4 }
                 ],
-                threshold: 0.3,
-                distance: 100,
-                minMatchCharLength: 2,
+                threshold: 0.15,  // Much stricter - only 15% character difference allowed
+                distance: 30,      // Tight character distance requirement
+                minMatchCharLength: 3,  // At least 3 characters must match
                 ignoreLocation: true
             });
         }
         if (this.brands.length > 0) {
             this.brandFuse = new Fuse(this.brands, {
                 keys: ['companyName'],
-                threshold: 0.4,
-                ignoreLocation: true
+                threshold: 0.2,  // Very strict - only 20% character difference allowed
+                distance: 30,      // Tight character distance requirement\n                minMatchCharLength: 3,  // At least 3 characters must match\n                ignoreLocation: true
             });
         }
     }
@@ -147,30 +150,49 @@ class SearchService {
 
         try {
             let stockList: any[] = [];
+            let fetchSource: 'gcs' | 'api' | 'static' = 'static';
 
-            // 1. Try fetching from API first
+            // PRIORITY 1: Try Google Cloud Storage first (synced hourly from office server)
             try {
-                // console.log("[SearchService] Fetching stock updates from API...");
-                const res = await fetch(`${API_BASE_URL}/api/stock-status`);
-                if (!res.ok) throw new Error('API failed');
+                const res = await fetch(`${GCS_STOCK_URL}?v=${Date.now()}`);
+                if (!res.ok) throw new Error(`GCS fetch failed: ${res.status}`);
                 stockList = await res.json();
 
-                // CRITICAL FIX: If API returns empty list (but 200 OK), treat as failure
-                if (Array.isArray(stockList) && stockList.length === 0) {
-                    throw new Error('API returned empty stock list');
+                if (Array.isArray(stockList) && stockList.length > 0) {
+                    fetchSource = 'gcs';
+                    console.log('[SearchService] Stock loaded from Google Cloud Storage');
+                } else {
+                    throw new Error('GCS returned empty stock list');
                 }
-            } catch (apiError) {
-                console.warn('[SearchService] API stock fetch failed or empty, using static file fallback.', apiError);
-                // 2. Fallback to Static File
+            } catch (gcsError) {
+                console.warn('[SearchService] GCS stock fetch failed, trying Vercel API...', gcsError);
+
+                // PRIORITY 2: Try Vercel API as backup
                 try {
-                    // console.log("[SearchService] Fetching stock updates from static file...");
-                    // Use time-based cache busting
-                    const res = await fetch(`/assets/ADMINStocks.json?v=${Date.now()}`);
-                    if (!res.ok) throw new Error("Failed to fetch static ADMINStocks.json");
+                    const res = await fetch(`${API_BASE_URL}/api/stock-status`);
+                    if (!res.ok) throw new Error('API failed');
                     stockList = await res.json();
-                } catch (staticError) {
-                    console.error('[SearchService] All stock fetch attempts failed', staticError);
-                    return;
+
+                    if (Array.isArray(stockList) && stockList.length > 0) {
+                        fetchSource = 'api';
+                        console.log('[SearchService] Stock loaded from Vercel API');
+                    } else {
+                        throw new Error('API returned empty stock list');
+                    }
+                } catch (apiError) {
+                    console.warn('[SearchService] API stock fetch also failed, using static file fallback...', apiError);
+
+                    // PRIORITY 3: Fallback to Static File (deployed with site)
+                    try {
+                        const res = await fetch(`/assets/ADMINStocks.json?v=${Date.now()}`);
+                        if (!res.ok) throw new Error("Failed to fetch static ADMINStocks.json");
+                        stockList = await res.json();
+                        fetchSource = 'static';
+                        console.log('[SearchService] Stock loaded from static fallback');
+                    } catch (staticError) {
+                        console.error('[SearchService] All stock fetch attempts failed', staticError);
+                        return;
+                    }
                 }
             }
 
@@ -180,7 +202,9 @@ class SearchService {
             const stockMap = new Map<string, string>();
             stockList.forEach((item: any) => {
                 if (item.ProductCode) {
-                    stockMap.set(String(item.ProductCode).trim().toLowerCase(), String(item.TotalStock || '0'));
+                    // Support both field names: 'TotalStock' (static/API fallback) and 'Closing' (new GCS source)
+                    const stockValue = item.TotalStock !== undefined ? item.TotalStock : item.Closing;
+                    stockMap.set(String(item.ProductCode).trim().toLowerCase(), String(stockValue || '0'));
                 }
             });
 
