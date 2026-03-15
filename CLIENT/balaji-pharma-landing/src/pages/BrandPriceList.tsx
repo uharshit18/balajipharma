@@ -10,6 +10,48 @@ import { useCart } from '../context/CartContext';
 import { Button } from '../components/UI/Button';
 import logoMap from '../data/logoMap.json';
 
+// Inline editable quantity input component for price list table
+const QuantityInput: React.FC<{ productName: string; quantity: number }> = ({ productName, quantity }) => {
+    const { setQuantity } = useCart();
+    const [localQty, setLocalQty] = useState(String(quantity));
+
+    useEffect(() => {
+        setLocalQty(String(quantity));
+    }, [quantity]);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const val = e.target.value;
+        if (val === '' || /^\d+$/.test(val)) {
+            setLocalQty(val);
+        }
+    };
+
+    const handleBlur = () => {
+        const parsed = parseInt(localQty, 10);
+        if (!parsed || parsed < 1) {
+            setQuantity(productName, 1);
+            setLocalQty('1');
+        } else {
+            setQuantity(productName, parsed);
+            setLocalQty(String(parsed));
+        }
+    };
+
+    return (
+        <input
+            type="text"
+            inputMode="numeric"
+            pattern="[0-9]*"
+            value={localQty}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            onKeyDown={(e) => e.key === 'Enter' && (e.target as HTMLInputElement).blur()}
+            onFocus={(e) => e.target.select()}
+            className="w-12 h-6 text-sm font-bold text-slate-900 text-center bg-white border border-slate-200 rounded-md outline-none focus:ring-2 focus:ring-brandBlue/50 focus:border-brandBlue transition-all appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+        />
+    );
+};
+
 const API_BASE_URL = import.meta.env.VITE_API_URL || "";
 
 interface Product {
@@ -413,7 +455,7 @@ const BrandPriceList: React.FC = () => {
                                                             >
                                                                 -
                                                             </button>
-                                                            <span className="font-bold text-slate-900 text-sm w-4">{cartItem.quantity}</span>
+                                                            <QuantityInput productName={product.productName} quantity={cartItem.quantity} />
                                                             <button
                                                                 onClick={() => updateQuantity(product.productName, 1)}
                                                                 className="w-6 h-6 flex items-center justify-center bg-white rounded shadow-sm text-slate-700 hover:text-brandBlue font-bold"

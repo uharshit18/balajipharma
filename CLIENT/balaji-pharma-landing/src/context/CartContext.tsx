@@ -13,6 +13,7 @@ interface CartContextType {
     addItem: (product: SearchProduct) => void;
     removeItem: (productName: string) => void;
     updateQuantity: (productName: string, delta: number) => void;
+    setQuantity: (productName: string, qty: number) => void;
     clearCart: () => void;
     toggleCart: () => void;
     cartTotal: number;
@@ -69,6 +70,16 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         }));
     };
 
+    const setQuantity = (productName: string, qty: number) => {
+        const safeQty = Math.max(1, Math.floor(qty));
+        setItems(prev => prev.map(item => {
+            if (item.productName === productName) {
+                return { ...item, quantity: safeQty };
+            }
+            return item;
+        }));
+    };
+
     const clearCart = () => {
         setItems([]);
     };
@@ -88,6 +99,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
             addItem,
             removeItem,
             updateQuantity,
+            setQuantity,
             clearCart,
             toggleCart,
             cartTotal

@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { Search, ChevronRight, Loader2, Pill } from "lucide-react";
 import { useCart } from "../context/CartContext";
@@ -7,6 +7,48 @@ import { searchService, SearchResult, SearchProduct } from "../utils/searchServi
 import { PHONE_VALUE } from "../constants";
 import { Card } from "./UI/Card";
 import { Button } from "./UI/Button";
+
+// Inline editable quantity input component
+const QuantityInput: React.FC<{ productName: string; quantity: number }> = ({ productName, quantity }) => {
+    const { setQuantity } = useCart();
+    const [localQty, setLocalQty] = useState(String(quantity));
+
+    useEffect(() => {
+        setLocalQty(String(quantity));
+    }, [quantity]);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const val = e.target.value;
+        if (val === '' || /^\d+$/.test(val)) {
+            setLocalQty(val);
+        }
+    };
+
+    const handleBlur = () => {
+        const parsed = parseInt(localQty, 10);
+        if (!parsed || parsed < 1) {
+            setQuantity(productName, 1);
+            setLocalQty('1');
+        } else {
+            setQuantity(productName, parsed);
+            setLocalQty(String(parsed));
+        }
+    };
+
+    return (
+        <input
+            type="text"
+            inputMode="numeric"
+            pattern="[0-9]*"
+            value={localQty}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            onKeyDown={(e) => e.key === 'Enter' && (e.target as HTMLInputElement).blur()}
+            onFocus={(e) => e.target.select()}
+            className="w-12 h-8 text-sm font-bold text-slate-900 text-center bg-white border border-slate-200 rounded-md outline-none focus:ring-2 focus:ring-brandBlue/50 focus:border-brandBlue transition-all appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+        />
+    );
+};
 import { Section } from "./UI/Section";
 
 import logoMap from '../data/logoMap.json';
@@ -234,7 +276,7 @@ const OurBrands: React.FC = () => {
                                                                     >
                                                                         -
                                                                     </button>
-                                                                    <span className="font-bold text-slate-900 text-sm">{inCart.quantity}</span>
+                                                                    <QuantityInput productName={product.productName} quantity={inCart.quantity} />
                                                                     <button
                                                                         onClick={() => updateQuantity(product.productName, 1)}
                                                                         className="w-8 h-8 flex items-center justify-center bg-white rounded shadow-sm text-slate-700 hover:text-brandBlue font-bold"

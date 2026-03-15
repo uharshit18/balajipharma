@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Plus, Minus, Trash2 } from 'lucide-react';
 import { useCart, CartItem as CartItemType } from '../../context/CartContext';
 
@@ -7,7 +7,37 @@ interface CartItemProps {
 }
 
 export const CartItem: React.FC<CartItemProps> = ({ item }) => {
-    const { updateQuantity, removeItem } = useCart();
+    const { updateQuantity, setQuantity, removeItem } = useCart();
+    const [localQty, setLocalQty] = useState(String(item.quantity));
+
+    useEffect(() => {
+        setLocalQty(String(item.quantity));
+    }, [item.quantity]);
+
+    const handleQtyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const val = e.target.value;
+        // Allow empty string while typing
+        if (val === '' || /^\d+$/.test(val)) {
+            setLocalQty(val);
+        }
+    };
+
+    const handleQtyBlur = () => {
+        const parsed = parseInt(localQty, 10);
+        if (!parsed || parsed < 1) {
+            setQuantity(item.productName, 1);
+            setLocalQty('1');
+        } else {
+            setQuantity(item.productName, parsed);
+            setLocalQty(String(parsed));
+        }
+    };
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            (e.target as HTMLInputElement).blur();
+        }
+    };
 
     return (
         <div className="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
@@ -29,18 +59,28 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
                         {item.saleRate ? `₹${item.saleRate}` : 'Rate on Request'}
                     </div>
 
-                    <div className="flex items-center gap-3 bg-slate-50 rounded-lg p-1 border border-slate-200">
+                    <div className="flex items-center gap-2 bg-slate-50 rounded-lg p-1 border border-slate-200">
                         <button
                             onClick={() => updateQuantity(item.productName, -1)}
-                            className="w-6 h-6 flex items-center justify-center rounded-md bg-white text-slate-600 shadow-sm hover:text-brandBlue hover:bg-blue-50 transition-colors"
+                            className="w-7 h-7 flex items-center justify-center rounded-md bg-white text-slate-600 shadow-sm hover:text-brandBlue hover:bg-blue-50 transition-colors"
                             disabled={item.quantity <= 1}
                         >
                             <Minus size={14} />
                         </button>
-                        <span className="text-sm font-bold text-slate-900 w-4 text-center">{item.quantity}</span>
+                        <input
+                            type="text"
+                            inputMode="numeric"
+                            pattern="[0-9]*"
+                            value={localQty}
+                            onChange={handleQtyChange}
+                            onBlur={handleQtyBlur}
+                            onKeyDown={handleKeyDown}
+                            onFocus={(e) => e.target.select()}
+                            className="w-12 h-7 text-sm font-bold text-slate-900 text-center bg-white border border-slate-200 rounded-md outline-none focus:ring-2 focus:ring-brandBlue/50 focus:border-brandBlue transition-all appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                        />
                         <button
                             onClick={() => updateQuantity(item.productName, 1)}
-                            className="w-6 h-6 flex items-center justify-center rounded-md bg-white text-slate-600 shadow-sm hover:text-brandBlue hover:bg-blue-50 transition-colors"
+                            className="w-7 h-7 flex items-center justify-center rounded-md bg-white text-slate-600 shadow-sm hover:text-brandBlue hover:bg-blue-50 transition-colors"
                         >
                             <Plus size={14} />
                         </button>
